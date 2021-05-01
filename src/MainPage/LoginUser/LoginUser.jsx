@@ -3,7 +3,6 @@ import db from '../../samples/db.json';
 import './login.css';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
-import { FormControl } from '@material-ui/core';
 
 const att = {user:false, pass:false, hepUs:"", hepPass: ""};
 
@@ -36,7 +35,7 @@ const LoginUser = ({goToVirtualOffice}) => {
 
   return (
     <div className="login">
-      <FormControl action="" className="form-control">
+      <form action="" className="form-control" onSubmit={checkeDatas}>
         <TextField 
           id="outlined-basic1" 
           label="Usuario" 
@@ -63,8 +62,8 @@ const LoginUser = ({goToVirtualOffice}) => {
           helperText={attribError.hepPass}
           onFocus={() => setAttErr({...attribError, pass:false, hepPass:""})}
         />
-        <Button variant="contained" color="primary" onClick={checkeDatas}>Iniciar Sesión</Button>
-      </FormControl>
+        <Button type="submit" variant="contained" color="primary" >Iniciar Sesión</Button>
+      </form>
     </div>
   )
 }
