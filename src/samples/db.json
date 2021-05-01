@@ -1,0 +1,29 @@
+{
+  "usuarios": [
+    {
+      "id":"1",
+      "usuario": "felipeRuiz",
+      "pass": "gerente"
+    },
+    {
+      "id": "2",
+      "usuario": "jorgelina",
+      "pass": "secretaria"
+    },
+    {
+      "id": "3",
+      "usuario": "micaela",
+      "pass":"jefaAdmin"
+    },
+    {
+      "id":"4",
+      "usuario": "liliana",
+      "pass": "cajera"
+    },
+    {
+      "id": "5",
+      "usuario": "nedBigby",
+      "pass": "agente"
+    }
+  ]
+}
