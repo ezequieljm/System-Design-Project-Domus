@@ -1,4 +1,4 @@
-import House from '../../assets/img/pixasquare-4ojhpgKpS68-unsplash.jpg';
+// import House from '../../assets/img/pixasquare-4ojhpgKpS68-unsplash.jpg';
 import './pictures.css'
 
 const PicturesOfHouse = () => {
