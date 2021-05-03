@@ -1,11 +1,12 @@
 import React from 'react';
 import NavbarOffice from './NavbarOffice/NavbarOffice';
+import MenuUser from './Menu/MenuUser';
 
 const Header = () => {
   return (
     <>
-      <h1>Header</h1>
       <NavbarOffice />
+      <MenuUser />
     </>
   )
 };

@@ -11,8 +11,13 @@ const MainPage = ({goToVirtualOffice}) => {
   return (
     <div className="main-content">
       <LogotypeCompany eventIngresar={desplegarForm} />
-      {picturesActive ? <PicturesOfHouse /> : <LoginUser setupVirtualOffice={goToVirtualOffice} />}
+      {
+        picturesActive 
+          ? <PicturesOfHouse /> 
+          : <LoginUser setupVirtualOffice={goToVirtualOffice} />
+      }
     </div>
   )
 } 
+
 export default MainPage;

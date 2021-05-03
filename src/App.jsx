@@ -84,7 +84,7 @@ const App = () => {
     (userLoged === 'default')
       ? <MainPage goToVirtualOffice={redirect} />
       : (userLoged === 'jorgelina') 
-        ? <Secretary fnExit={exitVirtualOffice}/>
+        ? <Secretary exit={exitVirtualOffice}/>
         : (userLoged === 'felipeRuiz')
           ? <GeneralManager fnExit={exitVirtualOffice}/>
           : (userLoged === 'micaela')
