@@ -6,20 +6,20 @@ import TextField from '@material-ui/core/TextField';
 
 const att = {user:false, pass:false, hepUs:"", hepPass: ""};
 
-const LoginUser = ({goToVirtualOffice}) => {
+const LoginUser = ({setupVirtualOffice}) => {
   const [dataUserInput, setDatosUser] = React.useState({user:'', pass:''});
   const [attribError, setAttErr] = React.useState(att);
 
   const queryUserDB = user => user.usuario === dataUserInput.user && user.pass === dataUserInput.pass;
 
-  const showChange = e => {
+  const changeInput = e => {
     e.target.id === 'outlined-basic1'
       ?  setDatosUser({...dataUserInput, user:e.currentTarget.value})
       :  setDatosUser({...dataUserInput, pass:e.currentTarget.value})
     ;
   }
 
-  const controlUserPass = () => {
+  const controlUserAndPassword = () => {
     db.usuarios.some(user => user.usuario === dataUserInput.user)
       ? setAttErr({...attribError, pass:true, hepPass: "Contraseña Incorrecta"})
       : setAttErr({...attribError, user:true, hepUs: "Usuario Incorrecto"})
@@ -28,8 +28,8 @@ const LoginUser = ({goToVirtualOffice}) => {
   const checkeDatas = e => {
     e.preventDefault();
     db.usuarios.findIndex(queryUserDB) !== (-1)
-      ? goToVirtualOffice(dataUserInput.user)
-      : controlUserPass()
+      ? setupVirtualOffice(dataUserInput.user)
+      : controlUserAndPassword()
     ;
   }
 
@@ -42,7 +42,7 @@ const LoginUser = ({goToVirtualOffice}) => {
           variant="outlined" 
           required
           autoFocus
-          onChange={showChange}
+          onChange={changeInput}
           color="primary"
           fullWidth
           error={attribError.user}
@@ -55,7 +55,7 @@ const LoginUser = ({goToVirtualOffice}) => {
           variant="outlined" 
           type="password"
           required
-          onChange={showChange}
+          onChange={changeInput}
           color="primary"
           fullWidth
           error={attribError.pass}

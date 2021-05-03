@@ -1,17 +1,12 @@
 import React from 'react';
-import NavbarOffice from '../GeneralComponents/Header/NavbarOffice/NavbarOffice';
+import Header from '../GeneralComponents/Header/Header';
 
-const Secretary = ({fnExit}) => {
-  const [changeTitle, setTitle] = React.useState('Oficina virtual de Secretaria');
-
+const Secretary = () => {
   return (
     <>
-      <NavbarOffice 
-        extendFn={fnExit} 
-        appbar={['Clientes', 'Agenda', 'Solicitudes']}
-        chgTitle={(e, val) => setTitle(val)}/>
-      <h1>{changeTitle}</h1>
+      <Header />
     </>
   )
 }
+
 export default Secretary;

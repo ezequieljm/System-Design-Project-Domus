@@ -4,14 +4,14 @@ import PicturesOfHouse from './PicturesOfHouse/PicturesOfHouse';
 import LoginUser from './LoginUser/LoginUser';
 import './mainPage.css';
 
-const MainPage = ({reDirect}) => {
+const MainPage = ({goToVirtualOffice}) => {
   const [picturesActive, setImagenes] = React.useState(true);
   const desplegarForm = () => setImagenes(false);
 
   return (
     <div className="main-content">
       <LogotypeCompany eventIngresar={desplegarForm} />
-      {picturesActive ? <PicturesOfHouse /> : <LoginUser goToVirtualOffice={reDirect} />}
+      {picturesActive ? <PicturesOfHouse /> : <LoginUser setupVirtualOffice={goToVirtualOffice} />}
     </div>
   )
 } 

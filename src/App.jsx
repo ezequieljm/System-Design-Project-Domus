@@ -60,28 +60,29 @@ let viewsArr = [
 ];
 
 const App = () => {
-  const [currentView, setCurrView] = React.useState(viewsArr)
+  const [currentView, setView] = React.useState(viewsArr)
   const activeView = view => view.active;
+  const indexActiveView = currentView.findIndex(activeView);
 
-  const reDir = user => {
-    setCurrView([
-      ...currentView,
-      currentView[currentView.findIndex(activeView)].active = false,
-      currentView[currentView.findIndex(view => view.user === user)].active = true
-    ]);
-  };
+  const redirect = user => setView(
+    [
+      ...currentView, 
+      currentView[indexActiveView].active = false, 
+      currentView[currentView.findIndex(v => v.user === user)].active = true
+    ]
+  );
 
-  const exitVirtualOffice = () => {
-    setCurrView([
-      ...currentView,
-      currentView[currentView.findIndex(activeView)].active = false,
-      currentView[currentView.findIndex(view => view.user === 'default')].active = true
-    ]);
-  };
+  const exitVirtualOffice = () => setView(
+    [
+      ...currentView, 
+      currentView[indexActiveView].active = false, 
+      currentView[currentView.findIndex(v => v.user === 'default')].active = true
+    ]
+  );
 
   const renderView = userLoged =>
     (userLoged === 'default')
-      ? <MainPage reDirect={reDir} />
+      ? <MainPage goToVirtualOffice={redirect} />
       : (userLoged === 'jorgelina') 
         ? <Secretary fnExit={exitVirtualOffice}/>
         : (userLoged === 'felipeRuiz')
@@ -97,7 +98,7 @@ const App = () => {
 
   return (
     <>
-      {renderView(currentView[currentView.findIndex(activeView)].user)}
+      {renderView(currentView[indexActiveView].user)}
     </>
   )
 }
