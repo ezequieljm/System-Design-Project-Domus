@@ -11,8 +11,8 @@ import Toolbar from '@material-ui/core/Toolbar';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import Button from '@material-ui/core/Button'
-import useStyles from './UseStyles/UseStyles'
+import Button from '@material-ui/core/Button';
+import useStyles from './UseStyles/UseStyles';
 
 const txtTab = ['Clientes', 'Agenda', 'Solicitudes'];
 const configs = ['Configuración', 'Recargar página', 'Reportar problema', 'Consultar manual'];
@@ -26,7 +26,7 @@ function CreateMeeting() {
       </ListItemIcon>
       <ListItemText primary="Crear Cita" />
     </ListItem>
-  )
+  );
 }
 
 function RequestListTools({handleListItemClick, selectedIndex}) {
@@ -47,7 +47,7 @@ function RequestListTools({handleListItemClick, selectedIndex}) {
         </ListItem>
       ))}
     </List>
-  )
+  );
 }
 
 function PageTools({handleListItemClick, selectedIndex}) {
@@ -67,7 +67,7 @@ function PageTools({handleListItemClick, selectedIndex}) {
         </ListItem>
       ))}
     </List>
-  )
+  );
 }
 
 const Secretary = ({exit}) => {
@@ -81,14 +81,12 @@ const Secretary = ({exit}) => {
   const [selectedIndex, setSelectedIndex] = React.useState();
   const handleListItemClick = (event, index) => setSelectedIndex(index);
 
-
-  const getDate = () => new Date().toDateString();
-
   const [value, setValue] = React.useState(2);
   const handleChange = (event, newValue) => {
     setValue(newValue);
     changeMainContent(newValue);
   };
+  const getDate = () => new Date().toDateString();
 
   return (
     <div className={classes.root}>

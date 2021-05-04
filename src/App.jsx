@@ -60,7 +60,7 @@ let viewsArr = [
 ];
 
 const App = () => {
-  const [currentView, setView] = React.useState(viewsArr)
+  const [currentView, setView] = React.useState(viewsArr);
   const activeView = view => view.active;
   const indexActiveView = currentView.findIndex(activeView);
 
@@ -104,3 +104,5 @@ const App = () => {
 }
 
 export default App;
+
+
