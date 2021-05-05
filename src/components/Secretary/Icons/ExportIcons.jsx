@@ -6,10 +6,17 @@ import {
   Settings, 
   Refresh, 
   Report, 
-  MenuBook
+  MenuBook,
+  AddBox,
+  Edit,
+  Delete,
+  Schedule,
+  PersonAdd,
+  Person,
+  Business
 } from '@material-ui/icons'
 
-const arrIconsList = [
+export const arrIconsList = [
   <FormatListBulleted />, 
   <Update />, 
   <Print />, 
@@ -20,4 +27,17 @@ const arrIconsList = [
   <MenuBook />
 ];
 
-export default arrIconsList;
+export const arrIconsSchedule = [
+  <AddBox />,
+  <Edit />,
+  <Delete />,
+  <Schedule />
+];
+
+export const arrIconsClient = [
+  <Update />,
+  <PersonAdd />,
+  <Person />,
+  <Business />
+];
+

@@ -6,7 +6,7 @@ const GeneralManager = ({fnExit}) => {
   return (
     <>
       <h1 id="titulo">Gerente general</h1>
-      <Button variant="contained" color="secondary" onClick={() => algoProgramado()}>Salir</Button>
+      <Button variant="contained" color="secondary" onClick={fnExit}>Salir</Button>
     </>
   )
 };

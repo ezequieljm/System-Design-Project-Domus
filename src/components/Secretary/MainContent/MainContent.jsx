@@ -1,9 +1,18 @@
 import React from 'react';
 import Request from './Requests/Requests';
+import Schedule from './Schedule/Schedule';
 
-const MainContent = () => {
+const MainContent = ({val, inxTool}) => {
   return (
-    <Request />
+    <>
+      {
+        val === 2
+          ? <Request />
+          : val === 1
+            ? <Schedule valueListTools={inxTool}/>
+            : <h1>Clientes</h1>
+      }
+    </>
   )
 };
 
