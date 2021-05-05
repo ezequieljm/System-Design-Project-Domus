@@ -13,7 +13,7 @@ import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
-import SimpleCard from './Cards';
+import ContentCards from './Cards';
 
 const useRowStyles = makeStyles({
   root: {
@@ -125,13 +125,10 @@ const Request = () => {
   return (
     <div>
       <Typography variant="h5">Solicitudes</Typography>
-      <div style={{display: 'flex', justifyContent: 'space-between', marginBottom: 20, marginTop: 20}}>
-        <SimpleCard />
-        <SimpleCard />
-        <SimpleCard />
-        <SimpleCard />
+      <ContentCards />
+      <div style={{height:'400px', overflow: 'auto'}}>
+        <CollapsibleTable />
       </div>
-      <CollapsibleTable />
     </div>
   );
 };

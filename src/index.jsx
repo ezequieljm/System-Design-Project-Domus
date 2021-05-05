@@ -3,9 +3,14 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import './index.css';
 
-ReactDOM.render(
+/* ReactDOM.render(
   <React.StrictMode>
     <App />
-  </React.StrictMode>, //jsx
+  </React.StrictMode>,
+  document.getElementById('root')
+); */
+
+ReactDOM.render(
+  <App />,
   document.getElementById('root')
 );

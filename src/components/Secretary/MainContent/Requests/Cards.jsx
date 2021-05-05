@@ -1,7 +1,5 @@
 import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -9,6 +7,7 @@ const useStylesTow = makeStyles({
   root: {
     minWidth: 200,
     minHeight: 150,
+    maxHeight: 170,
     background: 'white',
     color: 'black',
   },
@@ -21,24 +20,38 @@ const useStylesTow = makeStyles({
     fontSize: 14,
   },
   pos: {
-    marginBottom: 12,
+    marginTop: 30,
   },
 });
 
-export default function SimpleCard() {
+function SimpleCard({title, value}) {
   const classes = useStylesTow();
-
   return (
     <Card className={classes.root}>
-      <CardContent className={classes.classContentStyles}>
-        <Typography variant="h5" component="h2">
-          Cuenta
+      <CardContent >
+        <Typography variant="h6" component="h2">
+          {title}
         </Typography>
-        <Typography variant="body2" component="p">
-          23
+        <Typography variant="h1">
+          {value}
         </Typography>
       </CardContent>
     </Card>
   );
 }
 
+const valuesOfCards = {
+  titles: ['Total', 'Recibidos ayer', 'Sin verificar', 'Cientes no registrados'], 
+  values:[23, 2, 2, 4]
+};
+
+export default function ContentCards() {
+  return (
+    <div style={{display: 'flex', justifyContent: 'space-between', marginBottom: 20, marginTop: 20}}>
+      <SimpleCard title={valuesOfCards.titles[0]} value={valuesOfCards.values[0]} />
+      <SimpleCard title={valuesOfCards.titles[1]} value={valuesOfCards.values[1]} />
+      <SimpleCard title={valuesOfCards.titles[2]} value={valuesOfCards.values[2]} />
+      <SimpleCard title={valuesOfCards.titles[3]} value={valuesOfCards.values[3]} />
+    </div>
+  )
+}
