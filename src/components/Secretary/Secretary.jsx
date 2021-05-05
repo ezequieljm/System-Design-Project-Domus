@@ -29,12 +29,7 @@ function RequestListTools({handleListItemClick, selectedIndex}) {
   return(
     <List>
       {requestsTool.map((text, index) => (
-        <ListItem 
-          button 
-          key={text} 
-          selected={selectedIndex === index} 
-          onClick={e => handleListItemClick(e, index)}
-        >
+        <ListItem button key={text} selected={selectedIndex === index} onClick={e => handleListItemClick(e, index)} >
           <ListItemIcon>
             {arrIconsList[index]}
           </ListItemIcon>
@@ -44,6 +39,7 @@ function RequestListTools({handleListItemClick, selectedIndex}) {
     </List>
   );
 }
+
 
 function ScheduleListTools({handleListItemClick, selectedIndex}) {
   return(

@@ -1,8 +1,9 @@
 import React from 'react';
 
 const NewClient = () => {
+
   return (
-    <h1>Nuevo Cliente</h1>
+    <h1>Nuevo cliente</h1>
   )
 }
 
