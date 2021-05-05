@@ -1,12 +1,16 @@
+import React, { Fragment } from "react";
+import Button from '@material-ui/core/Button';
+import './styles.css'
+
 const GeneralManager = ({fnExit}) => {
   return (
     <>
-      <h1>General Manager</h1>
-      <div>Hola</div>
-      <div><h1>Other test</h1></div>
-      <button onClick={fnExit}>Salir</button>
+      <h1 id="titulo">Gerente general</h1>
+      <Button variant="contained" color="secondary" onClick={() => algoProgramado()}>Salir</Button>
     </>
   )
 };
 
 export default GeneralManager;
+
+
