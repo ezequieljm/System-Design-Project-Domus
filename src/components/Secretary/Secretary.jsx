@@ -15,11 +15,16 @@ import Button from '@material-ui/core/Button';
 import useStyles from './UseStyles/UseStyles';
 import MainContent from './MainContent/MainContent';
 
+import StarBorder from '@material-ui/icons/StarBorder';
+import Collapse from '@material-ui/core/Collapse';
+import ExpandLess from '@material-ui/icons/ExpandLess';
+import ExpandMore from '@material-ui/icons/ExpandMore';
+import InboxIcon from '@material-ui/icons/MoveToInbox';
+
 const txtTab = ['Clientes', 'Agenda', 'Solicitudes'];
 const configs = ['Configuración', 'Recargar página', 'Reportar problema', 'Consultar manual'];
 const requestsTool = ['Listar Solicitudes', 'Actualizar Lista', 'Imprimir', 'Herramientas'];
 const scheduleTool = ['Agendar Cita', 'Editar Cita', 'Eliminar Cita', 'Mostrar Agenda'];
-const clientTool = ['Actualizar Datos', 'Nuevo Cliente'];
 
 /* function CreateMeeting() {
   return (
@@ -72,22 +77,44 @@ function ScheduleListTools({handleListItemClick, selectedIndex}) {
   );
 }
 
-function ClientListTools({handleListItemClick, selectedIndex}) {
+function ClientListTools() {
+  const [open, setOpen] = React.useState(false);
+
+  const handleClick = () => {
+    setOpen(!open);
+  };
+
   return(
     <List>
-      {clientTool.map((text, index) => (
-        <ListItem 
-          button 
-          key={text} 
-          selected={selectedIndex === index} 
-          onClick={e => handleListItemClick(e, index)}
-        >
-          <ListItemIcon>
-            {arrIconsList[index]}
-          </ListItemIcon>
-          <ListItemText primary={text} />
-        </ListItem>
-      ))}
+      <ListItem button key={'Actualizar Datos'} selected={open === false} onClick={handleClick}>
+        <ListItemIcon>
+          {arrIconsList[0]}
+        </ListItemIcon>
+        <ListItemText primary='Actualizar Datos' />
+      </ListItem>
+      <ListItem button onClick={handleClick} selected={open}>
+        <ListItemIcon>
+          <InboxIcon />
+        </ListItemIcon>
+        <ListItemText primary="NuevoCliente" />
+        {open ? <ExpandLess /> : <ExpandMore />}
+      </ListItem>
+      <Collapse in={open} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <ListItem button style={{paddingLeft: 40}}>
+            <ListItemIcon>
+              <StarBorder />
+            </ListItemIcon>
+            <ListItemText primary="Corporativo" />
+          </ListItem>
+          <ListItem button style={{paddingLeft: 40}}>
+            <ListItemIcon>
+              <StarBorder />
+            </ListItemIcon>
+            <ListItemText primary="Particular" />
+          </ListItem>
+        </List>
+      </Collapse>
     </List>
   );
 }
@@ -117,10 +144,7 @@ const Secretary = ({exit}) => {
 
   /* This state is for the list items */
   const [selectedIndex, setSelectedIndex] = React.useState(0);
-  const handleListItemClick = (event, index) => {
-    setSelectedIndex(index);
-    console.log(index);
-  }
+  const handleListItemClick = (event, index) => setSelectedIndex(index);
 
   const [value, setValue] = React.useState(2);
   const handleChange = (event, newValue) => setValue(newValue);
