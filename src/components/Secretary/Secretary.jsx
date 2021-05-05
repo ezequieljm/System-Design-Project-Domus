@@ -13,6 +13,7 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Button from '@material-ui/core/Button';
 import useStyles from './UseStyles/UseStyles';
+import MainContent from './MainContent/MainContent';
 
 const txtTab = ['Clientes', 'Agenda', 'Solicitudes'];
 const configs = ['Configuración', 'Recargar página', 'Reportar problema', 'Consultar manual'];
@@ -79,7 +80,10 @@ const Secretary = ({exit}) => {
 
   /* This state is for the list items */
   const [selectedIndex, setSelectedIndex] = React.useState();
-  const handleListItemClick = (event, index) => setSelectedIndex(index);
+  const handleListItemClick = (event, index) => {
+    setSelectedIndex(index);
+    console.log(index);
+  }
 
   const [value, setValue] = React.useState(2);
   const handleChange = (event, newValue) => {
@@ -122,7 +126,7 @@ const Secretary = ({exit}) => {
       <main className={classes.content}>
         <Toolbar />
         <Toolbar />
-        <Typography paragraph variant='h4'>{mainContent}</Typography>
+        <MainContent />
       </main>
     </div>
   );
