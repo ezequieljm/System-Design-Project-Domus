@@ -10,7 +10,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Button from '@material-ui/core/Button';
-import useStyles from './UseStyles/UseStyles';
+import useStyles from './UseStyles/UseStyles.styles';
 import MainContent from './MainContent/MainContent';
 
 import Collapse from '@material-ui/core/Collapse';
@@ -147,15 +147,10 @@ const Secretary = ({exit}) => {
           <Typography variant="h6" noWrap>
             Oficina Virtual
           </Typography>
-          <Button onClick={exit} variant="contained" color="secondary">Salir</Button>
+          <Button onClick={exit} className={classes.buttonExit}>Salir</Button>
         </Toolbar>
         <div className={classes.divTabDate}>
-          <Tabs
-            value={value}
-            onChange={handleChange}
-            indicatorColor="primary"
-            className={classes.tabsStyles}
-          >
+          <Tabs value={value} onChange={handleChange} indicatorColor="primary" className={classes.tabsStyles}>
             <Tab label={txtTab[0]} />
             <Tab label={txtTab[1]} />
             <Tab label={txtTab[2]} />

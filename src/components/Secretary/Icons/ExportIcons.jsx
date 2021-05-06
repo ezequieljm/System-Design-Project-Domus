@@ -37,7 +37,7 @@ export const arrIconsSchedule = [
 export const arrIconsClient = [
   <Update />,
   <PersonAdd />,
-  <Person />,
-  <Business />
+  <Business />,
+  <Person />
 ];
 

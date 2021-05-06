@@ -8,20 +8,11 @@ const useStylesTow = makeStyles({
     minWidth: 200,
     minHeight: 150,
     maxHeight: 170,
-    background: 'white',
-    color: 'black',
+    boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)'
   },
-  bullet: {
-    display: 'inline-block',
-    margin: '0 2px',
-    transform: 'scale(0.8)',
-  },
-  title: {
-    fontSize: 14,
-  },
-  pos: {
-    marginTop: 30,
-  },
+  colorFont: {
+    color: 'orange'
+  }
 });
 
 function SimpleCard({title, value}) {
@@ -32,7 +23,7 @@ function SimpleCard({title, value}) {
         <Typography variant="h6" component="h2">
           {title}
         </Typography>
-        <Typography variant="h1">
+        <Typography variant="h1" className={classes.colorFont}>
           {value}
         </Typography>
       </CardContent>

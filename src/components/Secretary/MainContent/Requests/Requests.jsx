@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, withStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 import Collapse from '@material-ui/core/Collapse';
 import IconButton from '@material-ui/core/IconButton';
@@ -14,12 +14,23 @@ import Paper from '@material-ui/core/Paper';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import ContentCards from './Cards';
+import TablePagination from '@material-ui/core/TablePagination';
 
 const useRowStyles = makeStyles({
   root: {
     '& > *': {
       borderBottom: 'unset',
     },
+    
+  },
+});
+
+const useStyles = makeStyles({
+  root: {
+    width: '100%',
+  },
+  container: {
+    maxHeight: 440,
   },
 });
 
@@ -29,12 +40,12 @@ function createData(name, phone, email, age) {
     phone,
     email,
     age,
-    descripcionDetallada:{
-      asunto: 'Primera visita a la propiedad', 
+    detailedDescription:{
+      issue: 'Primera visita a la propiedad', 
       text: 'Hola, me gustaría....', 
-      fechaDeCita: 'Mayo 04 2021', 
+      dateOfAppointment: 'Mayo 04 2021', 
       hours: '00:23',
-      revisado:'NO'
+      inspected:'NO'
     },
   };
 }
@@ -45,7 +56,44 @@ const rows = [
   createData('Simon Nelson Cook', 234532342,'cookie99@gmail.com', 25),
   createData('Teacher Monroe', 234532342,'monroe99@gmail.com', 25),
   createData('Suzie Crabgrass ', 234532342,'suzie99@gmail.com', 25),
+  createData('Jeff Winger', 234532342,'suzie99@gmail.com', 25),
+  createData('Annie Edison', 234532342,'suzie99@gmail.com', 25),
+  createData('Britta Perry', 234532342,'suzie99@gmail.com', 25),
+  createData('Pierce Hawthorne', 234532342,'suzie99@gmail.com', 25),
+  createData('Abed Nadir', 234532342,'suzie99@gmail.com', 25),
+  createData('Shirley Bennett', 234532342,'suzie99@gmail.com', 25),
+  createData('Troy Barnes', 234532342,'suzie99@gmail.com', 25),
+  createData('Ben Chang', 234532342,'suzie99@gmail.com', 25),
+  createData('Duncan', 234532342,'suzie99@gmail.com', 25),
+  createData('Craig Pelton', 234532342,'suzie99@gmail.com', 25),
 ];
+
+const columns = [
+  { id: 'noValue', label: '', minWidth: 170 },
+  { id: 'Nombre', label: 'Nombre', minWidth: 170 },
+  {
+    id: 'teléfono',
+    label: 'Teléfono',
+    minWidth: 170,
+    align: 'right',
+    format: (value) => value.toLocaleString('en-US'),
+  },
+  {
+    id: 'email',
+    label: 'Email',
+    minWidth: 170,
+    align: 'right',
+    format: (value) => value.toLocaleString('en-US'),
+  },
+  {
+    id: 'edad',
+    label: 'Edad',
+    minWidth: 170,
+    align: 'right',
+    format: (value) => value.toFixed(2),
+  },
+];
+
 
 function Row(props) {
   const { row } = props;
@@ -70,7 +118,7 @@ function Row(props) {
           <Collapse in={open} timeout="auto" unmountOnExit>
             <Box margin={1}>
               <Typography variant="h6" gutterBottom component="div">
-                {row.descripcionDetallada.asunto}
+                {row.detailedDescription.issue}
               </Typography>
               <Table size="small" aria-label="purchases">
                 <TableHead>
@@ -84,10 +132,10 @@ function Row(props) {
                 <TableBody>
                   {
                     <TableRow >
-                      <TableCell component="th" scope="row"> {row.descripcionDetallada.text}</TableCell>
-                      <TableCell align="right">{row.descripcionDetallada.fechaDeCita}</TableCell>
-                      <TableCell align="right">{row.descripcionDetallada.hours}</TableCell>
-                      <TableCell align="right">{row.descripcionDetallada.revisado}</TableCell>
+                      <TableCell component="th" scope="row"> {row.detailedDescription.text}</TableCell>
+                      <TableCell align="right">{row.detailedDescription.dateOfAppointment}</TableCell>
+                      <TableCell align="right">{row.detailedDescription.hours}</TableCell>
+                      <TableCell align="right">{row.detailedDescription.inspected}</TableCell>
                     </TableRow>
                   }
                 </TableBody>
@@ -100,37 +148,62 @@ function Row(props) {
   );
 }
 
-function CollapsibleTable() {
+function StickyHeadTable() {
+  const classes = useStyles();
+  const [page, setPage] = React.useState(0);
+  const [rowsPerPage, setRowsPerPage] = React.useState(10);
+
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(+event.target.value);
+    setPage(0);
+  };
+
   return (
-    <TableContainer component={Paper}>
-      <Table aria-label="collapsible table">
-        <TableHead>
-          <TableRow>
-            <TableCell />
-            <TableCell>Nombre</TableCell>
-            <TableCell align="right">Teléfono</TableCell>
-            <TableCell align="right">Email&nbsp;</TableCell>
-            <TableCell align="right">Edad&nbsp;</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map(row => <Row key={row.name} row={row} />)}
-        </TableBody>
-      </Table>
-    </TableContainer>
+    <Paper className={classes.root}>
+      <TableContainer className={classes.container}>
+        <Table stickyHeader aria-label="sticky table">
+          <TableHead >
+            <TableRow >
+              {columns.map((column) => (
+                <TableCell
+                  key={column.id}
+                  align={column.align}
+                  style={{ minWidth: column.minWidth }}
+                >
+                  {column.label}
+                </TableCell>
+              ))}
+            </TableRow>
+          </TableHead>
+          <TableBody >
+            {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(row => <Row key={row.name} row={row} />)}
+          </TableBody>
+        </Table>
+      </TableContainer>
+      <TablePagination
+        rowsPerPageOptions={[10, 25, 100]}
+        component="div"
+        count={rows.length}
+        rowsPerPage={rowsPerPage}
+        page={page}
+        onChangePage={handleChangePage}
+        onChangeRowsPerPage={handleChangeRowsPerPage}
+      />
+    </Paper>
   );
 }
 
-const Request = () => {
+export default Request = () => {
+  // const classes = useRowStyles();
   return (
     <div>
       <Typography variant="h5">Solicitudes</Typography>
       <ContentCards />
-      <div style={{height:'400px', overflow: 'auto'}}>
-        <CollapsibleTable />
-      </div>
+      <StickyHeadTable />
     </div>
   );
 };
-
-export default Request;

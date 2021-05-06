@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const drawerWidth = 240;
 
-const useStyles = makeStyles((theme) => ({
+export default makeStyles((theme) => ({
   root: {
     display: 'flex',
   },
@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
   toolBar: {
     display: 'flex', 
     justifyContent: 'space-between',
-    height: '50px'
+    height: '50px',
   },
   drawer: {
     width: drawerWidth,
@@ -46,7 +46,14 @@ const useStyles = makeStyles((theme) => ({
   },
   fontListText: {
     fontSize: '.9rem',
+  },
+  buttonExit: {
+    background: 'linear-gradient(to right, #ff416c, #ff4b2b)',
+    border: 0,
+    borderRadius: 3,
+    boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
+    color: 'white',
+    height: 38,
+    padding: '0 40px',
   }
 }));
-
-export default useStyles;
