@@ -24,6 +24,11 @@
       "id": "5",
       "usuario": "nedBigby",
       "pass": "agente"
+    },
+    {
+      "id": "6", 
+      "usuario": "marketing",
+      "pass": "mark"
     }
   ]
 }

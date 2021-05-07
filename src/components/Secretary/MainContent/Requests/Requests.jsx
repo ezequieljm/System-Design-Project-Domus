@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles, withStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 import Collapse from '@material-ui/core/Collapse';
 import IconButton from '@material-ui/core/IconButton';
@@ -185,7 +185,7 @@ function StickyHeadTable() {
         </Table>
       </TableContainer>
       <TablePagination
-        rowsPerPageOptions={[10, 25, 100]}
+        rowsPerPageOptions={[5, 10, 25, 100]}
         component="div"
         count={rows.length}
         rowsPerPage={rowsPerPage}
@@ -197,7 +197,7 @@ function StickyHeadTable() {
   );
 }
 
-export default Request = () => {
+const Request = () => {
   // const classes = useRowStyles();
   return (
     <div>
@@ -207,3 +207,4 @@ export default Request = () => {
     </div>
   );
 };
+export default Request;

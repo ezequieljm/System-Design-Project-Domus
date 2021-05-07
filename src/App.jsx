@@ -5,8 +5,8 @@ import Cashier from './components/Cashier/Cashier';
 import HouseAgent from './components/HouseAgent/HouseAgent';
 import MainPage from './MainPage/MainPage';
 import BossOfManage from './components/BossOfManage/BossOfManage';
-/* 
 import Marketing from './components/Marketing/Marketig';
+/* 
 import SiteAdministrator from './components/SiteAdministrator/SiteAdministrator';
 import BossOfCommerce from './components/BossOfCommerce/BossOfCommerce'; 
 */
@@ -39,7 +39,7 @@ let viewsArr = [
   },
   {
     nameView: 'Marketing',
-    user: 'nameUser',
+    user: 'marketing',
     active: false,
   },
   {
@@ -93,7 +93,10 @@ const App = () => {
               ? <Cashier fnExit={exitVirtualOffice}/>
               : (userLoged === 'nedBigby')
                 ? <HouseAgent fnExit={exitVirtualOffice} />
-                : <h1>Not found 404</h1>
+                : (userLoged === 'marketing')
+                  ? <Marketing fnExit={exitVirtualOffice}/>
+                  : <h1>404 not Found</h1>
+
   ;
 
   return (
