@@ -132,10 +132,7 @@ const Secretary = ({exit}) => {
 
   /* This state is for the list items */
   const [selectedIndex, setSelectedIndex] = React.useState(0);
-  const handleListItemClick = (event, index) => {
-    console.log(index);
-    setSelectedIndex(index);
-  }
+  const handleListItemClick = (event, index) => setSelectedIndex(index);
 
   /* To get current date of system */
   const getDate = () => new Date().toDateString();

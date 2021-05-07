@@ -1,17 +1,18 @@
 import React from 'react';
+import CorporateClient from './CorporateClient/CorporateClient';
+import PrivateClient from './PrivateClient/PrivateClient';
 
 function Clients({inxTool}) {
   return (
-    <h1>{
-      `Clientes Index: ${
-        inxTool === 0 
-          ? 'Actualizar Datos' 
-          : inxTool === 1 
-            ? 'Nuevo Cliente' 
-            : inxTool === 2 
-              ? 'Nuevo Cliente > Corporativo'
-              : 'Nuevo Cliente > Particular'}`
-    }</h1>
+    <>
+      {
+        inxTool === 3 
+          ? <PrivateClient /> 
+          : inxTool === 2 
+            ? <CorporateClient />
+            : <h1>Actualizar Datos</h1>
+      }
+    </>
   )
 }
 
