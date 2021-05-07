@@ -61,42 +61,40 @@ function ScheduleListTools({handleListItemClick, selectedIndex}) {
   );
 }
 
-function ClientListTools() {
-  const [open, setOpen] = React.useState(false);
+function ClientListTools({handleListItemClick}) {
+  const arrTool = ['Actualizar Datos', 'Nuevo Cliente'];
+  const arrSubTool = ['Corporativo', 'Particular'];
 
-  const handleClick = () => {
-    setOpen(!open);
-  };
+  const [stateTool, setStateTool] = React.useState({open: false, index: 0});
+  const handleClick = (event, inx) => {
+    handleListItemClick(event, inx);
+    inx === 1 
+      ? setStateTool({...stateTool, open: !stateTool.open, index: inx}) 
+      : setStateTool({...stateTool, open: false, index: inx})
+  }
+  
+  const handleSubTool = (event, inx) => {
+    handleListItemClick(event, inx);
+    setStateTool({...stateTool, index: inx});
+  }
 
   return(
     <List>
-      <ListItem button key={'Actualizar Datos'} selected={open === false} onClick={handleClick}>
-        <ListItemIcon>
-          {arrIconsClient[0]}
-        </ListItemIcon>
-        <ListItemText primary='Actualizar Datos' />
-      </ListItem>
-      <ListItem button onClick={handleClick} selected={open}>
-        <ListItemIcon>
-          {arrIconsClient[1]}
-        </ListItemIcon>
-        <ListItemText primary="NuevoCliente" />
-        {open ? <ExpandLess /> : <ExpandMore />}
-      </ListItem>
-      <Collapse in={open} timeout="auto" unmountOnExit>
+      {arrTool.map((text, index) => (
+          <ListItem button key={text} onClick={e => handleClick(e, index)} selected={stateTool.index === index}>
+            <ListItemIcon>{arrIconsClient[index]}</ListItemIcon>
+            <ListItemText primary={text}/>
+            {index === 1 && (stateTool.open ? <ExpandLess /> : <ExpandMore />)}
+          </ListItem>
+      ))}
+      <Collapse in={stateTool.open} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
-          <ListItem button style={{paddingLeft: 40}}>
-            <ListItemIcon>
-              {arrIconsClient[2]}
-            </ListItemIcon>
-            <ListItemText primary="Corporativo" />
-          </ListItem>
-          <ListItem button style={{paddingLeft: 40}}>
-            <ListItemIcon>
-              {arrIconsClient[3]}
-            </ListItemIcon>
-            <ListItemText primary="Particular" />
-          </ListItem>
+          {arrSubTool.map((text, index) => (
+              <ListItem button style={{paddingLeft: 40}} onClick={e => handleSubTool(e, index + 2)} selected={stateTool.index === index + 2}>
+                <ListItemIcon>{arrIconsClient[index + 2]}</ListItemIcon>
+                <ListItemText primary={text} />
+              </ListItem>
+          ))}
         </List>
       </Collapse>
     </List>
@@ -133,7 +131,10 @@ const Secretary = ({exit}) => {
 
   /* This state is for the list items */
   const [selectedIndex, setSelectedIndex] = React.useState(0);
-  const handleListItemClick = (event, index) => setSelectedIndex(index);
+  const handleListItemClick = (event, index) => {
+    console.log(index);
+    setSelectedIndex(index);
+  }
 
   /* To get current date of system */
   const getDate = () => new Date().toDateString();
@@ -169,7 +170,7 @@ const Secretary = ({exit}) => {
               ? <RequestListTools handleListItemClick={handleListItemClick} selectedIndex={selectedIndex}/>
               : value === 1
                 ? <ScheduleListTools handleListItemClick={handleListItemClick} selectedIndex={selectedIndex} />
-                : <ClientListTools handleListItemClick={handleListItemClick} selectedIndex={selectedIndex} />
+                : <ClientListTools handleListItemClick={handleListItemClick}/>
           }
           <PageTools handleListItemClick={handleListItemClick} selectedIndex={selectedIndex}/>
         </div>

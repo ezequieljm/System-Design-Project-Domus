@@ -1,6 +1,7 @@
 import React from 'react';
 import Request from './Requests/Requests';
 import Schedule from './Schedule/Schedule';
+import Clients from './Clients/Clients';
 
 const MainContent = ({val, inxTool}) => {
   return (
@@ -10,7 +11,7 @@ const MainContent = ({val, inxTool}) => {
           ? <Request />
           : val === 1
             ? <Schedule valueListTools={inxTool}/>
-            : <h1>Clientes</h1>
+            : <Clients inxTool={inxTool}/>
       }
     </>
   )
