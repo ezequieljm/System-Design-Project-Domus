@@ -89,7 +89,9 @@ function ClientListTools({handleListItemClick}) {
       <Collapse in={stateTool.open} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           {arrSubTool.map((text, index) => (
-              <ListItem button key={text} style={{paddingLeft: 40}} onClick={e => handleSubTool(e, index + 2)} selected={stateTool.index === index + 2}>
+              <ListItem button key={text} style={{paddingLeft: 40}} onClick={e => handleSubTool(e, index + 2)} 
+                selected={stateTool.index === index + 2}
+              >
                 <ListItemIcon>{arrIconsClient[index + 2]}</ListItemIcon>
                 <ListItemText primary={text} />
               </ListItem>
