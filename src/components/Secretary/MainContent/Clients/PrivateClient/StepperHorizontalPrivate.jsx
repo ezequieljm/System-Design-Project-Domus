@@ -4,13 +4,15 @@ import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
+import { Typography, Grow } from '@material-ui/core';
 import FormPrivateClient from './FormPrivateClient';
 import UploadDocs from '../UploadDocuments/UploadDocs';
+import CheckDatasPriv from './CheckDatasPriv';
+import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    minWidth: '700px',
+    width: '100%',
   },
   backButton: {
     marginRight: theme.spacing(1),
@@ -32,20 +34,14 @@ function getSteps() {
 function getStepContent(stepIndex) {
   switch (stepIndex) {
     case 0:
-      return 'Complete los campos con los datos del nuevo cliente particular. No debe haber campos incompletos';
+      return 'Complete los campos con los datos del cliente particular. No deben quedar campos incompletos.';
     case 1:
-      return 'Suba la documentación del cliente. Asegurese de agregar un nombre y una descripción';
+      return 'Suba la documentación del cliente. Indique el nombre del archivo y una descripción.';
     case 2:
-      return 'Verifique se la información es correcta. Puede volver atras para corregir datos.';
+      return 'Verifique si los campos son correctos antes de confirmar la operación.';
     default:
       return 'Unknown stepIndex';
   };
-};
-
-function Check() {
-  return (
-    <h1>Verificar los datos</h1>
-  );
 };
 
 export default function HorizontalLabelPositionBelowStepper() {
@@ -68,14 +64,17 @@ export default function HorizontalLabelPositionBelowStepper() {
       </Stepper>
       <div>
         {activeStep === steps.length ? (
-          <div>
-            <Typography className={classes.instructions}>
-              Todos los pasos han sido completados
-            </Typography>
-            <Button variant="contained" color="primary" onClick={handleReset}>
-              Añadir Otro Cliente
-            </Button>
-          </div>
+          <Grow in={activeStep === steps.length}>
+            <div style={{display:'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
+              <Typography className={classes.instructions} variant="h4">
+                Cliente registrado exitosamente!
+              </Typography>
+              <CheckCircleOutlineIcon style={{fontSize: '12rem', color: '#4CAF50'}}/>
+              <Button variant="contained" color="primary" onClick={handleReset}>
+                Añadir Otro Cliente
+              </Button>
+            </div>
+          </Grow>
         ) : (
           <div>
             {
@@ -83,7 +82,7 @@ export default function HorizontalLabelPositionBelowStepper() {
                 ? <FormPrivateClient /> 
                 : activeStep === 1
                   ? <UploadDocs />
-                  : <Check />
+                  : <CheckDatasPriv />
             }
             <Typography className={classes.instructions}>
               {getStepContent(activeStep)}

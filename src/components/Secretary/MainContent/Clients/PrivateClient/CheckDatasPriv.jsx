@@ -1,12 +1,12 @@
 import React from 'react';
-import FormFill from './FormFill';
+import FormFillPriv from './FormFillPriv';
 import ListDocs from '../UploadDocuments/ListDocs';
 import { Typography, Grow, Paper } from '@material-ui/core';
 
 export default function Check() {
   return (
     <div style={{display: 'flex', justifyContent: 'space-between',}}>
-      <FormFill />
+      <FormFillPriv />
       <div style={{width: '60%'}}>
         <ListDocs widthSize={'100%'}/>
         <Grow in>
@@ -25,4 +25,4 @@ export default function Check() {
       </div>
     </div>
   );
-};
+}

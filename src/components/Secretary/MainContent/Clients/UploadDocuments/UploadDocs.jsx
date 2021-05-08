@@ -15,6 +15,7 @@ const useStyles = makeStyles({
     height: '230px',
     display: 'flex',
     justifyContent: 'space-between',
+    marginBottom: '1rem'
   },
   dropBox: {
     width: '60%',

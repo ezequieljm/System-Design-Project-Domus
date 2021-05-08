@@ -8,6 +8,7 @@ import { Typography, Grow } from '@material-ui/core';
 import FormCorporateClient from './FormCorporateClient';
 import UploadDocs from '../UploadDocuments/UploadDocs';
 import CheckDatas from './CheckDatas';
+import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -33,11 +34,11 @@ function getSteps() {
 function getStepContent(stepIndex) {
   switch (stepIndex) {
     case 0:
-      return 'Complete los campos con los datos del nuevo cliente particular. No debe haber campos incompletos';
+      return 'Complete los campos con los datos del cliente corporativo. No deben quedar campos incompletos.';
     case 1:
-      return 'Suba la documentación del cliente. Asegurese de agregar un nombre y una descripción';
+      return 'Suba la documentación del cliente. Indique el nombre del archivo y una descripción.';
     case 2:
-      return 'Verifique se la información es correcta. Puede volver atras para corregir datos.';
+      return 'Verifique si los campos son correctos antes de confirmar la operación.';
     default:
       return 'Unknown stepIndex';
   };
@@ -64,10 +65,11 @@ export default function HorizontalLabelPositionBelowStepper() {
       <div>
         {activeStep === steps.length ? (
           <Grow in={activeStep === steps.length}>
-            <div>
-              <Typography className={classes.instructions}>
-                Todos los pasos han sido completados
+            <div style={{display:'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
+              <Typography className={classes.instructions} variant="h4">
+                Cliente registrado exitosamente!
               </Typography>
+              <CheckCircleOutlineIcon style={{fontSize: '12rem', color: '#4CAF50'}}/>
               <Button variant="contained" color="primary" onClick={handleReset}>
                 Añadir Otro Cliente
               </Button>

@@ -25,22 +25,10 @@ const rows = [
   createData('file4.txt')('fotos y dni...'),
   createData('file5.txt')('domicilio del cliente...'),
   createData('file6.txt')('domicilio del cliente...'),
-  createData('file6.txt')('domicilio del cliente...'),
-  createData('file6.txt')('domicilio del cliente...'),
-  createData('file6.txt')('domicilio del cliente...'),
-  createData('file6.txt')('domicilio del cliente...'),
-  createData('file6.txt')('domicilio del cliente...'),
-  createData('file6.txt')('domicilio del cliente...'),
-  createData('file6.txt')('domicilio del cliente...'),
-  createData('file6.txt')('domicilio del cliente...'),
-  createData('file6.txt')('domicilio del cliente...'),
-  createData('file6.txt')('domicilio del cliente...'),
-  createData('file6.txt')('domicilio del cliente...'),
 ];
 
 const useStyles = makeStyles({
   root: {
-    marginTop: '1rem',
     maxHeight: '250px',
   },
   container: {

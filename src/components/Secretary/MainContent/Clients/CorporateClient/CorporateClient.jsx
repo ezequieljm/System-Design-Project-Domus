@@ -23,7 +23,7 @@ export default function CorporateClient() {
     <Grow in={true}>
       <div id="form-private-client" className={classes.divFormPrivateClient} >
         <Card className={classes.card} >
-          <Typography variant="h5" style={{marginBottom: '1rem'}}>Nuevo Cliente Corporativo</Typography>
+          <Typography variant="h4" style={{marginBottom: '1rem'}}>Nuevo Cliente Corporativo</Typography>
           <StepperHorizontal />
         </Card>
       </div>

@@ -5,83 +5,80 @@ import {
   InputLabel, 
   Input, 
   FormHelperText, 
+  Grow,
 } from '@material-ui/core';
 
 const useStyles = makeStyles({
   form: {
+    width: '90%',
     display: 'flex', 
     flexDirection: 'column',
     alignItems: 'center',
   },
   divsContent: {
-    width: '671px',
+    width: '100%',
     display: 'flex',
     justifyContent: 'space-between',
-    marginBottom: '30px'
+    marginBottom: '1rem',
   },
   divFormPrivateClient: {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-  }
+  },
+  inputLabel: {
+    fontSize: '1.1rem',
+  },
 });
 
-const FormPrivateClient = () => {
+export default function FormPrivateClient() {
   const classes = useStyles();
-
   return (
-    <div id="form-private-client" className={classes.divFormPrivateClient} >
-      <form action="" className={classes.form} >
-        <div className={classes.divsContent}>
-          <FormControl required fullWidth style={{marginRight: '2rem'}}>
-            <InputLabel htmlFor="my-input">Nombre/s</InputLabel>
-            <Input id="input-name" aria-describedby="my-helper-text" type="text" />
-            <FormHelperText id="my-helper-text">Nombre/s del Cliente.</FormHelperText>
-          </FormControl>
-          <FormControl required  fullWidth >
-            <InputLabel htmlFor="my-input">Apellido/s</InputLabel>
-            <Input id="input-surname" aria-describedby="my-helper-text" type="text" />
-            <FormHelperText id="my-helper-text">Apellido/s del Cliente.</FormHelperText>
-          </FormControl>
-        </div>
+    <Grow in={true}>
+      <div className={classes.divFormPrivateClient} >
+        <form action="" className={classes.form} >
+          <div className={classes.divsContent}>
+            <FormControl required  fullWidth style={{marginRight: '2rem', }}>
+              <InputLabel htmlFor="my-input" className={classes.inputLabel}>Nombre y Apellido</InputLabel>
+              <Input id="input-surname" aria-describedby="my-helper-text" type="text" />
+              <FormHelperText id="my-helper-text">Nombre y Apellido del Cliente.</FormHelperText>
+            </FormControl>
 
-        <div className={classes.divsContent}>
-          <FormControl required fullWidth style={{marginRight: '2rem'}}>
-            <InputLabel htmlFor="my-input">DNI</InputLabel>
-            <Input id="input-dni" aria-describedby="my-helper-text" type="text" />
-            <FormHelperText id="my-helper-text">DNI del Cliente.</FormHelperText>
-          </FormControl>
-          <FormControl required fullWidth>
-            <InputLabel htmlFor="my-input">CUIL/CUIT</InputLabel>
-            <Input id="input-phone" aria-describedby="my-helper-text" type="text" />
-            <FormHelperText id="my-helper-text">CUIL/CUIT del Cliente.</FormHelperText>
-          </FormControl>
-        </div>
+            <FormControl required fullWidth style={{marginRight: '2rem'}}>
+              <InputLabel htmlFor="my-input" className={classes.inputLabel}>DNI</InputLabel>
+              <Input id="input-name" aria-describedby="my-helper-text" type="text" />
+              <FormHelperText id="my-helper-text">DNI del Cliente.</FormHelperText>
+            </FormControl>
 
-        <div className={classes.divsContent}>
-          <FormControl required fullWidth style={{marginRight: '2rem'}}>
-            <InputLabel htmlFor="my-input">Teléfono</InputLabel>
-            <Input id="input-phone" aria-describedby="my-helper-text" type="text" />
-            <FormHelperText id="my-helper-text">Teléfono del Cliente.</FormHelperText>
-          </FormControl>
-          <FormControl required fullWidth>
-            <InputLabel htmlFor="my-input">Fecha de Nacimiento</InputLabel>
-            <Input id="input-birth" aria-describedby="my-helper-text" type="text" />
-            <FormHelperText id="my-helper-text">Fecha de Nacimiento del Cliente.</FormHelperText>
-          </FormControl>
-        </div>
+            <FormControl required fullWidth >
+              <InputLabel htmlFor="my-input" className={classes.inputLabel}>CUIL/CUIT</InputLabel>
+              <Input id="input-phone" aria-describedby="my-helper-text" type="text" />
+              <FormHelperText id="my-helper-text">CUIL/CUIT del Cliente.</FormHelperText>
+            </FormControl>
+          </div>
 
-        <div className={classes.divsContent}>
-          <FormControl required fullWidth>
-            <InputLabel htmlFor="my-input">Email</InputLabel>
-            <Input id="input-email" aria-describedby="my-helper-text" type="email" fullWidth/>
-            <FormHelperText id="my-helper-text">Email del Cliente.</FormHelperText>
-          </FormControl>
-        </div>
-      </form>
-    </div>
+          <div className={classes.divsContent}>
+            <FormControl required fullWidth style={{marginRight: '2rem'}}>
+              <InputLabel htmlFor="my-input" className={classes.inputLabel}>Fecha de Nacimiento</InputLabel>
+              <Input id="input-birth" aria-describedby="my-helper-text" type="text" />
+              <FormHelperText id="my-helper-text">Fecha de Nacimiento del Cliente.</FormHelperText>
+            </FormControl>
+
+            <FormControl required fullWidth style={{marginRight: '2rem'}}>
+              <InputLabel htmlFor="my-input" className={classes.inputLabel}>Teléfono</InputLabel>
+              <Input id="input-phone" aria-describedby="my-helper-text" type="text" />
+              <FormHelperText id="my-helper-text">Teléfono de contacto.</FormHelperText>
+            </FormControl>
+
+            <FormControl required fullWidth>
+              <InputLabel htmlFor="my-input" className={classes.inputLabel}>Correo Electrónico</InputLabel>
+              <Input id="input-email" aria-describedby="my-helper-text" type="email" fullWidth/>
+              <FormHelperText id="my-helper-text">Correo Electrónico del Cliente.</FormHelperText>
+            </FormControl>
+          </div>
+        </form>
+      </div>
+    </Grow>
   )
 };
-
-export default FormPrivateClient;
