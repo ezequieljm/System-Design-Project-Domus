@@ -4,7 +4,7 @@ import {
   Card,
   Typography
 } from '@material-ui/core';
-import StepperHorizontal from './StepperHorizontal'
+import StepperHorizontal from './StepperHorizontalPrivate'
 
 const useStyles = makeStyles({
   card: {

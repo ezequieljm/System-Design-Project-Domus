@@ -14,6 +14,8 @@ export default makeStyles((theme) => ({
     display: 'flex', 
     justifyContent: 'space-between',
     height: '50px',
+    background: 'linear-gradient(to bottom, #396afc, #2948ff)',
+    color: 'white'
   },
   drawer: {
     width: drawerWidth,
@@ -48,7 +50,7 @@ export default makeStyles((theme) => ({
     fontSize: '.9rem',
   },
   buttonExit: {
-    background: 'linear-gradient(to right, #ff416c, #ff4b2b)',
+    background: 'linear-gradient(to bottom, #cb356b, #bd3f32)',
     border: 0,
     borderRadius: 3,
     boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',

@@ -4,13 +4,14 @@ import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
+import { Typography, Grow } from '@material-ui/core';
 import FormCorporateClient from './FormCorporateClient';
 import UploadDocs from '../UploadDocuments/UploadDocs';
+import CheckDatas from './CheckDatas';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    minWidth: '700px',
+    width: '100%',
   },
   backButton: {
     marginRight: theme.spacing(1),
@@ -42,12 +43,6 @@ function getStepContent(stepIndex) {
   };
 };
 
-function Check() {
-  return (
-    <h1>Verificar los datos</h1>
-  );
-};
-
 export default function HorizontalLabelPositionBelowStepper() {
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
@@ -68,14 +63,16 @@ export default function HorizontalLabelPositionBelowStepper() {
       </Stepper>
       <div>
         {activeStep === steps.length ? (
-          <div>
-            <Typography className={classes.instructions}>
-              Todos los pasos han sido completados
-            </Typography>
-            <Button variant="contained" color="primary" onClick={handleReset}>
-              Añadir Otro Cliente
-            </Button>
-          </div>
+          <Grow in={activeStep === steps.length}>
+            <div>
+              <Typography className={classes.instructions}>
+                Todos los pasos han sido completados
+              </Typography>
+              <Button variant="contained" color="primary" onClick={handleReset}>
+                Añadir Otro Cliente
+              </Button>
+            </div>
+          </Grow>
         ) : (
           <div>
             {
@@ -83,7 +80,7 @@ export default function HorizontalLabelPositionBelowStepper() {
                 ? <FormCorporateClient /> 
                 : activeStep === 1
                   ? <UploadDocs />
-                  : <Check />
+                  : <CheckDatas />
             }
             <Typography className={classes.instructions}>
               {getStepContent(activeStep)}

@@ -34,7 +34,7 @@ const FormPrivateClient = () => {
     <div id="form-private-client" className={classes.divFormPrivateClient} >
       <form action="" className={classes.form} >
         <div className={classes.divsContent}>
-          <FormControl required focused fullWidth style={{marginRight: '2rem'}}>
+          <FormControl required fullWidth style={{marginRight: '2rem'}}>
             <InputLabel htmlFor="my-input">Nombre/s</InputLabel>
             <Input id="input-name" aria-describedby="my-helper-text" type="text" />
             <FormHelperText id="my-helper-text">Nombre/s del Cliente.</FormHelperText>
