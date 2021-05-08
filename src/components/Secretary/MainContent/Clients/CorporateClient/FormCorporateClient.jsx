@@ -29,7 +29,6 @@ const useStyles = makeStyles({
 
 const FormPrivateClient = () => {
   const classes = useStyles();
-
   return (
     <div id="form-private-client" className={classes.divFormPrivateClient} >
       <form action="" className={classes.form} >

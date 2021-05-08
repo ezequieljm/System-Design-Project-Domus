@@ -5,12 +5,12 @@ import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import FormPrivateClient from './PrivateClient/FormPrivateClient';
+import FormCorporateClient from './FormCorporateClient';
+import UploadDocs from '../UploadDocuments/UploadDocs';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     minWidth: '700px',
-    maxWidth: '700px',
   },
   backButton: {
     marginRight: theme.spacing(1),
@@ -22,8 +22,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function getSteps() {
-  return ['Complete los datos del cliente', 'Suba la documentación', 'Verifique si la información es correcta'];
-}
+  return [
+    'Complete los datos del cliente', 
+    'Suba la documentación', 
+    'Verifique si la información es correcta'
+  ];
+};
 
 function getStepContent(stepIndex) {
   switch (stepIndex) {
@@ -35,25 +39,23 @@ function getStepContent(stepIndex) {
       return 'Verifique se la información es correcta. Puede volver atras para corregir datos.';
     default:
       return 'Unknown stepIndex';
-  }
-}
+  };
+};
+
+function Check() {
+  return (
+    <h1>Verificar los datos</h1>
+  );
+};
 
 export default function HorizontalLabelPositionBelowStepper() {
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
   const steps = getSteps();
 
-  const handleNext = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
-  };
-
-  const handleBack = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep - 1);
-  };
-
-  const handleReset = () => {
-    setActiveStep(0);
-  };
+  const handleNext = () => setActiveStep(prevActiveStep => prevActiveStep + 1);
+  const handleBack = () => setActiveStep(prevActiveStep => prevActiveStep - 1);
+  const handleReset = () => setActiveStep(0);
 
   return (
     <div className={classes.root}>
@@ -67,15 +69,32 @@ export default function HorizontalLabelPositionBelowStepper() {
       <div>
         {activeStep === steps.length ? (
           <div>
-            <Typography className={classes.instructions}>All steps completed</Typography>
-            <Button onClick={handleReset}>Reset</Button>
+            <Typography className={classes.instructions}>
+              Todos los pasos han sido completados
+            </Typography>
+            <Button variant="contained" color="primary" onClick={handleReset}>
+              Añadir Otro Cliente
+            </Button>
           </div>
         ) : (
           <div>
-            <FormPrivateClient />
-            <Typography className={classes.instructions}>{getStepContent(activeStep)}</Typography>
+            {
+              activeStep === 0 
+                ? <FormCorporateClient /> 
+                : activeStep === 1
+                  ? <UploadDocs />
+                  : <Check />
+            }
+            <Typography className={classes.instructions}>
+              {getStepContent(activeStep)}
+            </Typography>
             <div>
-              <Button disabled={activeStep === 0} onClick={handleBack} className={classes.backButton}>
+              <Button 
+                variant="contained" 
+                disabled={activeStep === 0} 
+                onClick={handleBack} 
+                className={classes.backButton}
+              >
                 Atras
               </Button>
               <Button variant="contained" color="primary" onClick={handleNext}>

@@ -4,15 +4,16 @@ import {
   Card,
   Typography
 } from '@material-ui/core';
-import StepperHorizontal from '../StepperHorizontal'
+import StepperHorizontal from './StepperHorizontal'
 
 const useStyles = makeStyles({
   card: {
-    minWidth: '600px',
+    maxWidth: '80%',
     boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
-    padding: '2rem'
+    padding: '1rem',
   },
   divFormPrivateClient: {
+    width: '100%',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
@@ -24,7 +25,7 @@ const PrivateClient = () => {
   return (
     <div id="form-private-client" className={classes.divFormPrivateClient} >
       <Card className={classes.card} >
-        <Typography variant="h5" style={{marginBottom: '1rem'}}>Nuevo Cliente Perticular</Typography>
+        <Typography variant="h5" style={{marginBottom: '1rem'}}>Nuevo Cliente Particular</Typography>
         <StepperHorizontal />
       </Card>
     </div>
