@@ -1,13 +1,14 @@
 import React from 'react';
 import CorporateClient from './CorporateClient/CorporateClient';
 import PrivateClient from './PrivateClient/PrivateClient';
+import UpdateClient from './UpdateClient/UpdateClient';
 
 function Clients({inxTool}) {
   return (
     <>
       {
         inxTool === 0 
-          ? <h1>Actualizar Datos</h1> 
+          ? <UpdateClient /> 
           : inxTool === 1 
             ? <h1>Nuevo Cliente</h1> 
             : inxTool === 2
