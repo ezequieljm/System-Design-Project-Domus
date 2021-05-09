@@ -2,6 +2,7 @@ import React from 'react';
 import CorporateClient from './CorporateClient/CorporateClient';
 import PrivateClient from './PrivateClient/PrivateClient';
 import UpdateClient from './UpdateClient/UpdateClient';
+import NewClient from './NewClient';
 
 function Clients({inxTool}) {
   return (
@@ -10,7 +11,7 @@ function Clients({inxTool}) {
         inxTool === 0 
           ? <UpdateClient /> 
           : inxTool === 1 
-            ? <h1>Nuevo Cliente</h1> 
+            ? <NewClient /> 
             : inxTool === 2
               ? <CorporateClient />
               : inxTool === 3

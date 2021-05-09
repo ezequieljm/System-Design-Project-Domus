@@ -7,7 +7,7 @@ import {
   Grow,
 } from '@material-ui/core';
 import { Publish } from '@material-ui/icons';
-import ListDocs from './ListDocs';
+import ListDocs from '../UploadDocuments/ListDocs';
 
 const useStyles = makeStyles({
   root: {
@@ -38,7 +38,7 @@ const useStyles = makeStyles({
     alignItems: 'flex-start',
   },
   contentUpload: {
-    // border: '1px solid black'
+    width: '50%',
   },
   contentDropBox: {
     width: '60%',

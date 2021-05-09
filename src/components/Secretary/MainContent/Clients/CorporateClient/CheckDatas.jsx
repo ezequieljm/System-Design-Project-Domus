@@ -11,13 +11,13 @@ export default function Check() {
         <ListDocs widthSize={'100%'}/>
         <Grow in>
           <div>
-            <Paper elevation={[3]} style={{marginTop: '2rem', padding: '1rem'}}>
+            <Paper elevation={3} style={{marginTop: '2rem', padding: '1rem'}}>
               <Typography variant="h5">Código de cliente: FFA341DC</Typography>
             </Paper>
-            <Paper elevation={[3]} style={{marginTop: '1rem', padding: '1rem'}}>
+            <Paper elevation={3} style={{marginTop: '1rem', padding: '1rem'}}>
               <Typography variant="h5">Fecha de registro: Sábado 8 de Mayo 2021</Typography>
             </Paper>
-            <Paper elevation={[3]} style={{marginTop: '1rem', padding: '1rem'}}>
+            <Paper elevation={3} style={{marginTop: '1rem', padding: '1rem'}}>
               <Typography variant="h5">Hora: 15:44:45</Typography>
             </Paper>
           </div>
