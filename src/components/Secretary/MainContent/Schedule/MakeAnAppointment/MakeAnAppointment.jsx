@@ -1,10 +1,9 @@
 import React from 'react';
-// import NewClient from './NewClient/NewClient';
-// import OldClient from './OldClient/OldClient';
+import DatePickerCustom from '../DatePicker/DatePicker';
 
 const MakeAnAppointment = () => {
   return (
-    <h1>Agendar cita</h1>
+    <DatePickerCustom />
   )
 };
 

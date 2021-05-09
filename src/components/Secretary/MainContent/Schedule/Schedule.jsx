@@ -4,8 +4,7 @@ import DeleteAnAppointment from './DeleteAppointment/Delete';
 import EditAnAppointment from './EditAnAppointment/Edit';
 import ShowSchedule from './ShowSchedule/ShowSchedule';
 
-const Schedule = ({valueListTools}) => {
-
+export default function Schedule({valueListTools}) {
   return (
     <>
       {
@@ -20,5 +19,3 @@ const Schedule = ({valueListTools}) => {
     </>
   )
 }
-
-export default Schedule;

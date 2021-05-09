@@ -15,6 +15,7 @@ import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import ContentCards from './Cards';
 import TablePagination from '@material-ui/core/TablePagination';
+import { Grow } from '@material-ui/core';
 
 const useRowStyles = makeStyles({
   root: {
@@ -30,7 +31,7 @@ const useStyles = makeStyles({
     width: '100%',
   },
   container: {
-    maxHeight: 440,
+    maxHeight: '350px',
   },
 });
 
@@ -163,7 +164,7 @@ function StickyHeadTable() {
   };
 
   return (
-    <Paper className={classes.root}>
+    <Paper className={classes.root} elevation={3}>
       <TableContainer className={classes.container}>
         <Table stickyHeader aria-label="sticky table">
           <TableHead >
@@ -200,11 +201,13 @@ function StickyHeadTable() {
 const Request = () => {
   // const classes = useRowStyles();
   return (
-    <div>
-      <Typography variant="h5">Solicitudes</Typography>
-      <ContentCards />
-      <StickyHeadTable />
-    </div>
+    <Grow in>
+      <Paper elevation={3} style={{padding: '2rem', boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)'}}>
+        <Typography variant="h3">Solicitudes</Typography>
+        <ContentCards />
+        <StickyHeadTable />
+      </Paper>
+    </Grow>
   );
 };
 export default Request;
