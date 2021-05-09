@@ -1,9 +1,11 @@
 import React from 'react';
+import { Button, } from '@material-ui/core';
 
-const OldClient = () => {
+export default function OldClient({setView}) {
   return (
-    <h1>Cliente Viejo</h1>
-  )
-}
-
-export default OldClient;
+    <>
+      <h1>Cliente Viejo</h1>
+      <Button onClick={() => setView(2)}>Volver</Button>
+    </>
+  );
+};

@@ -23,7 +23,6 @@ import { arrIconsList, arrIconsSchedule, arrIconsClient } from './Icons/ExportIc
 const txtTab = ['Clientes', 'Agenda', 'Solicitudes'];
 const configs = ['Configuración', 'Recargar página', 'Reportar problema', 'Consultar manual'];
 const requestsTool = ['Listar Solicitudes', 'Actualizar Lista', 'Imprimir', 'Herramientas'];
-const scheduleTool = ['Agendar Cita', 'Editar Cita', 'Eliminar Cita', 'Mostrar Agenda'];
 
 function RequestListTools({handleListItemClick, selectedIndex}) {
   return(
@@ -41,6 +40,7 @@ function RequestListTools({handleListItemClick, selectedIndex}) {
 }
 
 function ScheduleListTools({handleListItemClick, selectedIndex}) {
+  const scheduleTool = ['Agendar Cita', 'Editar Cita', 'Eliminar Cita', 'Mostrar Agenda'];
   return(
     <List>
       {scheduleTool.map((text, index) => (

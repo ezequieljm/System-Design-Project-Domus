@@ -1,10 +1,37 @@
 import React from 'react';
-import DatePickerCustom from '../DatePicker/DatePicker';
+import NewClient from './NewClient/NewClient';
+import OldClient from './OldClient/OldClient';
+import { Button, Grow } from '@material-ui/core';
 
-const MakeAnAppointment = () => {
+function MenuOptions({setView}) {
   return (
-    <DatePickerCustom />
-  )
+    <Grow in>
+      <div> 
+        <Button onClick={() => setView(0)}>
+          Cita nuevo cliente
+        </Button> 
+        <Button onClick={() => setView(1)}>
+          Cliente de la empresa
+        </Button>
+      </div>
+    </Grow>
+  );
 };
 
-export default MakeAnAppointment;
+export default function MakeAnAppointment() {
+  /* 0 - New Client,  1 - Old Client, 2 - Buttons options */ 
+  const [viewRender, setView] = React.useState(2);
+
+  return (
+    <>
+      { viewRender === 2
+          ? <MenuOptions setView={setView} />
+          : viewRender === 1 
+            ? <OldClient setView={setView}/>
+            : viewRender === 0
+              ? <NewClient setView={setView}/>
+              : <h1>Not Found 404</h1>
+      }
+    </>
+  );
+};
