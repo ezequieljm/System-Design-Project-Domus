@@ -4,9 +4,8 @@ import esLocale from "date-fns/locale/es";
 import DateFnsUtils from "@date-io/date-fns";
 import {
   MuiPickersUtilsProvider,
-  KeyboardTimePicker,
-  KeyboardDatePicker,
-  // DatePicker
+  DatePicker,
+  TimePicker
 } from "@material-ui/pickers";
 import lightBlue from "@material-ui/core/colors/lightBlue";
 import { createMuiTheme } from "@material-ui/core";
@@ -36,57 +35,58 @@ const materialTheme = createMuiTheme({
   },
 });
 
+function TimerCustom() {
+  const [date, changeDate] = React.useState(new Date());
+  return(
+    <div style={{boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)'}}>
+      <TimePicker
+        autoOk
+        ampm={false}
+        variant="static"
+        orientation="landscape"
+        openTo="minutes"
+        value={date}
+        onChange={changeDate}
+      />
+    </div>
+  );
+};
 
-/* function StaticCalendar() {
+function CalendarCustom({setDayTwo}) {
+  const [selectedDate, setSelectedDate] = React.useState(new Date());
+
+  const handleDateChange = date => {
+    setSelectedDate(date);
+    setDayTwo(new Date(date).toLocaleDateString());
+  };
+
+  function disableRandomDates(day, pickerProps) {
+    return Math.random() > 0.7;
+  }
   return (
-    <div style={{border: '1px solid black', width: '450px'}}>
+    <div style={{boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)'}}>
       <DatePicker
         autoOk
         orientation="landscape"
         variant="static"
         openTo="date"
-        value={new Date()}
+        value={selectedDate}
+        onChange={handleDateChange}
+        shouldDisableDate={disableRandomDates}
       />
     </div>
-  );
-}; */
+  )
+};
 
 export default function DatePickerCustom({setDay}) {
-  const [selectedDate, setSelectedDate] = React.useState(new Date());
-
-  const handleDateChange = date => {
-    setSelectedDate(date);
-    setDay(new Date(date).toLocaleDateString());
-  };
-
-  const disableRandomDates = () => Math.random() > 0.7;
-
   return (
     <div>
       <ThemeProvider theme={materialTheme}>
         <MuiPickersUtilsProvider utils={DateFnsUtils} locale={esLocale}>
-            <KeyboardDatePicker
-              margin="normal"
-              id="date-picker-dialog"
-              label="Seleccionar fecha"
-              format="dd/MM/yyyy"
-              value={selectedDate}
-              onChange={handleDateChange}
-              KeyboardButtonProps={{
-                "aria-label": "change date"
-              }}
-              shouldDisableDate={disableRandomDates}
-            />
-          <KeyboardTimePicker
-              margin="normal"
-              id="time-picker"
-              label="Seleccionar hora"
-              value={selectedDate}
-              onChange={handleDateChange}
-              KeyboardButtonProps={{
-                'aria-label': 'change time',
-              }}
-            />
+          <div style={{display: 'flex', justifyContent: 'space-around'}}>
+            <CalendarCustom setDayTwo={setDay} />
+            <TimerCustom />
+          </div>
         </MuiPickersUtilsProvider>
       </ThemeProvider>
     </div>
