@@ -11,20 +11,20 @@ import lightBlue from "@material-ui/core/colors/lightBlue";
 import { createMuiTheme } from "@material-ui/core";
 import { ThemeProvider } from "@material-ui/styles";
 
-const materialTheme = createMuiTheme({
+export const materialTheme = createMuiTheme({
   overrides: {
     MuiPickersToolbar: {
-      toolbar: {
+      /* toolbar: {
         backgroundColor: lightBlue.A700,
-      },
+      }, */
     },
     MuiPickersDay: {
       day: {
         color: '#4caf50',
       },
-      daySelected: {
+/*       daySelected: {
         backgroundColor: lightBlue["400"],
-      },
+      }, */
       dayDisabled: {
         color: '#d32f2f',
       },
@@ -52,7 +52,7 @@ function TimerCustom() {
   );
 };
 
-function CalendarCustom({setDayTwo}) {
+export function CalendarCustom({setDayTwo}) {
   const [selectedDate, setSelectedDate] = React.useState(new Date());
 
   const handleDateChange = date => {

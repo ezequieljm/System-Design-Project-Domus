@@ -1,7 +1,6 @@
 import React from 'react';
 import { Button, Typography, Paper, FormControl, TextField, Grow } from '@material-ui/core';
 import DatePickerCustom from '../../DatePicker/DatePicker';
-import MenuItem from '@material-ui/core/MenuItem';
 
 /* Component of new client form */
 function FormNewClient() {
