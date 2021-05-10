@@ -20,13 +20,14 @@ import { MuiPickersUtilsProvider, KeyboardDateTimePicker } from "@material-ui/pi
 import esLocale from "date-fns/locale/es";
 import DateFnsUtils from "@date-io/date-fns"
 
-function createDataSelf(name ,date, hour, houseAgent, house) {
+function createDataSelf(name ,date, hour, houseAgent, house, state) {
   return {
     name,
     date,
     hour,
     houseAgent,
     house,
+    state,
     buttons: [
       'Cambiar Fecha y Hora',
       'Cambiar Agente Inmobiliario',
@@ -35,7 +36,7 @@ function createDataSelf(name ,date, hour, houseAgent, house) {
   };
 }
 
-function ComponentEditAppointment() {
+function ComponentEditAppointment({setOptionApp}) {
   const [selectedDate, handleDateChange] = React.useState(new Date().toLocaleString());
   return (
     <div style={{display: 'flex', justifyContent: 'space-around', alignItems: 'center'}}>
@@ -67,7 +68,7 @@ function ComponentEditAppointment() {
       >
       </TextField>
       <div>
-        <Button variant="contained" color="primary" onClick={() => alert('Cita agendada')}>
+        <Button variant="contained" color="primary" onClick={() => setOptionApp(0)}>
           Confirmar
         </Button>
       </div>
@@ -75,24 +76,19 @@ function ComponentEditAppointment() {
   )
 }
 
-function ComponentDeleteAppointment() {
-  return (
-    <Typography>Eliminar Cita</Typography>
-  )
-};
-
-function OptionDeleteOrEdit() {
+function OptionDeleteOrEdit({state}) {
   const [optionApp, setOptionApp] = React.useState(0);
-
+  const setColorFont = () => state === 'En Proceso' ? "#3f51b5" : state === 'Finalizada' ? "#00e676" : "#e91e63";
   return (
     <>
       { optionApp === 0 
           ? <div style={{display: 'flex', justifyContent: 'space-around', alignItems: 'center'}}>
               <Button variant="contained" color="primary" onClick={() => setOptionApp(1)}>Editar</Button>
               <Button variant="contained" color="primary" >Eliminar</Button>
+              <Typography variant="h6" style={{color: setColorFont()}}>{state}</Typography>
             </div>
           : optionApp === 1
-            ? <ComponentEditAppointment />
+            ? <ComponentEditAppointment setOptionApp={setOptionApp}/>
             : <h1>No edit</h1>
       }
     </>
@@ -100,7 +96,7 @@ function OptionDeleteOrEdit() {
 };
 
 function Row(props) {
-  const { row, day } = props;
+  const { row, } = props;
   const [open, setOpen] = React.useState(false);
 
   return (
@@ -121,7 +117,7 @@ function Row(props) {
         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
           <Collapse in={open} timeout="auto" unmountOnExit>
             <Box margin={1}>
-              <OptionDeleteOrEdit />
+              <OptionDeleteOrEdit state={row.state}/>
             </Box>
           </Collapse>
         </TableCell>
@@ -132,10 +128,9 @@ function Row(props) {
 
 export default function ListOfAppointment({day}) {
   const rows = [
-    createDataSelf( 'Visitar No Russian...', day, new Date().toLocaleTimeString(), "Makarov", "6853"),
-    createDataSelf( 'Ver casa en Grove Street', day, new Date().toLocaleTimeString(), "Carl Johnson CJ", "7582"),
-    createDataSelf( 'Ir a San Fierro', day, new Date().toLocaleTimeString(), "Big Smoke", "9862"),
-    createDataSelf( 'Visitar propiedad usg Ishimura', day, new Date().toLocaleTimeString(), "Isaac Clarke", "8523")
+    createDataSelf( 'Visitar No Russian...', day, new Date().toLocaleTimeString(), "Makarov", "6853", "En Proceso"),
+    createDataSelf( 'Ir a Grove Street', day, new Date().toLocaleTimeString(), "Carl Johnson CJ", "8768", "Cancelada"),
+    createDataSelf( 'Visitar USG Ishimura', day, new Date().toLocaleTimeString(), "Issac Clarke", "2376", "Finalizada"),
   ];
   return (
     <TableContainer component={Paper}>

@@ -40,7 +40,7 @@ function RequestListTools({handleListItemClick, selectedIndex}) {
 }
 
 function ScheduleListTools({handleListItemClick, selectedIndex}) {
-  const scheduleTool = ['Agendar Cita', 'Editar Cita', 'Mostrar Agenda'];
+  const scheduleTool = ['Agendar Cita', 'Mostrar Agenda'];
   return(
     <List>
       {scheduleTool.map((text, index) => (

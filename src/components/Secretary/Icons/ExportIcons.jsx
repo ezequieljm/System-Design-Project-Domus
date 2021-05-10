@@ -8,8 +8,6 @@ import {
   Report, 
   MenuBook,
   AddBox,
-  Edit,
-  Delete,
   Schedule,
   PersonAdd,
   Person,
@@ -29,8 +27,6 @@ export const arrIconsList = [
 
 export const arrIconsSchedule = [
   <AddBox />,
-  <Edit />,
-  <Delete />,
   <Schedule />
 ];
 
