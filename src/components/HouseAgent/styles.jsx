@@ -54,5 +54,8 @@ export const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "space-around",
     alignItems: "center",
-  }
+  },
+  nested: {
+    paddingLeft: theme.spacing(4),
+  },
 }));
