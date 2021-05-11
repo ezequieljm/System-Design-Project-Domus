@@ -1,5 +1,6 @@
 // import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import { green } from '@material-ui/core/colors';
 
 const drawerWidth = 240;
 
@@ -14,7 +15,7 @@ export default makeStyles((theme) => ({
     display: 'flex', 
     justifyContent: 'space-between',
     height: '50px',
-    background: 'linear-gradient(to bottom, #396afc, #2948ff)',
+    background: '#3f51b5',
     color: 'white'
   },
   drawer: {
@@ -50,12 +51,16 @@ export default makeStyles((theme) => ({
     fontSize: '.9rem',
   },
   buttonExit: {
-    background: 'linear-gradient(to bottom, #cb356b, #bd3f32)',
+    background: 'linear-gradient(to bottom, #cb2d3e, #ef473a)',
     border: 0,
     borderRadius: 3,
-    boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
+    // boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
     color: 'white',
     height: 38,
-    padding: '0 40px',
-  }
+    padding: '0 20px',
+  },
+  green: {
+    color: theme.palette.getContrastText(green[600]),
+    backgroundColor: green[600],
+  },
 }));

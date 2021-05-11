@@ -12,13 +12,16 @@ import Tab from '@material-ui/core/Tab';
 import Button from '@material-ui/core/Button';
 import useStyles from './UseStyles/UseStyles.styles';
 import MainContent from './MainContent/MainContent';
-
+import { Avatar } from '@material-ui/core';
 import Collapse from '@material-ui/core/Collapse';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 
 // Icons
 import { arrIconsList, arrIconsSchedule, arrIconsClient } from './Icons/ExportIcons';
+import BusinessCenterIcon from '@material-ui/icons/BusinessCenter';
+import TodayIcon from '@material-ui/icons/Today';
+import NotificationsNoneIcon from '@material-ui/icons/NotificationsNone';
 
 const txtTab = ['Clientes', 'Agenda', 'Solicitudes'];
 const configs = ['Configuración', 'Recargar página', 'Reportar problema', 'Consultar manual'];
@@ -143,10 +146,18 @@ const Secretary = ({exit}) => {
       {/* Header */} 
       <AppBar position="fixed" className={classes.appBar}>
         <Toolbar className={classes.toolBar}>
-          <Typography variant="h6" noWrap>
-            Oficina Virtual
-          </Typography>
-          <Button onClick={exit} className={classes.buttonExit}>Salir</Button>
+          <div style={{width: '300px', display: 'flex', justifyContent: 'space-around'}}>
+            <BusinessCenterIcon style={{fontSize: '2.5rem'}}/>
+            <Typography variant="h4" noWrap>
+              Oficina Virtual
+            </Typography>
+          </div>
+          <div style={{width: '300px', display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
+            <TodayIcon style={{fontSize: '2rem'}}/>
+            <NotificationsNoneIcon style={{fontSize: '2rem'}}/>
+            <Avatar className={classes.green}>J</Avatar>
+            <Button onClick={exit} className={classes.buttonExit} variant="contained">Salir</Button>
+          </div>
         </Toolbar>
         <div className={classes.divTabDate}>
           <Tabs value={value} onChange={handleChange} indicatorColor="primary" className={classes.tabsStyles}>

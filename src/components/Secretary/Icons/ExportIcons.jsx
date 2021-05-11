@@ -11,7 +11,7 @@ import {
   Schedule,
   PersonAdd,
   Person,
-  Business
+  Business,
 } from '@material-ui/icons'
 
 export const arrIconsList = [
