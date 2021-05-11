@@ -1,31 +1,79 @@
 import React from 'react';
-import Drawer from '@material-ui/core/Drawer';
-import List from '@material-ui/core/List';
-import Typography from '@material-ui/core/Typography';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import Toolbar from '@material-ui/core/Toolbar';
-import AppBar from '@material-ui/core/AppBar';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-import Button from '@material-ui/core/Button';
-import useStyles from './UseStyles/UseStyles.styles';
+import { makeStyles } from '@material-ui/core/styles';
 import MainContent from './MainContent/MainContent';
-import { Avatar } from '@material-ui/core';
-import Collapse from '@material-ui/core/Collapse';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
-
-// Icons
+import {CssBaseline, Avatar, Drawer, List, Typography, ListItem, ListItemIcon, ListItemText, Toolbar, AppBar, Tabs, Tab, Button, Collapse, } from '@material-ui/core';
 import { arrIconsList, arrIconsSchedule, arrIconsClient } from './Icons/ExportIcons';
-import BusinessCenterIcon from '@material-ui/icons/BusinessCenter';
-import TodayIcon from '@material-ui/icons/Today';
-import NotificationsNoneIcon from '@material-ui/icons/NotificationsNone';
+import { BusinessCenter, Today, NotificationsNone, ArrowForwardIos, } from '@material-ui/icons';
 
-const txtTab = ['Clientes', 'Agenda', 'Solicitudes'];
 const configs = ['Configuración', 'Recargar página', 'Reportar problema', 'Consultar manual'];
 const requestsTool = ['Listar Solicitudes', 'Actualizar Lista', 'Imprimir', 'Herramientas'];
+const drawerWidth = 240;
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: 'flex',
+  },
+  appBarMain: {
+    zIndex: theme.zIndex.drawer + 1,
+  },
+  appbarNav: {
+    background: 'white',
+    zIndex: theme.zIndex.drawer + 1,
+    color: 'black',
+  },
+  toolBar: {
+    display: 'flex', 
+    justifyContent: 'space-between',
+    height: '50px',
+  },
+  drawer: {
+    width: drawerWidth,
+    flexShrink: 0,
+  },
+  drawerPaper: {
+    width: drawerWidth,
+  },
+  drawerContainer: {
+    overflow: 'auto',
+    height: '100%',
+    display: 'flex',
+    flexDirection:'column',
+    justifyContent: 'space-between',
+  },
+  content: {
+    flexGrow: 1,
+    padding: theme.spacing(2),
+  },
+  tabsStyles: {
+    color: 'black',
+    backgroundColor: 'white',
+  },
+  divTabDate: {
+    display: 'flex', 
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    backgroundColor: 'white',
+    color: 'black'
+  },
+  fontListText: {
+    fontSize: '.9rem',
+  },
+  buttonExit: {
+    background: 'linear-gradient(to bottom, #cb2d3e, #ef473a)',
+    border: 0,
+    borderRadius: 3,
+    color: 'white',
+    height: 38,
+    padding: '0 20px',
+  },
+  divsAppbar: {
+    width: '300px', 
+    display: 'flex', 
+    justifyContent: 'space-between', 
+    alignItems: 'center',
+  },
+}));
 
 function RequestListTools({handleListItemClick, selectedIndex}) {
   return(
@@ -116,9 +164,7 @@ function PageTools({handleListItemClick, selectedIndex}) {
           onClick={e => handleListItemClick(e, index + 4)}
         >
           <ListItemIcon>{arrIconsList[index + 4]}</ListItemIcon>
-          <ListItemText primary={
-            <Typography variant="caption" display="block" gutterBottom>{text}</Typography>
-          }/>
+          <ListItemText primary={text}/>
         </ListItem>
       ))}
     </List>
@@ -126,66 +172,78 @@ function PageTools({handleListItemClick, selectedIndex}) {
 }
 
 const Secretary = ({exit}) => {
-  /* Styles jss */
   const classes = useStyles();
-
-  /* This is state for navbar CLIENTES AGENDA SOLUCITUDES  */ 
   const [value, setValue] = React.useState(2);
-  const handleChange = (event, newValue) => setValue(newValue);
-
-  /* This state is for the list items */
   const [selectedIndex, setSelectedIndex] = React.useState(0);
-  const handleListItemClick = (event, index) => setSelectedIndex(index);
 
-  /* To get current date of system */
+  const handleChange = (event, newValue) => setValue(newValue);
+  const handleListItemClick = (event, index) => setSelectedIndex(index);
   const getDate = () => new Date().toDateString();
 
   return (
     <div className={classes.root}>
-
-      {/* Header */} 
-      <AppBar position="fixed" className={classes.appBar}>
+      <CssBaseline /> 
+      <AppBar position="fixed" className={classes.appbarNav}>
+        <Toolbar />
+          <Toolbar className={classes.toolBar}>
+            <Tabs 
+              value={value} 
+              onChange={handleChange} 
+              indicatorColor="primary" 
+            >
+              <Tab label="Clientes" />
+              <Tab label="Agenda" />
+              <Tab label="Solicitudes" />
+            </Tabs>
+            <Typography>{getDate()}</Typography>
+          </Toolbar>
+      </AppBar>
+      <AppBar position="fixed" className={classes.appBarMain}>
         <Toolbar className={classes.toolBar}>
-          <div style={{width: '300px', display: 'flex', justifyContent: 'space-around'}}>
-            <BusinessCenterIcon style={{fontSize: '2.5rem'}}/>
-            <Typography variant="h4" noWrap>
-              Oficina Virtual
-            </Typography>
+          <div className={classes.divsAppbar}>
+            <BusinessCenter />
+            <Typography variant="h5" noWrap>Oficina Virtual</Typography>
+            <ArrowForwardIos />
+            <Typography variant="p" noWrap>Secretaría</Typography>
           </div>
-          <div style={{width: '300px', display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
-            <TodayIcon style={{fontSize: '2rem'}}/>
-            <NotificationsNoneIcon style={{fontSize: '2rem'}}/>
+          <div className={classes.divsAppbar}>
+            <Today />
+            <NotificationsNone />
             <Avatar className={classes.green}>J</Avatar>
-            <Button onClick={exit} className={classes.buttonExit} variant="contained">Salir</Button>
+            <Button onClick={exit} color="secondary" variant="contained">Salir</Button>
           </div>
         </Toolbar>
-        <div className={classes.divTabDate}>
-          <Tabs value={value} onChange={handleChange} indicatorColor="primary" className={classes.tabsStyles}>
-            <Tab label={txtTab[0]} />
-            <Tab label={txtTab[1]} />
-            <Tab label={txtTab[2]} />
-          </Tabs>
-          <h4>{getDate()}</h4>
-        </div>
       </AppBar>
-
-      {/* Left Menu */}
-      <Drawer className={classes.drawer} variant="permanent" classes={{paper:classes.drawerPaper}}>
+      <Drawer 
+        className={classes.drawer} 
+        variant="permanent" 
+        classes={{ paper:classes.drawerPaper }}
+      >
         <Toolbar />
         <Toolbar />
         <div className={classes.drawerContainer}>
-          {
-            value === 2 
-              ? <RequestListTools handleListItemClick={handleListItemClick} selectedIndex={selectedIndex}/>
-              : value === 1
-                ? <ScheduleListTools handleListItemClick={handleListItemClick} selectedIndex={selectedIndex} />
-                : <ClientListTools handleListItemClick={handleListItemClick}/>
+          { value === 2 ? (
+              <RequestListTools 
+                handleListItemClick={handleListItemClick} 
+                selectedIndex={selectedIndex}
+              /> 
+            ) : value === 1 ? (
+              <ScheduleListTools 
+                handleListItemClick={handleListItemClick} 
+                selectedIndex={selectedIndex} 
+              />
+            ) : (
+              <ClientListTools 
+                handleListItemClick={handleListItemClick}
+              />
+            )
           }
-          <PageTools handleListItemClick={handleListItemClick} selectedIndex={selectedIndex}/>
+          <PageTools 
+            handleListItemClick={handleListItemClick} 
+            selectedIndex={selectedIndex}
+          />
         </div>
       </Drawer>
-
-      {/* Main Content */}
       <main className={classes.content}>
         <Toolbar />
         <Toolbar />

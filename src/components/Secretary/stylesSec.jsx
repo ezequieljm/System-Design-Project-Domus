@@ -1,22 +1,22 @@
-// import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { green } from '@material-ui/core/colors';
+export const drawerWidth = 240;
 
-const drawerWidth = 240;
-
-export default makeStyles((theme) => ({
+export const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
   },
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
   },
+  appbarNav: {
+    background: 'white',
+    zIndex: theme.zIndex.drawer + 1,
+    color: 'black',
+  },
   toolBar: {
     display: 'flex', 
     justifyContent: 'space-between',
     height: '50px',
-    background: '#3f51b5',
-    color: 'white'
   },
   drawer: {
     width: drawerWidth,
@@ -26,8 +26,8 @@ export default makeStyles((theme) => ({
     width: drawerWidth,
   },
   drawerContainer: {
-    height: '100%',
     overflow: 'auto',
+    height: '100%',
     display: 'flex',
     flexDirection:'column',
     justifyContent: 'space-between',
@@ -58,9 +58,5 @@ export default makeStyles((theme) => ({
     color: 'white',
     height: 38,
     padding: '0 20px',
-  },
-  green: {
-    color: theme.palette.getContrastText(green[600]),
-    backgroundColor: green[600],
   },
 }));
