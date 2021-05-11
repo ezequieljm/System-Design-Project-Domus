@@ -1,73 +1,98 @@
 import React from "react";
-import { ListSubheader, Collapse, Avatar, Drawer, AppBar, CssBaseline, Toolbar, List, Typography, ListItem, ListItemIcon, ListItemText, Button, Tab, Tabs } from "@material-ui/core";
+import { Avatar, Drawer, AppBar, CssBaseline, Toolbar, List, Typography, ListItem, ListItemIcon, ListItemText, Button, Tab, Tabs } from "@material-ui/core";
 import {ArrowForwardIos, NotificationsNone, Today, BusinessCenter, Mail, MoveToInbox } from '@material-ui/icons';
 import { useStyles, } from "./styles";
-import { ExpandLess, ExpandMore, } from "@material-ui/icons";
+import { FormatListBulleted, Add, Home, Schedule, Settings, Refresh, Report, MenuBook } from "@material-ui/icons";
+import Appointment from "./MainContent/Appointment/Appointment";
+import RealEstate from "./MainContent/RealEstate/RealEstate";
 
-function HerramientasPropiedades({hanList, inx}) {
+const toolsPage = [
+  {
+    text: 'Configuración',
+    icon: <Settings />
+  },
+  {
+    text: 'Recargar Pagina',
+    icon: <Refresh />
+  },
+  {
+    text: 'Reportar Problema',
+    icon: <Report />
+  },
+  {
+    text: 'Consultar Manual',
+    icon: <MenuBook />
+  },
+];
+
+function HerramientasPropiedades({ hanList, inx, }) {
+  const tools = [
+    {
+      text: 'Catálogo',
+      icon: <Home />,
+    },
+    {
+      text: 'Lista de Propiedades',
+      icon: <FormatListBulleted />,
+    },
+    {
+      text: 'Nueva Propiedad',
+      icon: <Add />,
+    },
+  ];
   return (
     <List>
-      {["Agenda", "Propiedades"].map((text, index) => (
-        <ListItem button key={text}
-          selected={inx === index}
-          onClick={(event) => hanList(event, index)}
-        >
-          <ListItemIcon>
-            {index % 2 === 0 ? <MoveToInbox /> : <Mail />}
-          </ListItemIcon>
-          <ListItemText primary={text} />
+      {tools.map((tool, index) =>
+        <ListItem button key={tool.text} selected={inx === index} onClick={e => hanList(e, index)}>
+          <ListItemIcon>{tool.icon}</ListItemIcon>
+          <ListItemText primary={tool.text} />
         </ListItem>
-      ))}
+      )}
     </List>
-  )
+  );
 };
 
-function HerramientasAgenda({hanList, inx}) {
+function HerramientasAgenda({ hanList, inx }) {
   return (
     <List>
-      {["Mostrar Agenda"].map((text, index) => (
-        <ListItem button key={text}
-          selected={inx === index}
-          onClick={(event) => hanList(event, index)}
-        >
-          <ListItemIcon>
-            {index % 2 === 0 ? <MoveToInbox /> : <Mail />}
-          </ListItemIcon>
-          <ListItemText primary={text} />
-        </ListItem>
-      ))}
+      <ListItem button key={'Mostrar Agenda'} selected={inx === 0} onClick={e => hanList(e, 0)} >
+        <ListItemIcon>
+          <Schedule />
+        </ListItemIcon>
+        <ListItemText primary={'Mostrar Agenda'} />
+      </ListItem>
     </List>
-  )
+  );
 };
 
 export default function HouseAgent({fnExit}) {
-  const classes = useStyles();
   const [value, setValue] = React.useState(0);
   const [selectedIndex, setSelectedIndex] = React.useState(0);
-  const [nestedList, setNestedList] = React.useState(true);
 
+  const classes = useStyles();
+  
   const handleNavbarTab = (event, newValue) => setValue(newValue);
   const handleListItemClick = (event, index) => setSelectedIndex(index);
-  const handleNestedList = () => setNestedList(!nestedList);
 
   const getCurrentDate = () => new Date().toDateString();
 
   return (
     <div className={classes.root}>
       <CssBaseline />
-      <AppBar position="fixed" className={classes.appBarNav}>
+      <AppBar position="fixed"className={classes.appBarNav}>
       <Toolbar />
-        <Toolbar className={classes.toolBar}>
+        <div className={classes.toolBar}>
           <Tabs 
             value={value} 
             onChange={handleNavbarTab} 
             indicatorColor="primary" 
+            style={{paddingLeft: '2rem'}}
           >
             <Tab label="Agenda" />
             <Tab label="Propiedades" />
           </Tabs>
-          <Typography>{getCurrentDate()}</Typography>
-        </Toolbar>
+          <Typography style={{paddingRight: '2rem'}}>{getCurrentDate()}</Typography>
+        </div>
       </AppBar>
       <AppBar position="fixed" className={classes.appBarMain}>
         <Toolbar className={classes.toolBar}>
@@ -93,21 +118,18 @@ export default function HouseAgent({fnExit}) {
         <Toolbar />
         <Toolbar />
         <div className={classes.drawerContainer}>
-          {
-            value === 1 
-              ? <HerramientasPropiedades hanList={handleListItemClick} inx={selectedIndex} />
-              : <HerramientasAgenda hanList={handleListItemClick} inx={selectedIndex} />
-          }
+          { value === 1 && <HerramientasPropiedades hanList={handleListItemClick} inx={selectedIndex} /> }
+          { value === 0 && <HerramientasAgenda hanList={handleListItemClick} inx={selectedIndex}/>}
           <List>
-            {["Configuración", "Recargar Página", "Reportar Problema", "Consultar Manual"].map((text, index) => (
-              <ListItem button key={text}
-                selected={selectedIndex === index + 2}
-                onClick={(event) => handleListItemClick(event, index + 2)}
+            {toolsPage.map((tool, index) => (
+              <ListItem button key={tool.text}
+                selected={selectedIndex === index + 3}
+                onClick={(event) => handleListItemClick(event, index + 3)}
               >
                 <ListItemIcon>
-                  {index % 2 === 0 ? <BusinessCenter /> : <Mail />}
+                  {tool.icon}
                 </ListItemIcon>
-                <ListItemText primary={text} />
+                <ListItemText primary={tool.text} />
               </ListItem>
             ))}
           </List>
@@ -116,7 +138,8 @@ export default function HouseAgent({fnExit}) {
       <main className={classes.content}>
         <Toolbar />
         <Toolbar />
-        
+        {value === 0 && <Appointment selectedIndex={selectedIndex}/>}
+        {value === 1 && <RealEstate selectedIndex={selectedIndex}/>}
       </main>
     </div>
   );
