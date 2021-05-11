@@ -75,11 +75,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function RequestListTools({handleListItemClick, selectedIndex}) {
+function RequestListTools({hand, inx}) {
   return(
     <List>
       {requestsTool.map((text, index) => (
-        <ListItem button key={text} selected={selectedIndex === index} onClick={e => handleListItemClick(e, index)} >
+        <ListItem button key={text} selected={inx === index} onClick={e => hand(e, index)} >
           <ListItemIcon>
             {arrIconsList[index]}
           </ListItemIcon>
@@ -90,7 +90,7 @@ function RequestListTools({handleListItemClick, selectedIndex}) {
   );
 }
 
-function ScheduleListTools({handleListItemClick, selectedIndex}) {
+function ScheduleListTools({hand, inx}) {
   const scheduleTool = ['Agendar Cita', 'Mostrar Agenda'];
   return(
     <List>
@@ -98,8 +98,8 @@ function ScheduleListTools({handleListItemClick, selectedIndex}) {
         <ListItem 
           button 
           key={text} 
-          selected={selectedIndex === index} 
-          onClick={e => handleListItemClick(e, index)}
+          selected={inx === index} 
+          onClick={e => hand(e, index)}
         >
           <ListItemIcon>
             {arrIconsSchedule[index]}
@@ -111,20 +111,20 @@ function ScheduleListTools({handleListItemClick, selectedIndex}) {
   );
 }
 
-function ClientListTools({handleListItemClick}) {
+function ClientListTools({hand}) {
   const arrTool = ['Actualizar Datos', 'Nuevo Cliente'];
   const arrSubTool = ['Corporativo', 'Particular'];
 
   const [stateTool, setStateTool] = React.useState({open: false, index: 0});
   const handleClick = (event, inx) => {
-    handleListItemClick(event, inx);
+    hand(event, inx);
     inx === 1 
       ? setStateTool({...stateTool, open: !stateTool.open, index: inx}) 
       : setStateTool({...stateTool, open: false, index: inx})
   }
   
   const handleSubTool = (event, inx) => {
-    handleListItemClick(event, inx);
+    hand(event, inx);
     setStateTool({...stateTool, index: inx});
   }
 
@@ -153,15 +153,15 @@ function ClientListTools({handleListItemClick}) {
   );
 }
 
-function PageTools({handleListItemClick, selectedIndex}) {
+function PageTools({hand, inx}) {
   return (
     <List>
       {configs.map((text, index) => (
         <ListItem 
           button 
           key={text}
-          selected={selectedIndex === index + 4}
-          onClick={e => handleListItemClick(e, index + 4)}
+          selected={inx === index + 4}
+          onClick={e => hand(e, index + 4)}
         >
           <ListItemIcon>{arrIconsList[index + 4]}</ListItemIcon>
           <ListItemText primary={text}/>
@@ -171,9 +171,9 @@ function PageTools({handleListItemClick, selectedIndex}) {
   );
 }
 
-const Secretary = ({exit}) => {
+export default function Secretary({exit}) {
   const classes = useStyles();
-  const [value, setValue] = React.useState(2);
+  const [value, setValue] = React.useState(0);
   const [selectedIndex, setSelectedIndex] = React.useState(0);
 
   const handleChange = (event, newValue) => setValue(newValue);
@@ -222,26 +222,10 @@ const Secretary = ({exit}) => {
         <Toolbar />
         <Toolbar />
         <div className={classes.drawerContainer}>
-          { value === 2 ? (
-              <RequestListTools 
-                handleListItemClick={handleListItemClick} 
-                selectedIndex={selectedIndex}
-              /> 
-            ) : value === 1 ? (
-              <ScheduleListTools 
-                handleListItemClick={handleListItemClick} 
-                selectedIndex={selectedIndex} 
-              />
-            ) : (
-              <ClientListTools 
-                handleListItemClick={handleListItemClick}
-              />
-            )
-          }
-          <PageTools 
-            handleListItemClick={handleListItemClick} 
-            selectedIndex={selectedIndex}
-          />
+          { value === 2 && <RequestListTools hand={handleListItemClick} inx={selectedIndex} /> }
+          { value === 1 && <ScheduleListTools hand={handleListItemClick} inx={selectedIndex} /> } 
+          { value === 0 && <ClientListTools hand={handleListItemClick} /> }
+          <PageTools hand={handleListItemClick} inx={selectedIndex} />
         </div>
       </Drawer>
       <main className={classes.content}>
@@ -252,5 +236,3 @@ const Secretary = ({exit}) => {
     </div>
   );
 }
-
-export default Secretary;
