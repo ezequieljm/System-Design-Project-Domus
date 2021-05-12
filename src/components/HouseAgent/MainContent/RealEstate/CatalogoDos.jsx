@@ -20,8 +20,10 @@ import clsx from "clsx";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    maxWidth: 345,
-    marginBottom: "1rem"
+    maxWidth: 400,
+    marginBottom: "1rem",
+    // background: '#3f51b5',
+    // color: 'white'
   },
   media: {
     height: 0,
@@ -124,7 +126,7 @@ function RecipeReviewCard({data}) {
 export default function App() {
   return (
     <Grow in>
-      <Paper elevation={5} style={{padding: '1rem'}}>
+      <Paper elevation={5} style={{padding: '1rem',}}>
         <Typography variant="h4" style={{marginBottom: '1rem'}}>
           Catálogo de Propiedades
         </Typography>
