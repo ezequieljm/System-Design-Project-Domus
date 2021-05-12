@@ -1,6 +1,6 @@
 import React from "react";
 import { Avatar, Drawer, AppBar, CssBaseline, Toolbar, List, Typography, ListItem, ListItemIcon, ListItemText, Button, Tab, Tabs } from "@material-ui/core";
-import {ArrowForwardIos, NotificationsNone, Today, BusinessCenter, Mail, MoveToInbox } from '@material-ui/icons';
+import {ArrowForwardIos, NotificationsNone, Today, BusinessCenter, } from '@material-ui/icons';
 import { useStyles, } from "./styles";
 import { FormatListBulleted, Add, Home, Schedule, Settings, Refresh, Report, MenuBook } from "@material-ui/icons";
 import Appointment from "./MainContent/Appointment/Appointment";
