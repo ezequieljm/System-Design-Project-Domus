@@ -25,6 +25,7 @@ const useStyles = makeStyles((theme) => ({
   toolBar: {
     display: 'flex', 
     justifyContent: 'space-between',
+    alignItems: 'center',
     height: '50px',
   },
   drawer: {
@@ -185,18 +186,19 @@ export default function Secretary({exit}) {
       <CssBaseline /> 
       <AppBar position="fixed" className={classes.appbarNav}>
         <Toolbar />
-          <Toolbar className={classes.toolBar}>
+          <div className={classes.toolBar}>
             <Tabs 
               value={value} 
               onChange={handleChange} 
               indicatorColor="primary" 
+              style={{paddingLeft: '2rem'}}
             >
               <Tab label="Clientes" />
               <Tab label="Agenda" />
               <Tab label="Solicitudes" />
             </Tabs>
-            <Typography>{getDate()}</Typography>
-          </Toolbar>
+            <Typography style={{paddingRight: '2rem'}}>{getDate()}</Typography>
+          </div>
       </AppBar>
       <AppBar position="fixed" className={classes.appBarMain}>
         <Toolbar className={classes.toolBar}>
