@@ -1,5 +1,5 @@
 import React from 'react';
-import { Paper, Grow } from '@material-ui/core';
+import { Paper, Grow, Typography } from '@material-ui/core';
 import { DatePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
 import DateFnsUtils from "@date-io/date-fns";
 import esLocale from 'date-fns/locale/es';
@@ -52,7 +52,9 @@ export default function ReviewConsultUpdate(){
   return (
     <Grow in>
       <Paper elevation={5} style={{padding: '1rem'}}>
-        <h1>Revisar agenda, Consultar agenda, actualizar estado</h1>
+        <Typography variant="h4" style={{padding: '1rem'}}>
+          Agenda
+        </Typography>
         <div className={classes.mainPaper}>
           <StaticDatePicker />
           <Paper elevation={5} className={classes.paperList}>

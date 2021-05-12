@@ -1,39 +1,119 @@
 import imageOne from '../../../../assets/img/pixasquare-4ojhpgKpS68-unsplash.jpg'
-import imageTwo from '../../../../assets/img/digital-marketing-agency-ntwrk-g39p1kDjvSY-unsplash.jpg'
-import imageThree from '../../../../assets/img/luke-stackpoole-eWqOgJ-lfiI-unsplash.jpg'
-import imageFour from '../../../../assets/img/sieuwert-otterloo-aren8nutd1Q-unsplash.jpg'
-import imageFive from '../../../../assets/img/todd-kent-178j8tJrNlc-unsplash.jpg'
-import imageSix from '../../../../assets/img/webaliser-_TPTXZd9mOo-unsplash.jpg'
+import imageTwo from '../../../../assets/img/webaliser-_TPTXZd9mOo-unsplash.jpg'
+import imageThree from '../../../../assets/img/cindy-tang-ob-hsLNxYPc-unsplash.jpg'
+import imageFour from '../../../../assets/img/naomi-hebert-MP0bgaS_d1c-unsplash.jpg'
 
 export const tileData = [
   {
     img: imageOne,
-    title: "anything",
-    author: "somebody"
-  },
-  {
-    img: imageTwo,
-    title: "other thing",
-    author: "somebody"
+    title: "Mansión Spencer. Montañas Arklay",
+    description: 'Construida en 1950. Forma parte de los suburbios del sector Norte de Raccoon City',
+    id: '3523',
+    kindHouse: 'Departamento',
+    location: 'País',
+    amountOf: {
+      toilets: '3',
+      bedroom: '5',
+      suites: '2',
+    },
+    acient: '70 años',
+    spaceWithAccount: '6',
+    artefactWithAccount: '5',
+    adeheredServices: ['Luz', 'Agua', 'Internet'],
+    owerDetails: {
+      numberId: 'EF4563',
+      kind: 'Corporativo',
+      firstname: 'Jill',
+      surname: 'Valentine',
+      dni: '37987213',
+      phone: '+54-98760723',
+      email: 'jill@start.com',
+      address: 'Raccoon City 345',
+    },
+    contractOptions: 'Venta',
   },
   {
     img: imageThree,
-    title: "some",
-    author: "somebody"
+    title: "Mansión Spencer. Montañas Arklay",
+    description: 'Construida en 1950. Forma parte de los suburbios del sector Norte de Raccoon City',
+    id: '3523',
+    kindHouse: 'Departamento',
+    location: 'País',
+    amountOf: {
+      toilets: '3',
+      bedroom: '5',
+      suites: '2',
+    },
+    acient: '70 años',
+    spaceWithAccount: '6',
+    artefactWithAccount: '5',
+    adeheredServices: ['Luz', 'Agua', 'Internet'],
+    owerDetails: {
+      numberId: 'EF4563',
+      kind: 'Corporativo',
+      firstname: 'Jill',
+      surname: 'Valentine',
+      dni: '37987213',
+      phone: '+54-98760723',
+      email: 'jill@start.com',
+      address: 'Raccoon City 345',
+    },
+    contractOptions: 'Venta',
   },
   {
     img: imageFour,
-    title: "jill",
-    author: "somebody"
+    title: "Mansión Spencer. Montañas Arklay",
+    description: 'Construida en 1950. Forma parte de los suburbios del sector Norte de Raccoon City',
+    id: '3523',
+    kindHouse: 'Departamento',
+    location: 'País',
+    amountOf: {
+      toilets: '3',
+      bedroom: '5',
+      suites: '2',
+    },
+    acient: '70 años',
+    spaceWithAccount: '6',
+    artefactWithAccount: '5',
+    adeheredServices: ['Luz', 'Agua', 'Internet'],
+    owerDetails: {
+      numberId: 'EF4563',
+      kind: 'Corporativo',
+      firstname: 'Jill',
+      surname: 'Valentine',
+      dni: '37987213',
+      phone: '+54-98760723',
+      email: 'jill@start.com',
+      address: 'Raccoon City 345',
+    },
+    contractOptions: 'Venta',
   },
   {
-    img: imageFive,
-    title: "carl",
-    author: "somebody"
-  },
-  {
-    img: imageSix,
-    title: "big smoke",
-    author: "somebody"
-  },
+    img: imageTwo,
+    title: "Mansión Spencer. Montañas Arklay",
+    description: 'Construida en 1950. Forma parte de los suburbios del sector Norte de Raccoon City',
+    id: '3523',
+    kindHouse: 'Departamento',
+    location: 'País',
+    amountOf: {
+      toilets: '3',
+      bedroom: '5',
+      suites: '2',
+    },
+    acient: '70 años',
+    spaceWithAccount: '6',
+    artefactWithAccount: '5',
+    adeheredServices: ['Luz', 'Agua', 'Internet'],
+    owerDetails: {
+      numberId: 'EF4563',
+      kind: 'Corporativo',
+      firstname: 'Jill',
+      surname: 'Valentine',
+      dni: '37987213',
+      phone: '+54-98760723',
+      email: 'jill@start.com',
+      address: 'Raccoon City 345',
+    },
+    contractOptions: 'Venta',
+  }
 ];
