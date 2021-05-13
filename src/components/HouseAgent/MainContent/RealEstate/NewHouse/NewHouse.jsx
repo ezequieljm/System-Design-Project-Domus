@@ -16,12 +16,26 @@ import {
   RadioGroup,
   Radio,
   TextField,
+  Fade,
+  Modal,
+  Backdrop,
 } from '@material-ui/core';
 
 const useStyles = makeStyles(theme => ({
   formCtrl: {
     display: 'flex',
     flexDirection: 'row',
+  },
+  modal: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  paper: {
+    backgroundColor: theme.palette.background.paper,
+    border: '2px solid #000',
+    boxShadow: theme.shadows[5],
+    padding: theme.spacing(2, 4, 3),
   },
 }));
 
@@ -120,206 +134,211 @@ export default function NewHouse() {
   const handleChangeService = e => {
     setService(e.target.value);
   }; */
+  const [open, setOpen] = React.useState(false);
 
+  const handleOpen = e => {
+    e.preventDefault();
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
   return (
     <Grow in>
-      <Paper elevation={5} style={{padding: '1rem'}}>
-        <Typography variant="h4">Nueva Propiedad</Typography> 
-        <form action="" onSubmit={submitedDatas}>
-          <div id="kind">
-            <Typography variant="h5">Tipo de Propiedad</Typography>
-            <RadioGroup name="kindHouse" value={kindHouse} onChange={handleChangeKindHouse} className={classes.formCtrl}>
-              <FormControlLabel value="Departamento" control={<Radio />} label="Departamento" />
-              <FormControlLabel value="Casa" control={<Radio />} label="Casa" />
-              <FormControlLabel value="Chalet" control={<Radio />} label="Chalet" />
-              <FormControlLabel value="Local" control={<Radio />} label="Local" />
-              <FormControlLabel value="Casa con local" control={<Radio />} label="Casa con local" />
-              <FormControlLabel value="Cabaña" control={<Radio />} label="Cabaña" />
-              <FormControlLabel value="Cochera" control={<Radio />} label="Cochera" />
-            </RadioGroup>
-          </div>
-          <div id="location">
-            <Typography variant="h5">Ubicación</Typography>
-            <div>
-              <FormControl required autofocus>
-                <InputLabel htmlFor="my-input">País</InputLabel>
-                <Input />
-                <FormHelperText id="my-helper-text"></FormHelperText>
+      <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+        <Paper elevation={5} style={{padding: '1rem', width: 900}}>
+          <Typography variant="h4">Nueva Propiedad</Typography> 
+          <Typography variant="h6" style={{marginBottom: '2rem'}}>
+            Complete los campos con los datos de la propiedad. No deben quedar campos sin completar.
+          </Typography> 
+          <form action="" onSubmit={handleOpen} >
+            <div id="kind" >
+              <Typography variant="h6">Tipo de Propiedad</Typography>
+              <RadioGroup name="kindHouse" value={kindHouse} onChange={handleChangeKindHouse} className={classes.formCtrl}>
+                <FormControlLabel value="Departamento" control={<Radio />} label="Departamento" />
+                <FormControlLabel value="Casa" control={<Radio />} label="Casa" />
+                <FormControlLabel value="Chalet" control={<Radio />} label="Chalet" />
+                <FormControlLabel value="Local" control={<Radio />} label="Local" />
+                <FormControlLabel value="Casa con local" control={<Radio />} label="Casa con local" />
+                <FormControlLabel value="Cabaña" control={<Radio />} label="Cabaña" />
+                <FormControlLabel value="Cochera" control={<Radio />} label="Cochera" />
+              </RadioGroup>
+            </div>
+            <div id="location" >
+              <Typography variant="h6">Ubicación</Typography>
+              <div style={{display: 'flex', justifyContent: 'space-around', marginBottom: '1rem'}}>
+                <FormControl required autofocus fullWidth style={{marginRight: '2rem'}}>
+                  <TextField variant="outlined" label="País" />
+                </FormControl>
+                <FormControl required fullWidth autofocus style={{marginRight: '2rem'}}>
+                  <TextField variant="outlined" label="Provincia" />
+                </FormControl>
+                <FormControl required fullWidth autofocus>
+                  <TextField variant="outlined" label="Localidad" />
+                </FormControl>
+              </div>
+
+              <div style={{display: 'flex', justifyContent: 'space-around', marginBottom: '1rem'}}>
+                <FormControl required autofocus fullWidth style={{marginRight: '2rem'}}>
+                  <TextField variant="outlined" label="Barrio" />
+                </FormControl>
+                <FormControl required autofocus fullWidth style={{marginRight: '2rem'}}>
+                  <TextField variant="outlined" label="Dirección" />
+                </FormControl>
+                <FormControl required autofocus fullWidth>
+                  <TextField variant="outlined" label="Calle" />
+                </FormControl>
+              </div>
+              
+              <div style={{display: 'flex', justifyContent: 'space-around', marginBottom: '1rem'}}>
+                <FormControl required autofocus fullWidth style={{marginRight: '2rem'}}>
+                  <TextField variant="outlined" label="Piso" />
+                </FormControl>
+                <FormControl required autofocus fullWidth style={{marginRight: '2rem'}}>
+                  <TextField variant="outlined" label="Número" />
+                </FormControl>
+                <FormControl required autofocus fullWidth>
+                  <TextField variant="outlined" label="Código Postal" />
+                </FormControl>
+              </div>
+            </div>
+
+            <div id="cantidad" style={{marginBottom: '1rem'}}>
+              <Typography variant="h6">Cantidades</Typography>
+              <div style={{display: 'flex', justifyContent: 'space-between'}}>
+                <FormControl required autofocus fullWidth style={{marginRight: '2rem'}}>
+                  <TextField variant="outlined" label="Baño" type="number" />
+                </FormControl>
+
+                <FormControl required autofocus fullWidth style={{marginRight: '2rem'}}>
+                  <TextField variant="outlined" label="Dormitorios" type="number" />
+                </FormControl>
+
+                <FormControl required autofocus fullWidth >
+                  <TextField variant="outlined" label="Suites" type="number" />
+                </FormControl>
+              </div>
+            </div>
+
+            <div style={{display: 'flex', justifyContent: 'space-between', marginBottom: '1rem'}}>
+              <FormControl required autofocus fullWidth style={{paddingRight: '2rem'}}>
+                <TextField variant="outlined" label="Antiguedad" type="number" />
               </FormControl>
-              <FormControl required autofocus>
-                <InputLabel htmlFor="my-input">Provincia</InputLabel>
-                <Input />
-                <FormHelperText id="my-helper-text"></FormHelperText>
+
+              <FormControl required autofocus fullWidth style={{paddingRight: '2rem'}}>
+                <TextField variant="outlined" label="Espacios" type="number" />
               </FormControl>
-              <FormControl required autofocus>
-                <InputLabel htmlFor="my-input">Localidad</InputLabel>
-                <Input />
-                <FormHelperText id="my-helper-text"></FormHelperText>
+
+              <FormControl required autofocus fullWidth >
+                <TextField variant="outlined" label="Artefactos" type="number" />
               </FormControl>
             </div>
 
-            <div>
-              <FormControl required autofocus>
-                <InputLabel htmlFor="my-input">Barrio</InputLabel>
-                <Input />
-                <FormHelperText id="my-helper-text"></FormHelperText>
-              </FormControl>
-              <FormControl required autofocus>
-                <InputLabel htmlFor="my-input">Dirección</InputLabel>
-                <Input />
-                <FormHelperText id="my-helper-text"></FormHelperText>
-              </FormControl>
-              <FormControl required autofocus>
-                <InputLabel htmlFor="my-input">Calle</InputLabel>
-                <Input />
-                <FormHelperText id="my-helper-text"></FormHelperText>
+            <div style={{marginBottom: '1rem'}}>
+              <Typography variant="h6">Servicios</Typography>
+              <CheckboxLabels />
+            </div>
+
+            <div style={{marginBottom: '1rem', display: 'flex', justifyContent: 'space-around', alignItems: 'center'}}>
+              <div style={{width: '50%', display: 'flex', alignItems: 'center'}}>
+                <InputLabel style={{marginRight: '2rem'}}>Tipo de Contrato</InputLabel>
+                <RadioGroup name="kindContract" value={kindContract} onChange={handleChangeKindContract} className={classes.formCtrl}>
+                  <FormControlLabel value="venta" control={<Radio />} label="Venta" />
+                  <FormControlLabel value="alquiler" control={<Radio />} label="Alquiler" />
+                </RadioGroup>
+              </div>
+
+              <div style={{width: '50%'}}>
+                <FormControl required autofocus fullWidth >
+                  <TextField variant="outlined" label="Precio" type="number" />
+                </FormControl>
+              </div>
+            </div>
+
+            <div style={{marginBottom: '1rem'}}>
+              <div style={{marginBottom: '1rem'}}>
+                <FormControl required autofocus fullWidth>
+                  <TextField variant="outlined" label="Descripcion" type="text" helperText="Breve descripción de la propiedad" />
+                </FormControl>
+              </div>
+              <div style={{marginBottom: '1rem'}}>
+                <TextField
+                  label="Descripción detallada" 
+                  variant="outlined"
+                  multiline 
+                  rows={4} 
+                  defaultValue="Escribe aquí..." 
+                  fullWidth
+                />
+              </div>
+            </div>
+
+            <div id="propietario" style={{marginBottom: '1rem'}}>
+              <Typography variant="h6">Datos del propietario</Typography>
+              <div style={{display: 'flex', justifyContent: 'space-between', marginBottom: '1rem'}}>
+                <FormControl required autofocus fullWidth style={{marginRight: '2rem'}}>
+                  <TextField variant="outlined" label="Número de Cliente" type="number" />
+                </FormControl>
+
+                <FormControl required autofocus fullWidth style={{marginRight: '2rem'}}>
+                  <TextField variant="outlined" label="Nombre" type="text" />
+                </FormControl>
+
+                <FormControl required autofocus fullWidth >
+                  <TextField variant="outlined" label="Apellido" type="text" />
+                </FormControl>
+              </div>
+
+              <div style={{display: 'flex', alignItems: 'center'}}>
+                <InputLabel style={{marginRight: '2rem'}}>Tipo de cliente</InputLabel>
+                <RadioGroup name="kindClient" value={kindClient} onChange={handleChangeKindClient} className={classes.formCtrl}>
+                  <FormControlLabel value="corporativo" control={<Radio />} label="Corporativo" />
+                  <FormControlLabel value="particular" control={<Radio />} label="Particular" />
+                </RadioGroup>
+              </div>
+
+              <div style={{marginBottom: '1rem', display: 'flex', alignItems: 'center'}}>
+                <FormControl required autofocus fullWidth style={{marginRight: '2rem'}}>
+                  <TextField variant="outlined" label="DNI" type="number" />
+                </FormControl>
+
+                <FormControl required autofocus fullWidth style={{marginRight: '2rem'}}>
+                  <TextField variant="outlined" label="Teléfono" type="number" />
+                </FormControl>
+
+                <FormControl required autofocus fullWidth >
+                  <TextField variant="outlined" label="Email" type="text" />
+                </FormControl>
+              </div>
+            </div>
+
+            <div style={{marginBottom: '1rem'}}>
+              <FormControl required autofocus fullWidth>
+                <TextField variant="outlined" label="Dirección" type="text" />
               </FormControl>
             </div>
-            
-            <div>
-              <FormControl required autofocus>
-                <InputLabel htmlFor="my-input">Piso</InputLabel>
-                <Input />
-                <FormHelperText id="my-helper-text"></FormHelperText>
-              </FormControl>
-              <FormControl required autofocus>
-                <InputLabel htmlFor="my-input">Número</InputLabel>
-                <Input />
-                <FormHelperText id="my-helper-text"></FormHelperText>
-              </FormControl>
-              <FormControl required autofocus>
-                <InputLabel htmlFor="my-input">Código Postal</InputLabel>
-                <Input />
-                <FormHelperText id="my-helper-text"></FormHelperText>
-              </FormControl>
-            </div>
-          </div>
 
-          <div id="cantidad">
-            <Typography variant="h5">Cantidad</Typography>
-            <FormControl required autofocus>
-              <InputLabel htmlFor="my-input">Baños</InputLabel>
-              <Input type="number" />
-              <FormHelperText id="my-helper-text"></FormHelperText>
-            </FormControl>
-
-            <FormControl required autofocus>
-              <InputLabel htmlFor="my-input">Dormitorios</InputLabel>
-              <Input type="number" />
-              <FormHelperText id="my-helper-text"></FormHelperText>
-            </FormControl>
-
-            <FormControl required autofocus>
-              <InputLabel htmlFor="my-input">Suites</InputLabel>
-              <Input type="number" />
-              <FormHelperText id="my-helper-text"></FormHelperText>
-            </FormControl>
-          </div>
-          <div>
-            <FormControl required autofocus>
-              <InputLabel htmlFor="my-input">Antiguedad</InputLabel>
-              <Input type="number" />
-              <FormHelperText id="my-helper-text"></FormHelperText>
-            </FormControl>
-
-            <FormControl required autofocus>
-              <InputLabel htmlFor="my-input">Espacios con los que cuenta</InputLabel>
-              <Input type="number" />
-              <FormHelperText id="my-helper-text"></FormHelperText>
-            </FormControl>
-
-            <FormControl required autofocus>
-              <InputLabel htmlFor="my-input">Artefactos con los que cuenta</InputLabel>
-              <Input type="number" />
-              <FormHelperText id="my-helper-text"></FormHelperText>
-            </FormControl>
-          </div>
-
-          <Typography variant="h5">Servicios</Typography>
-          <CheckboxLabels />
-          <hr />
-          <div id="propietario">
-            <Typography variant="h5">Datos del propietario</Typography>
-            <FormControl required autofocus>
-              <InputLabel htmlFor="my-input">Número de cliente</InputLabel>
-              <Input type="number" />
-              <FormHelperText id="my-helper-text"></FormHelperText>
-            </FormControl>
-
-            <RadioGroup name="kindClient" value={kindClient} onChange={handleChangeKindClient} className={classes.formCtrl}>
-              <FormControlLabel value="corporativo" control={<Radio />} label="Corporativo" />
-              <FormControlLabel value="particular" control={<Radio />} label="Particular" />
-            </RadioGroup>
-
-            <FormControl required autofocus>
-              <InputLabel htmlFor="my-input">Nombre</InputLabel>
-              <Input type="text" />
-              <FormHelperText id="my-helper-text"></FormHelperText>
-            </FormControl>
-
-            <FormControl required autofocus>
-              <InputLabel htmlFor="my-input">Apellido</InputLabel>
-              <Input type="text" />
-              <FormHelperText id="my-helper-text"></FormHelperText>
-            </FormControl>
-
-            <FormControl required autofocus>
-              <InputLabel htmlFor="my-input">DNI</InputLabel>
-              <Input type="number" />
-              <FormHelperText id="my-helper-text"></FormHelperText>
-            </FormControl>
-
-            <FormControl required autofocus>
-              <InputLabel htmlFor="my-input">Teléfono</InputLabel>
-              <Input type="number" />
-              <FormHelperText id="my-helper-text"></FormHelperText>
-            </FormControl>
-
-            <FormControl required autofocus>
-              <InputLabel htmlFor="my-input">Email</InputLabel>
-              <Input type="number" />
-              <FormHelperText id="my-helper-text"></FormHelperText>
-            </FormControl>
-
-            <FormControl required autofocus>
-              <InputLabel htmlFor="my-input">Dirección</InputLabel>
-              <Input type="text" />
-              <FormHelperText id="my-helper-text"></FormHelperText>
-            </FormControl>
-          </div>
-
-          <Typography variant="h5">Tipo de contrato</Typography>
-          <RadioGroup name="kindContract" value={kindContract} onChange={handleChangeKindContract} className={classes.formCtrl}>
-            <FormControlLabel value="venta" control={<Radio />} label="Venta" />
-            <FormControlLabel value="alquiler" control={<Radio />} label="Alquiler" />
-          </RadioGroup>
-
-
-          <FormControl required autofocus>
-            <InputLabel htmlFor="my-input">Precio</InputLabel>
-            <Input type="text" />
-            <FormHelperText id="my-helper-text">Precio del inmueble</FormHelperText>
-          </FormControl>
-
-          <div>
-            <FormControl required autofocus>
-              <InputLabel htmlFor="my-input">Descripción</InputLabel>
-              <Input type="text" />
-              <FormHelperText id="my-helper-text">Breve descripción de la propiedad</FormHelperText>
-            </FormControl>
-            <TextField 
-              id="standard-multiline-static" 
-              label="Descripción detallada" 
-              multiline 
-              rows={4} 
-              defaultValue="Escribe aquí..." 
-            />
-          </div>
-
-          <Button type="submit" variant="contained" color="primary">Guardar Cambios</Button>
-        </form>
-
-      </Paper>
-    </Grow>
+            <Button type="submit" variant="contained" color="primary">Guardar Cambios</Button>
+          </form>
+          <Modal
+            className={classes.modal}
+            open={open}
+            onClose={handleClose}
+            closeAfterTransition
+            BackdropComponent={Backdrop}
+            BackdropProps={{
+              timeout: 500,
+            }}
+          >
+            <Fade in={open}>
+              <div className={classes.paper}>
+                <h2 id="transition-modal-title">Datos cargados correctamente</h2>
+              </div>
+            </Fade>
+          </Modal>
+        </Paper>
+      </div> 
+   </Grow>
   )
 };
