@@ -1,10 +1,10 @@
-const BossOfManage = ({fnExit}) => {
+import React from 'react';
+
+export default function BossOfManage({fnExit}) {
   return (
     <>
-      <h1>Boss Of Manage</h1>
+      <h1>Jefa de Administración</h1>
       <button onClick={fnExit}>Salir</button>
     </>
   )
 };
-
-export default BossOfManage;

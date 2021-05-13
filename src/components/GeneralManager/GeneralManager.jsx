@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import Button from '@material-ui/core/Button';
 import './styles.css'
 
-const GeneralManager = ({fnExit}) => {
+export default function GeneralManager({fnExit}) {
   return (
     <>
       <h1 id="titulo">Gerente general</h1>
@@ -10,7 +10,3 @@ const GeneralManager = ({fnExit}) => {
     </>
   )
 };
-
-export default GeneralManager;
-
-

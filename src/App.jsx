@@ -6,10 +6,8 @@ import HouseAgent from './components/HouseAgent/HouseAgent';
 import MainPage from './MainPage/MainPage';
 import BossOfManage from './components/BossOfManage/BossOfManage';
 import Marketing from './components/Marketing/Marketig';
-/* 
 import SiteAdministrator from './components/SiteAdministrator/SiteAdministrator';
 import BossOfCommerce from './components/BossOfCommerce/BossOfCommerce'; 
-*/
 
 let viewsArr = [
   {
@@ -19,7 +17,7 @@ let viewsArr = [
   },
   {
     nameView: 'Secretary',
-    user: 'jorgelina',
+    user: 'jennifer',
     active: false,
   },
   {
@@ -39,7 +37,7 @@ let viewsArr = [
   },
   {
     nameView: 'Marketing',
-    user: 'marketing',
+    user: 'cookie',
     active: false,
   },
   {
@@ -49,12 +47,12 @@ let viewsArr = [
   },
   {
     nameView: 'SiteAdministrator',
-    user: 'nameUser',
+    user: 'foxMulder',
     active: false,
   },
   {
     nameView: 'BossOfCommerce',
-    user: 'nameUser',
+    user: 'jorgelina',
     active: false,
   }
 ];
@@ -83,7 +81,7 @@ const App = () => {
   const renderView = userLoged =>
     (userLoged === 'default')
       ? <MainPage goToVirtualOffice={redirect} />
-      : (userLoged === 'jorgelina') 
+      : (userLoged === 'jennifer') 
         ? <Secretary exit={exitVirtualOffice}/>
         : (userLoged === 'felipeRuiz')
           ? <GeneralManager fnExit={exitVirtualOffice}/>
@@ -93,9 +91,13 @@ const App = () => {
               ? <Cashier fnExit={exitVirtualOffice}/>
               : (userLoged === 'nedBigby')
                 ? <HouseAgent fnExit={exitVirtualOffice} />
-                : (userLoged === 'marketing')
+                : (userLoged === 'cookie')
                   ? <Marketing fnExit={exitVirtualOffice}/>
-                  : <h1>404 not Found</h1>
+                  : (userLoged === 'foxMulder')
+                    ? <SiteAdministrator fnExit={exitVirtualOffice}/>
+                    : (userLoged === 'jorgelina')
+                      ? <BossOfCommerce fnExit={exitVirtualOffice}/>
+                      : <h1>404 not Found</h1>
 
   ;
 

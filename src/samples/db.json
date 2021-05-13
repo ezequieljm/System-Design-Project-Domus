@@ -7,7 +7,7 @@
     },
     {
       "id": "2",
-      "usuario": "jorgelina",
+      "usuario": "jennifer",
       "pass": "secretaria"
     },
     {
@@ -27,8 +27,18 @@
     },
     {
       "id": "6", 
-      "usuario": "marketing",
-      "pass": "mark"
+      "usuario": "cookie",
+      "pass": "marketing"
+    },
+    {
+      "id": "7",
+      "usuario":"foxMulder",
+      "pass": "sitioadmin"
+    },
+    {
+      "id": "8",
+      "usuario":"jorgelina",
+      "pass": "comercio"
     }
   ]
 }

@@ -1,7 +1,7 @@
 import './stylesMarketing.css';
 import Button from '@material-ui/core/Button';
 
-const Marketing = ({fnExit}) => {
+export default function Marketing({fnExit}) {
   return (
     <>
     <div className="contenedor">
@@ -11,5 +11,3 @@ const Marketing = ({fnExit}) => {
     </>
   )
 }
-
-export default Marketing;

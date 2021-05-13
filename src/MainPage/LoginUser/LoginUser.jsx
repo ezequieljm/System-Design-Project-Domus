@@ -3,6 +3,7 @@ import db from '../../samples/db.json';
 import './login.css';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
+import { Typography } from '@material-ui/core';
 
 const att = {user:false, pass:false, hepUs:"", hepPass: ""};
 
@@ -35,6 +36,7 @@ const LoginUser = ({setupVirtualOffice}) => {
 
   return (
     <div className="login">
+      <Typography variant="h4">Oficina Virtual</Typography>
       <form action="" className="form-control" onSubmit={checkeDatas}>
         <TextField 
           id="outlined-basic1" 

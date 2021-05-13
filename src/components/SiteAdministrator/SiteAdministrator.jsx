@@ -1,7 +1,10 @@
-const SiteAdministrator = () => {
-  return (
-    <h1>Site Administrator</h1>
-  )
-}
+import React from 'react';
 
-export default SiteAdministrator;
+export default function SiteAdministrator({fnExit}) {
+  return (
+    <>
+      <h1>Administrador del sitio</h1>
+      <button onClick={fnExit}>Salir</button>
+    </>
+  )
+};

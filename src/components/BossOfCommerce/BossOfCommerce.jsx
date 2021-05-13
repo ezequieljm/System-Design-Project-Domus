@@ -1,7 +1,10 @@
-const BossOfCommerce = () => {
-  return (
-    <h1>Boss of Commerce</h1>
-  )
-}
+import React from 'react';
 
-export default BossOfCommerce;
+export default function BossOfCommerce({fnExit}) {
+  return (
+    <>
+      <h1>Jefa de Comercialización</h1>
+      <button onClick={fnExit}>Salir</button>
+    </>
+  )
+};
