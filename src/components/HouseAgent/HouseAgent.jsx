@@ -80,7 +80,7 @@ export default function HouseAgent({fnExit}) {
     <div className={classes.root}>
       <CssBaseline />
       <AppBar position="fixed"className={classes.appBarNav}>
-      <Toolbar />
+        <Toolbar />
         <div className={classes.toolBar}>
           <Tabs 
             value={value} 

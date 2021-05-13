@@ -95,11 +95,13 @@ export function CalendarVertical({setDayTwo}) {
     <div style={{boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)'}}>
       <DatePicker
         autoOk
+        orientation="landscape"
         variant="static"
-        openTo="year"
+        openTo="date"
         value={selectedDate}
         onChange={handleDateChange}
         shouldDisableDate={disableRandomDates}
+        disableToolbar
       />
     </div>
   )
