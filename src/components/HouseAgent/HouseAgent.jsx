@@ -53,6 +53,7 @@ function HerramientasPropiedades({ hanList, inx, }) {
 };
 
 function HerramientasAgenda({ hanList, inx }) {
+
   return (
     <List>
       <ListItem button key={'Mostrar Agenda'} selected={inx === 0} onClick={e => hanList(e, 0)} >

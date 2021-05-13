@@ -7,21 +7,26 @@ import {
   AccordionDetails,
   Typography,
   Button,
-  Divider,
   Table,
   TableContainer,
   TableHead,
   TableBody,
   TableCell,
   TableRow,
-  Paper,
+  TextField,
+  Grow,
 } from '@material-ui/core'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { ModalDelete } from './ModalDelete';
+import { MuiPickersUtilsProvider, KeyboardDateTimePicker } from "@material-ui/pickers";
+import esLocale from "date-fns/locale/es";
+import DateFnsUtils from "@date-io/date-fns"
+import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: "100%"
+    width: "100%",
+    padding: '1rem'
   },
   heading: {
     fontSize: theme.typography.pxToRem(16)
@@ -66,53 +71,58 @@ const useStyles = makeStyles((theme) => ({
 
 const arr = [
   {
-    title: "Half life",
+    title: "Visita Mansión CJ",
     description: {
+      desBrev: 'Ir a la casa en Grove Street',
       fecha: new Date().toLocaleDateString(),
       hora: new Date().toLocaleTimeString(),
-      agente: "Gordon Freeman",
+      agente: "Carl Johnson",
       propiedad: "4352",
       estado: 'En Proceso'
     }
   },
   {
-    title: "Raccoon City",
+    title: "Visita laboratorio",
     description: {
+      desBrev: 'Ir a Laboratorio en Raccoon City',
+      fecha: new Date().toLocaleDateString(),
+      hora: new Date().toLocaleTimeString(),
+      agente: "Leon Kennedy",
+      propiedad: "4352",
+      estado: 'Cancelada'
+    }
+  },
+  {
+    title: "Cobrar Alquiler",
+    description: {
+      desBrev: 'Controlar los alquileres de Silent Hill',
+      fecha: new Date().toLocaleDateString(),
+      hora: new Date().toLocaleTimeString(),
+      agente: "Alan Wake",
+      propiedad: "4352",
+      estado: 'En Proceso'
+    }
+  },
+  {
+    title: "Visita Freeman",
+    description: {
+      desBrev: 'Visitar la casa Freeman en ciudad 17',
       fecha: new Date().toLocaleDateString(),
       hora: new Date().toLocaleTimeString(),
       agente: "Gordon Freeman",
+      propiedad: "4352",
+      estado: 'Cancelada'
+    }
+  },
+  {
+    title: "Reunion Durotan",
+    description: {
+      desBrev: 'Hablar con el nuevo cliente Durotan',
+      fecha: new Date().toLocaleDateString(),
+      hora: new Date().toLocaleTimeString(),
+      agente: "Ned Bigby",
       propiedad: "4352",
       estado: 'Finalizada'
-    }
-  },
-  {
-    title: "Dead Space",
-    description: {
-      fecha: new Date().toLocaleDateString(),
-      hora: new Date().toLocaleTimeString(),
-      agente: "Gordon Freeman",
-      propiedad: "4352",
-      estado: 'Cancelada'
-    }
-  },
-  {
-    title: "Dead Space",
-    description: {
-      fecha: new Date().toLocaleDateString(),
-      hora: new Date().toLocaleTimeString(),
-      agente: "Gordon Freeman",
-      propiedad: "4352",
-      estado: 'Cancelada'
-    }
-  },
-  {
-    title: "Dead Space",
-    description: {
-      fecha: new Date().toLocaleDateString(),
-      hora: new Date().toLocaleTimeString(),
-      agente: "Gordon Freeman",
-      propiedad: "4352",
-      estado: 'Cancelada'
     }
   }
 ];
@@ -142,14 +152,64 @@ function Row({ row }) {
   );
 }
 
+function ComponentEditAppointment({setOptionApp}) {
+  const [selectedDate, handleDateChange] = React.useState(new Date().toLocaleString());
+  return (
+    <Grow in>
+      <div style={{display: 'flex', justifyContent: 'space-around', alignItems: 'center', marginTop: '1rem'}}>
+        <MuiPickersUtilsProvider utils={DateFnsUtils} locale={esLocale}>
+          <KeyboardDateTimePicker
+            value={selectedDate}
+            onChange={handleDateChange}
+            label="Fecha y Hora"
+            format="dd/MM/yyyy hh:mm a"
+            helperText="Selecciona una Fecha y Hora"
+          />
+        </MuiPickersUtilsProvider>
+        <TextField
+          select
+          label="Agente"
+          SelectProps={{native: true,}}
+          helperText="Selecciona un agente inmobiliario"
+        >
+          {
+            ['Ned Bigby', 'Gordon Freeman', 'Feynman'].map(
+              agent => <option key={agent} value={agent}>{agent}</option>
+            )
+          }
+        </TextField>
+        <TextField 
+          label="Propiedad" 
+          helperText="Ingrese el código de la propiedad" 
+          defaultValue="6853"
+        >
+        </TextField>
+        <Button size="small" variant="contained" onClick={() => setOptionApp(2)}>
+          Confirmar
+        </Button>
+      </div>
+    </Grow>
+  )
+}
+
+function EditedActivity() {
+  return (
+    <Grow in>
+      <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', marginTop: '1rem'}}>
+        <CheckCircleOutlineIcon style={{color: 'green'}}/>
+        <Typography variant="p">Actividad editada</Typography >
+      </div>
+    </Grow>
+  )
+}
 export default function DetailedAccordion() {
   const classes = useStyles();
-  const [openEdit, setOpenEdit] = React.useState(false);
+  const [openEdit, setOpenEdit] = React.useState(0);
 
   return (
-    <div className={classes.root}>
+    <>
       {arr.map((appointment) => (
-        <Accordion defaultExpanded >
+        <Accordion style={{border: '1px grey solid'}} onChange={e => setOpenEdit(0)}>
           <AccordionSummary expandIcon={<ExpandMoreIcon style={{color: 'grey'}}/>} id="panel1c-header">
             <div className={classes.column}>
               <Typography className={classes.heading}>
@@ -158,7 +218,7 @@ export default function DetailedAccordion() {
             </div>
             <div className={classes.column}>
               <Typography className={classes.secondaryHeading}>
-                Some descripttion random
+                {appointment.description.desBrev}
               </Typography>
             </div>
           </AccordionSummary>
@@ -181,18 +241,19 @@ export default function DetailedAccordion() {
                   </TableBody>
                 </Table>
               </TableContainer>
-              {openEdit && <Typography variant="h1">Open Edit</Typography>}
+              {openEdit === 1 && <ComponentEditAppointment setOptionApp={setOpenEdit}/>}
+              {openEdit === 2 && <EditedActivity />}
             </div>
           </AccordionDetails>
-          <Divider style={{background: 'grey',}}></Divider>
           <AccordionActions style={{background: 'white',}}>
-            <Button size="small" variant="contained" onClick={() => setOpenEdit(!openEdit)}>
+            {appointment.description.estado === 'Cancelada' && <Button style={{color:"green"}} size="small">Restablecer</Button>}
+            <Button size="small" color="primary" onClick={() => setOpenEdit(1)}>
               Editar
             </Button>
             <ModalDelete />
           </AccordionActions>
         </Accordion>
       ))}
-    </div>
+    </>
   );
 }

@@ -56,6 +56,8 @@ function RecipeReviewCard({data}) {
     setExpanded(!expanded);
   };
 
+  const setColor = state => state === 'Disponible' ? 'green' : 'red';
+
   return (
     <Card elevation={5} className={classes.root}>
       <CardHeader
@@ -71,6 +73,7 @@ function RecipeReviewCard({data}) {
         <Typography variant="body2" color="textSecondary" component="p">
           {data.description}
         </Typography>
+        <Typography variant="h6" style={{color: setColor(data.available)}}>{data.available}</Typography>
       </CardContent>
       <CardActions disableSpacing>
         <IconButton

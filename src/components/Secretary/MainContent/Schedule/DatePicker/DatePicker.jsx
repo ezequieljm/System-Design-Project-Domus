@@ -78,13 +78,12 @@ export function CalendarCustom({setDayTwo}) {
   )
 };
 
-export function CalendarVertical({setDayTwo}) {
+export function CalendarVertical() {
 
   const [selectedDate, setSelectedDate] = React.useState(new Date());
 
   const handleDateChange = date => {
     setSelectedDate(date);
-    setDayTwo(new Date(date).toLocaleDateString());
   };
 
   function disableRandomDates(day, pickerProps) {

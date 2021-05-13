@@ -6,9 +6,7 @@ import {
   Grow, 
   Paper, 
   FormControl, 
-  Input, 
   InputLabel, 
-  FormHelperText, 
   Button, 
   FormGroup, 
   FormControlLabel, 
@@ -109,11 +107,6 @@ function CheckboxLabels() {
 
 export default function NewHouse() {
   const classes = useStyles();
-
-  const submitedDatas = e => {
-    e.preventDefault();
-    alert("Data submited")
-  };
 
   const [kindHouse, setKindHouse] = React.useState('Departamento');
   const handleChangeKindHouse = e => {

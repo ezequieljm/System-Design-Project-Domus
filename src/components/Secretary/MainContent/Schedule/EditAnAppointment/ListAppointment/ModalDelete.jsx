@@ -42,7 +42,7 @@ export function ModalDelete() {
 
   return (
     <div>
-      <Button type="button" size="small" variant="contained" onClick={handleOpen}>
+      <Button type="button" size="small" color="secondary" onClick={handleOpen}>
         Eliminar
       </Button>
       <Modal
