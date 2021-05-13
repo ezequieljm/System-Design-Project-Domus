@@ -210,7 +210,7 @@ export default function DetailedAccordion() {
     <>
       {arr.map((appointment) => (
         <Accordion style={{border: '1px grey solid'}} onChange={e => setOpenEdit(0)}>
-          <AccordionSummary expandIcon={<ExpandMoreIcon style={{color: 'grey'}}/>} id="panel1c-header">
+          <AccordionSummary expandIcon={<ExpandMoreIcon style={{color: 'grey'}}/>}>
             <div className={classes.column}>
               <Typography className={classes.heading}>
                 {appointment.title}
