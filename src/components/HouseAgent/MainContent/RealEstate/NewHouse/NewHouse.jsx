@@ -161,38 +161,38 @@ export default function NewHouse() {
             <div id="location" >
               <Typography variant="h6">Ubicación</Typography>
               <div style={{display: 'flex', justifyContent: 'space-around', marginBottom: '1rem'}}>
-                <FormControl required autofocus fullWidth style={{marginRight: '2rem'}}>
-                  <TextField variant="outlined" label="País" />
+                <FormControl fullWidth style={{marginRight: '2rem'}}>
+                  <TextField required autofocus variant="outlined" label="País" />
                 </FormControl>
-                <FormControl required fullWidth autofocus style={{marginRight: '2rem'}}>
-                  <TextField variant="outlined" label="Provincia" />
+                <FormControl fullWidth autofocus style={{marginRight: '2rem'}}>
+                  <TextField required variant="outlined" label="Provincia" />
                 </FormControl>
-                <FormControl required fullWidth autofocus>
-                  <TextField variant="outlined" label="Localidad" />
+                <FormControl fullWidth autofocus>
+                  <TextField required variant="outlined" label="Localidad" />
                 </FormControl>
               </div>
 
               <div style={{display: 'flex', justifyContent: 'space-around', marginBottom: '1rem'}}>
-                <FormControl required autofocus fullWidth style={{marginRight: '2rem'}}>
-                  <TextField variant="outlined" label="Barrio" />
+                <FormControl autofocus fullWidth style={{marginRight: '2rem'}}>
+                  <TextField required variant="outlined" label="Barrio" />
                 </FormControl>
-                <FormControl required autofocus fullWidth style={{marginRight: '2rem'}}>
-                  <TextField variant="outlined" label="Dirección" />
+                <FormControl autofocus fullWidth style={{marginRight: '2rem'}}>
+                  <TextField required variant="outlined" label="Dirección" />
                 </FormControl>
-                <FormControl required autofocus fullWidth>
-                  <TextField variant="outlined" label="Calle" />
+                <FormControl autofocus fullWidth>
+                  <TextField required variant="outlined" label="Calle" />
                 </FormControl>
               </div>
               
               <div style={{display: 'flex', justifyContent: 'space-around', marginBottom: '1rem'}}>
-                <FormControl required autofocus fullWidth style={{marginRight: '2rem'}}>
-                  <TextField variant="outlined" label="Piso" />
+                <FormControl autofocus fullWidth style={{marginRight: '2rem'}}>
+                  <TextField required variant="outlined" label="Piso" />
                 </FormControl>
-                <FormControl required autofocus fullWidth style={{marginRight: '2rem'}}>
-                  <TextField variant="outlined" label="Número" />
+                <FormControl autofocus fullWidth style={{marginRight: '2rem'}}>
+                  <TextField required variant="outlined" label="Número" />
                 </FormControl>
-                <FormControl required autofocus fullWidth>
-                  <TextField variant="outlined" label="Código Postal" />
+                <FormControl autofocus fullWidth>
+                  <TextField required variant="outlined" label="Código Postal" />
                 </FormControl>
               </div>
             </div>
@@ -204,27 +204,27 @@ export default function NewHouse() {
                   <TextField variant="outlined" label="Baño" type="number" />
                 </FormControl>
 
-                <FormControl required autofocus fullWidth style={{marginRight: '2rem'}}>
-                  <TextField variant="outlined" label="Dormitorios" type="number" />
+                <FormControl autofocus fullWidth style={{marginRight: '2rem'}}>
+                  <TextField required variant="outlined" label="Dormitorios" type="number" />
                 </FormControl>
 
-                <FormControl required autofocus fullWidth >
-                  <TextField variant="outlined" label="Suites" type="number" />
+                <FormControl autofocus fullWidth >
+                  <TextField required variant="outlined" label="Suites" type="number" />
                 </FormControl>
               </div>
             </div>
 
             <div style={{display: 'flex', justifyContent: 'space-between', marginBottom: '1rem'}}>
-              <FormControl required autofocus fullWidth style={{paddingRight: '2rem'}}>
-                <TextField variant="outlined" label="Antiguedad" type="number" />
+              <FormControl autofocus fullWidth style={{paddingRight: '2rem'}}>
+                <TextField required variant="outlined" label="Antiguedad" type="number" />
               </FormControl>
 
-              <FormControl required autofocus fullWidth style={{paddingRight: '2rem'}}>
-                <TextField variant="outlined" label="Espacios" type="number" />
+              <FormControl autofocus fullWidth style={{paddingRight: '2rem'}}>
+                <TextField required variant="outlined" label="Espacios" type="number" />
               </FormControl>
 
-              <FormControl required autofocus fullWidth >
-                <TextField variant="outlined" label="Artefactos" type="number" />
+              <FormControl autofocus fullWidth >
+                <TextField required variant="outlined" label="Artefactos" type="number" />
               </FormControl>
             </div>
 
@@ -243,16 +243,16 @@ export default function NewHouse() {
               </div>
 
               <div style={{width: '50%'}}>
-                <FormControl required autofocus fullWidth >
-                  <TextField variant="outlined" label="Precio" type="number" />
+                <FormControl autofocus fullWidth >
+                  <TextField required variant="outlined" label="Precio" type="number" />
                 </FormControl>
               </div>
             </div>
 
             <div style={{marginBottom: '1rem'}}>
               <div style={{marginBottom: '1rem'}}>
-                <FormControl required autofocus fullWidth>
-                  <TextField variant="outlined" label="Descripcion" type="text" helperText="Breve descripción de la propiedad" />
+                <FormControl autofocus fullWidth>
+                  <TextField required variant="outlined" label="Descripcion" type="text" helperText="Breve descripción de la propiedad" />
                 </FormControl>
               </div>
               <div style={{marginBottom: '1rem'}}>
@@ -270,16 +270,16 @@ export default function NewHouse() {
             <div id="propietario" style={{marginBottom: '1rem'}}>
               <Typography variant="h6">Datos del propietario</Typography>
               <div style={{display: 'flex', justifyContent: 'space-between', marginBottom: '1rem'}}>
-                <FormControl required autofocus fullWidth style={{marginRight: '2rem'}}>
-                  <TextField variant="outlined" label="Número de Cliente" type="number" />
+                <FormControl autofocus fullWidth style={{marginRight: '2rem'}}>
+                  <TextField required variant="outlined" label="Número de Cliente" type="number" />
                 </FormControl>
 
-                <FormControl required autofocus fullWidth style={{marginRight: '2rem'}}>
-                  <TextField variant="outlined" label="Nombre" type="text" />
+                <FormControl autofocus fullWidth style={{marginRight: '2rem'}}>
+                  <TextField required variant="outlined" label="Nombre" type="text" />
                 </FormControl>
 
-                <FormControl required autofocus fullWidth >
-                  <TextField variant="outlined" label="Apellido" type="text" />
+                <FormControl autofocus fullWidth >
+                  <TextField required variant="outlined" label="Apellido" type="text" />
                 </FormControl>
               </div>
 
@@ -292,23 +292,23 @@ export default function NewHouse() {
               </div>
 
               <div style={{marginBottom: '1rem', display: 'flex', alignItems: 'center'}}>
-                <FormControl required autofocus fullWidth style={{marginRight: '2rem'}}>
-                  <TextField variant="outlined" label="DNI" type="number" />
+                <FormControl autofocus fullWidth style={{marginRight: '2rem'}}>
+                  <TextField required variant="outlined" label="DNI" type="number" />
                 </FormControl>
 
-                <FormControl required autofocus fullWidth style={{marginRight: '2rem'}}>
-                  <TextField variant="outlined" label="Teléfono" type="number" />
+                <FormControl autofocus fullWidth style={{marginRight: '2rem'}}>
+                  <TextField required variant="outlined" label="Teléfono" type="number" />
                 </FormControl>
 
-                <FormControl required autofocus fullWidth >
-                  <TextField variant="outlined" label="Email" type="text" />
+                <FormControl autofocus fullWidth >
+                  <TextField required variant="outlined" label="Email" type="text" />
                 </FormControl>
               </div>
             </div>
 
             <div style={{marginBottom: '1rem'}}>
-              <FormControl required autofocus fullWidth>
-                <TextField variant="outlined" label="Dirección" type="text" />
+              <FormControl autofocus fullWidth>
+                <TextField required variant="outlined" label="Dirección" type="text" />
               </FormControl>
             </div>
 
