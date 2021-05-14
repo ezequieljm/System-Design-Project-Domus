@@ -179,7 +179,6 @@ export default function Secretary({exit}) {
 
   const handleChange = (event, newValue) => setValue(newValue);
   const handleListItemClick = (event, index) => setSelectedIndex(index);
-  const getDate = () => new Date().toDateString();
 
   return (
     <div className={classes.root}>
@@ -197,16 +196,22 @@ export default function Secretary({exit}) {
               <Tab label="Agenda" />
               <Tab label="Solicitudes" />
             </Tabs>
-            <Typography style={{paddingRight: '2rem'}}>{getDate()}</Typography>
+            <Typography style={{paddingRight: '2rem'}}>
+              Viernes 14 de Mayo 2021
+            </Typography>
           </div>
       </AppBar>
       <AppBar position="fixed" className={classes.appBarMain}>
         <Toolbar className={classes.toolBar}>
           <div className={classes.divsAppbar}>
             <BusinessCenter />
-            <Typography variant="h5" noWrap>Oficina Virtual</Typography>
+            <Typography variant="h5" noWrap>
+              Oficina Virtual
+            </Typography>
             <ArrowForwardIos />
-            <Typography variant="p" noWrap>Secretaría</Typography>
+            <Typography variant="subtitle1" noWrap>
+              Secretaría
+            </Typography>
           </div>
           <div className={classes.divsAppbar}>
             <Today />

@@ -101,7 +101,7 @@ export default function HouseAgent({fnExit}) {
             <BusinessCenter />
             <Typography variant="h5" noWrap>Oficina Virtual</Typography>
             <ArrowForwardIos />
-            <Typography variant="p" noWrap>Agente Inmobiliario</Typography>
+            <Typography variant="subtitle1" noWrap>Agente Inmobiliario</Typography>
           </div>
           <div className={classes.appBarMainIconsUs}>
             <Today />
@@ -144,4 +144,4 @@ export default function HouseAgent({fnExit}) {
       </main>
     </div>
   );
-}
+};

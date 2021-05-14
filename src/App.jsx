@@ -5,7 +5,7 @@ import Cashier from './components/Cashier/Cashier';
 import HouseAgent from './components/HouseAgent/HouseAgent';
 import MainPage from './MainPage/MainPage';
 import BossOfManage from './components/BossOfManage/BossOfManage';
-import Marketing from './components/Marketing/Marketig';
+import Marketing from './components/Marketing/Marketing';
 import SiteAdministrator from './components/SiteAdministrator/SiteAdministrator';
 import BossOfCommerce from './components/BossOfCommerce/BossOfCommerce'; 
 

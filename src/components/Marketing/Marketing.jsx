@@ -30,7 +30,7 @@ import {
   Today, 
   BusinessCenter, 
 } from '@material-ui/icons';
-import { useStyles, } from "./stylesAdministrator";
+import { useStyles, } from "./stylesMarketing";
 
 const toolsPage = [
   {
@@ -51,7 +51,7 @@ const toolsPage = [
   },
 ];
 
-export default function SiteAdministrator({fnExit}) {
+export default function Marketing({fnExit}) {
   const [value, setValue] = React.useState(0);
   const [selectedIndex, setSelectedIndex] = React.useState(0);
 
@@ -86,13 +86,13 @@ export default function SiteAdministrator({fnExit}) {
             </Typography>
             <ArrowForwardIos />
             <Typography variant="subtitle1" noWrap>
-              Administración del sitio
+              Marketing
             </Typography>
           </div>
           <div className={classes.appBarMainIconsUs}>
             <Today />
             <NotificationsNone />
-            <Avatar>F</Avatar>
+            <Avatar>C</Avatar>
             <Button variant="contained" color="secondary" onClick={fnExit}>
               Salir
             </Button>
@@ -125,9 +125,6 @@ export default function SiteAdministrator({fnExit}) {
       <main className={classes.content}>
         <Toolbar />
         <Toolbar />
-        <Typography variant="h1">
-          Administrador del Sitio
-        </Typography>
       </main>
     </div>
   );
