@@ -1,39 +1,35 @@
 import {
-  FormatListBulleted, 
-  Update, 
-  Print, 
-  Build, 
-  Settings, 
-  Refresh, 
-  Report, 
-  MenuBook,
-  AddBox,
-  Schedule,
-  PersonAdd,
-  Person,
-  Business,
-} from '@material-ui/icons'
+	FormatListBulleted,
+	Update,
+	Print,
+	Build,
+	Settings,
+	Refresh,
+	Report,
+	MenuBook,
+	AddBox,
+	Schedule,
+	PersonAdd,
+	Person,
+	Business,
+} from "@material-ui/icons";
 
 export const arrIconsList = [
-  <FormatListBulleted />, 
-  <Update />, 
-  <Print />, 
-  <Build />, 
-  <Settings />, 
-  <Refresh />, 
-  <Report />, 
-  <MenuBook />
+	<FormatListBulleted />,
+	<Update />,
+	<Print />,
+	<Build />,
+	<Settings />,
+	<Refresh />,
+	<Report />,
+	<MenuBook />,
 ];
 
-export const arrIconsSchedule = [
-  <AddBox />,
-  <Schedule />
-];
+export const arrIconsSchedule = [<AddBox />, <Schedule />];
 
 export const arrIconsClient = [
-  <Update />,
-  <PersonAdd />,
-  <Business />,
-  <Person />
+	<Update />,
+	<PersonAdd />,
+	<Business />,
+	<Person />,
 ];
-
