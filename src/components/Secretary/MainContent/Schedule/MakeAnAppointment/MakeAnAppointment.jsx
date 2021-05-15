@@ -72,7 +72,7 @@ function MediaCard({ client, setView }) {
 function MenuOptions({ setView }) {
 	const clients = [
 		{
-			kind: "Cliente no registrado",
+			kind: "Cliente Nuevo",
 			description:
 				"Crea una cita para un cliente que no esta registrado en la empresa.",
 			value: 0,

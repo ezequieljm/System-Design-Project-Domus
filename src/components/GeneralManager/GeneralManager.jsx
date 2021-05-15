@@ -15,10 +15,7 @@ import {
 	Tabs,
 } from "@material-ui/core";
 import {
-	FormatListBulleted,
-	Add,
-	Home,
-	Schedule,
+	Assessment,
 	Settings,
 	Refresh,
 	Report,
@@ -31,6 +28,7 @@ import {
 	BusinessCenter,
 } from "@material-ui/icons";
 import { useStyles } from "./stylesGeneralManager";
+import MainReports from "./ReportsComponents/MainReports";
 
 const toolsPage = [
 	{
@@ -48,6 +46,13 @@ const toolsPage = [
 	{
 		text: "Consultar Manual",
 		icon: <MenuBook />,
+	},
+];
+
+const toolManage = [
+	{
+		text: "Comercialización",
+		icon: <Assessment />,
 	},
 ];
 
@@ -71,7 +76,7 @@ export default function GeneralManager({ fnExit }) {
 						onChange={handleNavbarTab}
 						indicatorColor='primary'
 						style={{ paddingLeft: "2rem" }}>
-						<Tab label='Gerencia' />
+						<Tab label='Reportes' />
 					</Tabs>
 					<Typography style={{ paddingRight: "2rem" }}>
 						Viernes 14 de Mayo 2021
@@ -108,6 +113,18 @@ export default function GeneralManager({ fnExit }) {
 				<Toolbar />
 				<div className={classes.drawerContainer}>
 					<List>
+						{toolManage.map((tool, index) => (
+							<ListItem
+								button
+								key={tool.text}
+								selected={selectedIndex === index}
+								onClick={(event) => handleListItemClick(event, index)}>
+								<ListItemIcon>{tool.icon}</ListItemIcon>
+								<ListItemText primary={tool.text} />
+							</ListItem>
+						))}
+					</List>
+					<List>
 						{toolsPage.map((tool, index) => (
 							<ListItem
 								button
@@ -124,7 +141,7 @@ export default function GeneralManager({ fnExit }) {
 			<main className={classes.content}>
 				<Toolbar />
 				<Toolbar />
-				<Typography variant='h1'>Gerencia</Typography>
+				<MainReports />
 			</main>
 		</div>
 	);
