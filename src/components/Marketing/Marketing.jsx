@@ -14,16 +14,7 @@ import {
 	Tab,
 	Tabs,
 } from "@material-ui/core";
-import {
-	FormatListBulleted,
-	Add,
-	Home,
-	Schedule,
-	Settings,
-	Refresh,
-	Report,
-	MenuBook,
-} from "@material-ui/icons";
+import { Settings, Refresh, Report, MenuBook, Home } from "@material-ui/icons";
 import {
 	ArrowForwardIos,
 	NotificationsNone,
@@ -31,6 +22,7 @@ import {
 	BusinessCenter,
 } from "@material-ui/icons";
 import { useStyles } from "./stylesMarketing";
+import MainContent from "./MainContent";
 
 const toolsPage = [
 	{
@@ -48,6 +40,13 @@ const toolsPage = [
 	{
 		text: "Consultar Manual",
 		icon: <MenuBook />,
+	},
+];
+
+const toolsView = [
+	{
+		text: "Catálogo",
+		icon: <Home />,
 	},
 ];
 
@@ -108,6 +107,18 @@ export default function Marketing({ fnExit }) {
 				<Toolbar />
 				<div className={classes.drawerContainer}>
 					<List>
+						{toolsView.map((tool, index) => (
+							<ListItem
+								button
+								key={tool.text}
+								selected={selectedIndex === index}
+								onClick={(event) => handleListItemClick(event, index)}>
+								<ListItemIcon>{tool.icon}</ListItemIcon>
+								<ListItemText primary={tool.text} />
+							</ListItem>
+						))}
+					</List>
+					<List>
 						{toolsPage.map((tool, index) => (
 							<ListItem
 								button
@@ -124,6 +135,7 @@ export default function Marketing({ fnExit }) {
 			<main className={classes.content}>
 				<Toolbar />
 				<Toolbar />
+				<MainContent />
 			</main>
 		</div>
 	);
