@@ -6,13 +6,11 @@ import { PictureAsPdf, ArrowForwardIos } from "@material-ui/icons";
 const useStyles = makeStyles((theme) => ({
 	root: {
 		flexGrow: 1,
-		border: "1px solid black",
 	},
 	paper: {
 		padding: theme.spacing(2),
 		textAlign: "center",
 		color: theme.palette.text.secondary,
-		border: "1px solid black",
 		minWidth: "200px",
 		display: "flex",
 		justifyContent: "space-between",
@@ -84,14 +82,12 @@ export function ReportsSale({ showList }) {
 
 								<div style={{ display: "flex" }}>
 									<Button
-										variant='contained'
 										onClick={() => alert("Download Report")}>
 										<PictureAsPdf
 											style={{ fontSize: "2rem", color: "green" }}
 										/>
 									</Button>
 									<Button
-										variant='contained'
 										style={{ marginLeft: ".5rem" }}
 										onClick={() => showList(2)}>
 										<ArrowForwardIos
@@ -121,14 +117,12 @@ export function ReportsRental({ showList }) {
 								<Typography variant='h6'>{report}</Typography>
 								<div style={{ display: "flex" }}>
 									<Button
-										variant='contained'
 										onClick={() => alert("Download Report")}>
 										<PictureAsPdf
 											style={{ fontSize: "2rem", color: "green" }}
 										/>
 									</Button>
 									<Button
-										variant='contained'
 										style={{ marginLeft: ".5rem" }}
 										onClick={() => showList(2)}>
 										<ArrowForwardIos
@@ -158,14 +152,12 @@ export function ReportsClients({ showList }) {
 								<Typography variant='h6'>{report}</Typography>
 								<div style={{ display: "flex" }}>
 									<Button
-										variant='contained'
 										onClick={() => alert("Download Report")}>
 										<PictureAsPdf
 											style={{ fontSize: "2rem", color: "green" }}
 										/>
 									</Button>
 									<Button
-										variant='contained'
 										style={{ marginLeft: ".5rem" }}
 										onClick={() => showList(2)}>
 										<ArrowForwardIos
@@ -194,14 +186,12 @@ export function ReportsHouses({ showList }) {
 								<Typography variant='h6'>{report}</Typography>
 								<div style={{ display: "flex" }}>
 									<Button
-										variant='contained'
 										onClick={() => alert("Download Report")}>
 										<PictureAsPdf
 											style={{ fontSize: "2rem", color: "green" }}
 										/>
 									</Button>
 									<Button
-										variant='contained'
 										style={{ marginLeft: ".5rem" }}
 										onClick={() => showList(2)}>
 										<ArrowForwardIos

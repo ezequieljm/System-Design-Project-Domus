@@ -16,9 +16,7 @@ const useStyles = makeStyles((theme) => ({
 		// border: "1px solid black",
 	},
 	calendarReports: {
-		display: "flex",
-		flexDirection: "row-reverse",
-		justifyContent: "center",
+		// border: "1px solid black",
 	},
 }));
 
@@ -35,9 +33,6 @@ export default function MainReports() {
 					<CalendarOfReports />
 					<CustomizedRadios setReport={setReport} setRepList={setRepList} />
 				</div>
-				{showReportOrList === 0 && (
-					<Typography variant='h4'>Nothing</Typography>
-				)}
 				{showReportOrList === 1 && (
 					<div>
 						{typeOfReport === "ventas" && <ReportsSale showList={setRepList} />}
@@ -52,7 +47,7 @@ export default function MainReports() {
 						)}
 					</div>
 				)}
-				{showReportOrList === 2 && <ListReport setRepList={setRepList} />}
+				{showReportOrList === 2 && <ListReport setRepList={setRepList} typeOfReport={typeOfReport}/>}
 			</Paper>
 		</>
 	);

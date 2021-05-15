@@ -8,109 +8,207 @@ import {
 	TableCell,
 	TableBody,
 	Table,
+	Typography,
 } from "@material-ui/core";
-const TAX_RATE = 0.07;
 
 const useStyles = makeStyles({
 	table: {
 		minWidth: 700,
+		maxHeight: 500,
 	},
 });
 
-function ccyFormat(num) {
-	return `${num.toFixed(2)}`;
+function createRow(
+	house,
+	type,
+	saleDate,
+	locale,
+	agent,
+	buyer,
+	ower,
+	wayToPay,
+	amount
+) {
+	return {
+		house,
+		type,
+		saleDate,
+		locale,
+		agent,
+		buyer,
+		ower,
+		wayToPay,
+		amount,
+	};
 }
-
-function priceRow(qty, unit) {
-	return qty * unit;
-}
-
-function createRow(desc, qty, unit) {
-	const price = priceRow(qty, unit);
-	return { desc, qty, unit, price };
-}
-
-function subtotal(items) {
-	return items.map(({ price }) => price).reduce((sum, i) => sum + i, 0);
-}
-
 const rows = [
-	createRow("Paperclips (Box)", 100, 1.15),
-	createRow("Paper (Case)", 10, 45.99),
-	createRow("Waste Basket", 2, 17.99),
+	createRow(
+		"1223",
+		"Casa",
+		"11/04/2021",
+		"Resistencia",
+		"Ned Bigby",
+		"Donald Trump",
+		"Johnny Bravo",
+		"Contado",
+		"340000"
+	),
+	createRow(
+		"7896",
+		"Casa",
+		"11/04/2021",
+		"Resistencia",
+		"Ned Bigby",
+		"Donald Trump",
+		"Johnny Bravo",
+		"Contado",
+		"876897"
+	),
+	createRow(
+		"2323",
+		"Casa",
+		"11/04/2021",
+		"Resistencia",
+		"Ned Bigby",
+		"Donald Trump",
+		"Johnny Bravo",
+		"Contado",
+		"100000"
+	),
 ];
 
-const invoiceSubtotal = subtotal(rows);
-const invoiceTaxes = TAX_RATE * invoiceSubtotal;
-const invoiceTotal = invoiceTaxes + invoiceSubtotal;
+const total = rows.reduce((acc, curr) => acc + Number(curr.amount), 0);
 
 export default function SaleList() {
 	const classes = useStyles();
 
 	return (
-		<TableContainer component={Paper}>
-			<Table className={classes.table} aria-label='spanning table'>
-				<TableHead>
-					<TableRow>
+		<TableContainer component={Paper} className={classes.table}>
+			<Table className={classes.table} stickyHeader>
+				<TableHead style={{ background: "#9fa8da" }}>
+					<TableRow >
 						<TableCell>Propiedad</TableCell>
 						<TableCell align='right'>Tipo de Inmueble</TableCell>
 						<TableCell align='right'>Fecha</TableCell>
 						<TableCell align='right'>Localidad</TableCell>
 						<TableCell align='right'>Agente</TableCell>
 						<TableCell align='right'>Comprador</TableCell>
-						<TableCell align='right'>Vendendor</TableCell>
+						<TableCell align='right'>Propietario</TableCell>
 						<TableCell align='right'>Forma de pago</TableCell>
 						<TableCell align='right'>Monto</TableCell>
 					</TableRow>
 				</TableHead>
 				<TableBody>
+					<TableRow >
+						<TableCell>
+							<Typography variant='h6'>Casa</Typography>
+						</TableCell>
+						<TableCell />
+						<TableCell />
+						<TableCell />
+						<TableCell />
+						<TableCell />
+						<TableCell />
+						<TableCell />
+						<TableCell />
+					</TableRow>
 					{rows.map((row) => (
-						<TableRow key={row.desc}>
-							<TableCell>{row.desc}</TableCell>
-							<TableCell align='right'>{row.qty}</TableCell>
-							<TableCell align='right'>{row.unit}</TableCell>
-							<TableCell align='right'>{ccyFormat(row.price)}</TableCell>
-							<TableCell align='right'>{row.desc}</TableCell>
-							<TableCell align='right'>{row.qty}</TableCell>
-							<TableCell align='right'>{row.unit}</TableCell>
-							<TableCell align='right'>{ccyFormat(row.price)}</TableCell>
-							<TableCell align='right'>{ccyFormat(row.price)}</TableCell>
+						<TableRow key={row.house}>
+							<TableCell>{row.house}</TableCell>
+							<TableCell align='right'>{row.type}</TableCell>
+							<TableCell align='right'>{row.saleDate}</TableCell>
+							<TableCell align='right'>{row.locale}</TableCell>
+							<TableCell align='right'>{row.agent}</TableCell>
+							<TableCell align='right'>{row.buyer}</TableCell>
+							<TableCell align='right'>{row.ower}</TableCell>
+							<TableCell align='right'>{row.wayToPay}</TableCell>
+							<TableCell align='right'>{row.amount}</TableCell>
 						</TableRow>
 					))}
 					<br />
-					<br />
-					<br />
 					<TableRow>
+						<TableCell colSpan={7}></TableCell>
 						<TableCell colSpan={1}>Subtotal</TableCell>
-						<TableCell align='right'>{ccyFormat(invoiceSubtotal)}</TableCell>
+						<TableCell align='right'>{total}</TableCell>
 					</TableRow>
-				</TableBody>
-			</Table>
-			<Table className={classes.table} aria-label='spanning table'>
-				<br />
-				<br />
-				<br />
-				<TableBody>
+					<br />
+					<br />
+
+					<TableRow >
+						<TableCell>
+							<Typography variant='h6'>Departamento</Typography>
+						</TableCell>
+						<TableCell />
+						<TableCell />
+						<TableCell />
+						<TableCell />
+						<TableCell />
+						<TableCell />
+						<TableCell />
+						<TableCell />
+					</TableRow>
 					{rows.map((row) => (
-						<TableRow key={row.desc}>
-							<TableCell>{row.desc}</TableCell>
-							<TableCell align='right'>{row.qty}</TableCell>
-							<TableCell align='right'>{row.unit}</TableCell>
-							<TableCell align='right'>{ccyFormat(row.price)}</TableCell>
-							<TableCell align='right'>{row.desc}</TableCell>
-							<TableCell align='right'>{row.qty}</TableCell>
-							<TableCell align='right'>{row.unit}</TableCell>
-							<TableCell align='right'>{ccyFormat(row.price)}</TableCell>
-							<TableCell align='right'>{ccyFormat(row.price)}</TableCell>
+						<TableRow key={row.house}>
+							<TableCell>{row.house}</TableCell>
+							<TableCell align='right'>Departamento</TableCell>
+							<TableCell align='right'>{row.saleDate}</TableCell>
+							<TableCell align='right'>{row.locale}</TableCell>
+							<TableCell align='right'>{row.agent}</TableCell>
+							<TableCell align='right'>{row.buyer}</TableCell>
+							<TableCell align='right'>{row.ower}</TableCell>
+							<TableCell align='right'>{row.wayToPay}</TableCell>
+							<TableCell align='right'>{row.amount}</TableCell>
 						</TableRow>
 					))}
 					<br />
+					<TableRow>
+						<TableCell colSpan={7}></TableCell>
+						<TableCell colSpan={1}>Subtotal</TableCell>
+						<TableCell align='right'>{total}</TableCell>
+					</TableRow>
 					<br />
+					<br />
+					<TableRow >
+						<TableCell>
+							<Typography variant='h6'>Cabaña</Typography>
+						</TableCell>
+						<TableCell />
+						<TableCell />
+						<TableCell />
+						<TableCell />
+						<TableCell />
+						<TableCell />
+						<TableCell />
+						<TableCell />
+					</TableRow>
+					{rows.map((row) => (
+						<TableRow key={row.house}>
+							<TableCell>{row.house}</TableCell>
+							<TableCell align='right'>Cabaña</TableCell>
+							<TableCell align='right'>{row.saleDate}</TableCell>
+							<TableCell align='right'>{row.locale}</TableCell>
+							<TableCell align='right'>{row.agent}</TableCell>
+							<TableCell align='right'>{row.buyer}</TableCell>
+							<TableCell align='right'>{row.ower}</TableCell>
+							<TableCell align='right'>{row.wayToPay}</TableCell>
+							<TableCell align='right'>{row.amount}</TableCell>
+						</TableRow>
+					))}
 					<br />
 					<TableRow>
+						<TableCell colSpan={7}></TableCell>
 						<TableCell colSpan={1}>Subtotal</TableCell>
-						<TableCell align='right'>{ccyFormat(invoiceSubtotal)}</TableCell>
+						<TableCell align='right'>{total}</TableCell>
 					</TableRow>
+					<br />
+					<br />
+
+					<TableRow>
+						<TableCell colSpan={1}>Total General</TableCell>
+						<TableCell align='right'>{total + total + total}</TableCell>
+					</TableRow>
+					<br />
+					<br />
 				</TableBody>
 			</Table>
 		</TableContainer>

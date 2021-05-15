@@ -1,11 +1,14 @@
 import React from "react";
 import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
-import Radio from "@material-ui/core/Radio";
-import RadioGroup from "@material-ui/core/RadioGroup";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import FormControl from "@material-ui/core/FormControl";
-import { Button } from "@material-ui/core";
+import {
+	Button,
+	FormControl,
+	FormControlLabel,
+	RadioGroup,
+	Radio,
+	Typography,
+} from "@material-ui/core";
 
 const useStyles = makeStyles({
 	root: {
@@ -77,7 +80,10 @@ export default function CustomizedRadios({ setReport, setRepList }) {
 
 	return (
 		<form action='' onSubmit={handleSubmitReport}>
-			<FormControl component='fieldset'>
+			<Typography variant='h5' style={{ marginBottom: "1rem" }}>
+				Tipo de Reporte
+			</Typography>
+			<FormControl component='fieldset' style={{ marginBottom: "1rem" }}>
 				<RadioGroup
 					style={{ display: "flex", flexDirection: "row" }}
 					defaultValue='ventas'
@@ -107,10 +113,12 @@ export default function CustomizedRadios({ setReport, setRepList }) {
 						onChange={(e) => setValueRadio(e.currentTarget.value)}
 					/>
 				</RadioGroup>
+			</FormControl>
+			<div style={{marginBottom: '1rem'}}>
 				<Button type='submit' variant='contained' color='primary'>
 					Mostrar
 				</Button>
-			</FormControl>
+			</div>
 		</form>
 	);
 }
