@@ -15,10 +15,8 @@ import {
 	Tabs,
 } from "@material-ui/core";
 import {
-	FormatListBulleted,
-	Add,
-	Home,
-	Schedule,
+	PersonAdd,
+	PersonAddDisabled,
 	Settings,
 	Refresh,
 	Report,
@@ -31,6 +29,8 @@ import {
 	BusinessCenter,
 } from "@material-ui/icons";
 import { useStyles } from "./stylesAdministrator";
+import AddNewUser from "./AddNewUser/AddNewUser";
+import DeleteUser from "./DeleteUser/DeleteUser";
 
 const toolsPage = [
 	{
@@ -48,6 +48,17 @@ const toolsPage = [
 	{
 		text: "Consultar Manual",
 		icon: <MenuBook />,
+	},
+];
+
+const toolsSiteAdmin = [
+	{
+		text: "Añadir",
+		icon: <PersonAdd />,
+	},
+	{
+		text: "Deshabilitar",
+		icon: <PersonAddDisabled />,
 	},
 ];
 
@@ -71,7 +82,7 @@ export default function SiteAdministrator({ fnExit }) {
 						onChange={handleNavbarTab}
 						indicatorColor='primary'
 						style={{ paddingLeft: "2rem" }}>
-						<Tab label='Propiedades' />
+						<Tab label='Empleados' />
 					</Tabs>
 					<Typography style={{ paddingRight: "2rem" }}>
 						{"Viernes 14 de Mayo 2021"}
@@ -108,6 +119,18 @@ export default function SiteAdministrator({ fnExit }) {
 				<Toolbar />
 				<div className={classes.drawerContainer}>
 					<List>
+						{toolsSiteAdmin.map((tool, index) => (
+							<ListItem
+								button
+								key={tool.text}
+								selected={selectedIndex === index}
+								onClick={(event) => handleListItemClick(event, index)}>
+								<ListItemIcon>{tool.icon}</ListItemIcon>
+								<ListItemText primary={tool.text} />
+							</ListItem>
+						))}
+					</List>
+					<List>
 						{toolsPage.map((tool, index) => (
 							<ListItem
 								button
@@ -124,7 +147,11 @@ export default function SiteAdministrator({ fnExit }) {
 			<main className={classes.content}>
 				<Toolbar />
 				<Toolbar />
-				<Typography variant='h1'>Administrador del Sitio</Typography>
+				{selectedIndex === 0 && <AddNewUser />}
+				{selectedIndex === 1 && <DeleteUser />}
+				{selectedIndex > 1 && (
+					<Typography variant='h4'>Herramientas de página</Typography>
+				)}
 			</main>
 		</div>
 	);
