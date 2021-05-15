@@ -31,6 +31,7 @@ import {
 	BusinessCenter,
 } from "@material-ui/icons";
 import { useStyles } from "./stylesCommerce";
+import MainContent from ".MainContent/MainContent";
 
 const toolsPage = [
 	{
@@ -71,7 +72,10 @@ export default function BossOfCommerce({ fnExit }) {
 						onChange={handleNavbarTab}
 						indicatorColor='primary'
 						style={{ paddingLeft: "2rem" }}>
-						<Tab label='Comercialización' />
+						<Tab label='Agenda' />
+						<Tab label='Reportes' />
+						<Tab label='Clientes' />
+						<Tab label='Propiedades' />
 					</Tabs>
 					<Typography style={{ paddingRight: "2rem" }}>
 						Viernes 14 de Mayo 2021
@@ -124,7 +128,7 @@ export default function BossOfCommerce({ fnExit }) {
 			<main className={classes.content}>
 				<Toolbar />
 				<Toolbar />
-				<Typography variant='h1'>Comercialización</Typography>
+				<MainContent val={value} inxTool={selectedIndex} />
 			</main>
 		</div>
 	);
