@@ -6,6 +6,11 @@ import {
 	Fade,
 	Backdrop,
 	Grow,
+	TextField,
+	FormControl,
+	MenuItem,
+	Select,
+	InputLabel,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { CheckCircleOutline } from "@material-ui/icons";
@@ -29,9 +34,14 @@ const useStyles = makeStyles((theme) => ({
 	mainContent: {
 		display: "flex",
 		flexDirection: "column",
+		padding: "1rem",
 	},
 	borderBlack: {
 		border: "1px solid black",
+	},
+	formControl: {
+		margin: theme.spacing(0),
+		minWidth: 120,
 	},
 }));
 
@@ -71,6 +81,157 @@ function TransitionsModal({ open, handleClose }) {
 	);
 }
 
+const validDataHouse = {
+	occupant: "Jill Valentine",
+	ower: "Albert Wesker",
+	rentalPrice: "7990.99",
+	date: "21/3/2021",
+	numberOfTransaction: "#AF3452",
+};
+
+function DataHouseForm() {
+	return (
+		<div>
+			<Typography variant='h5'>Datos del inmueble #FA1234</Typography>
+			<form action=''>
+				<div
+					style={{
+						display: "flex",
+						justifyContent: "space-between",
+						padding: "1rem",
+					}}>
+					<TextField
+						label='Inquilino'
+						disabled
+						defaultValue={validDataHouse.occupant}
+						fullWidth
+						variant='outlined'
+						style={{ marginRight: "2rem" }}
+					/>
+					<TextField
+						label='Propietario'
+						disabled
+						defaultValue={validDataHouse.ower}
+						fullWidth
+						variant='outlined'
+					/>
+				</div>
+				<div
+					style={{
+						display: "flex",
+						justifyContent: "space-between",
+						padding: "1rem",
+					}}>
+					<TextField
+						label='Precio de Alquiler'
+						disabled
+						defaultValue={validDataHouse.rentalPrice}
+						fullWidth
+						variant='outlined'
+						style={{ marginRight: "2rem" }}
+					/>
+					<TextField
+						label='Fecha de pago'
+						disabled
+						defaultValue={validDataHouse.date}
+						fullWidth
+						variant='outlined'
+					/>
+				</div>
+				<div
+					style={{
+						display: "flex",
+						justifyContent: "space-between",
+						padding: "1rem",
+					}}>
+					<TextField
+						label='Número de transacción'
+						disabled
+						defaultValue={validDataHouse.numberOfTransaction}
+						fullWidth
+						variant='outlined'
+					/>
+				</div>
+			</form>
+		</div>
+	);
+}
+
+function FormToFillOut() {
+	const [pay, setPay] = React.useState('');
+	const handleChange = e => {
+		setPay(e.target.value)
+	}
+
+	const classes = useStyles();
+	return (
+		<div>
+			<Typography variant='h5'>Registro de alquiler</Typography>
+			<Typography variant='subtitle1'>Complete los siguiente campos</Typography>
+			<form action=''>
+				<div
+					style={{
+						display: "flex",
+						justifyContent: "space-between",
+						padding: "1rem",
+					}}>
+					<TextField
+						label='Mes'
+						helperText='Mes de pago de alquiler'
+						fullWidth
+						variant='outlined'
+						style={{ marginRight: "2rem" }}
+					/>
+					<TextField
+						label='Año'
+						helperText='Año actual'
+						fullWidth
+						variant='outlined'
+					/>
+				</div>
+				<div
+					style={{
+						display: "flex",
+						justifyContent: "space-between",
+						padding: "1rem",
+					}}>
+					<TextField
+						label='Tasa de interes'
+						helperText='Interes por mora'
+						fullWidth
+						variant='outlined'
+						style={{ marginRight: "2rem" }}
+					/>
+					<TextField
+						label='Monto'
+						helperText='Total pagado'
+						fullWidth
+						variant='outlined'
+					/>
+				</div>
+				<div
+					style={{
+						display: "flex",
+						justifyContent: "space-between",
+						padding: "1rem",
+					}}>
+					<FormControl variant='filled' className={classes.formControl} fullWidth>
+						<InputLabel id='demo-simple-select-filled-label'>
+							Forma de pago
+						</InputLabel>
+						<Select value={pay} onChange={handleChange}>
+							<MenuItem value={40}>Efectivo</MenuItem>
+							<MenuItem value={10}>Cuenta Corriente</MenuItem>
+							<MenuItem value={20}>Tarjeta de Crédito</MenuItem>
+							<MenuItem value={30}>Caja de ahorro</MenuItem>
+						</Select>
+					</FormControl>
+				</div>
+			</form>
+		</div>
+	);
+}
+
 export default function DataHouse() {
 	const classes = useStyles();
 	const [open, setOpen] = React.useState(false);
@@ -88,12 +249,8 @@ export default function DataHouse() {
 
 	return (
 		<div className={classes.mainContent}>
-			<div className={classes.borderBlack}>
-				<Typography variant='h4'>Datos del inmueble</Typography>
-			</div>
-			<div className={classes.borderBlack}>
-				<Typography variant='h4'>Formulario para rellenar</Typography>
-			</div>
+			<DataHouseForm />
+			<FormToFillOut />
 			<form action='' onSubmit={handleOpen}>
 				<TransitionsModal open={open} handleClose={handleClose} />
 			</form>

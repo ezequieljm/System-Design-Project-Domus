@@ -142,7 +142,7 @@ function CollapsibleTable() {
 							<TableCell style={{ fontSize: "2rem" }}>Entradas</TableCell>
 						</TableRow>
 						<TableRow>
-							<TableCell style={{ background: "#90caf9" }}>
+							<TableCell style={{ background: "#90caf9", fontSize: '1rem' }}>
 								Caja de alquieres
 							</TableCell>
 							<TableCell />
@@ -159,10 +159,8 @@ function CollapsibleTable() {
 							<TableCell>Subtotal</TableCell>
 							<TableCell />
 						</TableRow>
-						<br />
-						<br />
 						<TableRow>
-							<TableCell style={{ background: "#90caf9" }}>
+							<TableCell style={{ background: "#90caf9", fontSize:'1rem' }}>
 								Caja de Ventas
 							</TableCell>
 							<TableCell />
@@ -179,19 +177,16 @@ function CollapsibleTable() {
 							<TableCell>Subtotal</TableCell>
 							<TableCell />
 						</TableRow>
-						<br />
 						<TableRow>
 							<TableCell colSpan={4} />
 							<TableCell>Total Ingresos</TableCell>
 							<TableCell />
 						</TableRow>
-
 						<TableRow>
 							<TableCell style={{ fontSize: "2rem" }}>Salidas</TableCell>
 						</TableRow>
-
 						<TableRow>
-							<TableCell style={{ background: "#90caf9" }}>
+							<TableCell style={{ background: "#90caf9", fontSize:'1rem' }}>
 								Caja de alquieres
 							</TableCell>
 							<TableCell />
@@ -208,10 +203,8 @@ function CollapsibleTable() {
 							<TableCell>Subtotal</TableCell>
 							<TableCell />
 						</TableRow>
-						<br />
-						<br />
 						<TableRow>
-							<TableCell style={{ background: "#90caf9" }}>
+							<TableCell style={{ background: "#90caf9", fontSize: '1rem' }}>
 								Caja de Ventas
 							</TableCell>
 							<TableCell />
@@ -228,14 +221,11 @@ function CollapsibleTable() {
 							<TableCell>Subtotal</TableCell>
 							<TableCell />
 						</TableRow>
-						<br />
 						<TableRow>
 							<TableCell colSpan={4} />
 							<TableCell>Total Egresos</TableCell>
 							<TableCell />
 						</TableRow>
-						<br />
-						<br />
 						<TableRow>
 							<TableCell colSpan={4} />
 							<TableCell>Total General</TableCell>

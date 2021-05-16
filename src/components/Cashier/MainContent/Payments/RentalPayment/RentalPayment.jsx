@@ -10,18 +10,17 @@ import {
 	Backdrop,
 	Fade,
 	Grow,
+	IconButton,
 } from "@material-ui/core";
-import { Search} from "@material-ui/icons";
-import IconButton from "@material-ui/core/IconButton";
+import { Search } from "@material-ui/icons";
 import DataHouse from "./DataHouse";
 
 const useStyles = makeStyles((theme) => ({
 	rootDiv: {
-		width: "80%",
-		height: "120px",
+		height: "160px",
 		display: "flex",
 		flexDirection: "column",
-		justifyContent: "space-between",
+		justifyContent: "center",
 		alignItems: "center",
 	},
 	btn: {
@@ -37,6 +36,10 @@ const useStyles = makeStyles((theme) => ({
 		border: "2px solid #000",
 		boxShadow: theme.shadows[5],
 		padding: theme.spacing(2, 4, 3),
+		textAlign: "center",
+	},
+	paperContent: {
+		padding: "1rem",
 	},
 }));
 
@@ -44,7 +47,13 @@ function TransitionsModal({ open, handleClose }) {
 	const classes = useStyles();
 
 	return (
-		<div>
+		<div
+			style={{
+				padding: "1rem",
+				display: "flex",
+				justifyContent: "center",
+				alignItems: "center",
+			}}>
 			<Button
 				type='submit'
 				variant='contained'
@@ -96,35 +105,44 @@ export default function RantalPayment({ changeInput }) {
 		<>
 			{currentView === 0 && (
 				<Grow in>
-					<Paper elevation={5}>
-						<Typography variant='h3'>Buscar Cliente</Typography>
-						<form className={classes.rootDiv} onSubmit={handleOpen}>
-							<TextField
-								label='Código del cliente'
-								InputProps={{
-									endAdornment: (
-										<InputAdornment>
-											<IconButton>
-												<Search />
-											</IconButton>
-										</InputAdornment>
-									),
-								}}
-								fullWidth
-								variant='outlined'
-								onChange={showChange}
-								required
-							/>
-							<TransitionsModal open={open} handleClose={handleClose} />
-						</form>
+					<Paper elevation={5} className={classes.paperContent}>
+						<Typography variant='h4'>Buscar Cliente</Typography>
+						<div className={classes.rootDiv}>
+							<form onSubmit={handleOpen} style={{ width: "80%" }}>
+								<TextField
+									label='Código del cliente'
+									InputProps={{
+										endAdornment: (
+											<InputAdornment>
+												<IconButton>
+													<Search />
+												</IconButton>
+											</InputAdornment>
+										),
+									}}
+									fullWidth
+									variant='outlined'
+									onChange={showChange}
+									required
+								/>
+								<TransitionsModal open={open} handleClose={handleClose} />
+							</form>
+						</div>
 					</Paper>
 				</Grow>
 			)}
 			{currentView === 1 && (
 				<Grow in>
 					<Paper elevation={5}>
-            <DataHouse />
-						<Button onClick={() => setView(0)}>Volver</Button>
+						<DataHouse />
+						<Button
+							onClick={() => setView(0)}
+							variant='contained'
+							color='secondary'
+							style={{marginBottom: '1rem', marginLeft: '1rem'}}
+							>
+							Volver
+						</Button>
 					</Paper>
 				</Grow>
 			)}

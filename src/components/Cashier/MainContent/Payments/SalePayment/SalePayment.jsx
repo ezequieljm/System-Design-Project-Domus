@@ -17,11 +17,10 @@ import DataHouseAndUser from "./DataHouseAndUser";
 
 const useStyles = makeStyles((theme) => ({
 	rootDiv: {
-		width: "80%",
-		height: "120px",
+		height: "160px",
 		display: "flex",
 		flexDirection: "column",
-		justifyContent: "space-between",
+		justifyContent: "center",
 		alignItems: "center",
 	},
 	btn: {
@@ -38,13 +37,22 @@ const useStyles = makeStyles((theme) => ({
 		boxShadow: theme.shadows[5],
 		padding: theme.spacing(2, 4, 3),
 	},
+	paperContent: {
+		padding: "1rem",
+	},
 }));
 
 function TransitionsModal({ open, handleClose }) {
 	const classes = useStyles();
 
 	return (
-		<div>
+		<div
+			style={{
+				padding: "1rem",
+				display: "flex",
+				justifyContent: "center",
+				alignItems: "center",
+			}}>
 			<Button
 				type='submit'
 				variant='contained'
@@ -96,27 +104,29 @@ export default function SalePayment() {
 		<>
 			{currentView === 0 && (
 				<Grow in>
-					<Paper elevation={5}>
-						<Typography variant='h3'>Buscar Propiedad</Typography>
-						<form className={classes.rootDiv} onSubmit={handleOpen}>
-							<TextField
-								label='Código de la propiedad'
-								InputProps={{
-									endAdornment: (
-										<InputAdornment>
-											<IconButton>
-												<Search />
-											</IconButton>
-										</InputAdornment>
-									),
-								}}
-								fullWidth
-								variant='outlined'
-								onChange={showChange}
-								required
-							/>
-							<TransitionsModal open={open} handleClose={handleClose} />
-						</form>
+					<Paper elevation={5} style={{ padding: "1rem" }}>
+						<Typography variant='h4'>Buscar Propiedad</Typography>
+						<div className={classes.rootDiv}>
+							<form onSubmit={handleOpen} style={{ width: "80%" }}>
+								<TextField
+									label='Código de la propiedad'
+									InputProps={{
+										endAdornment: (
+											<InputAdornment>
+												<IconButton>
+													<Search />
+												</IconButton>
+											</InputAdornment>
+										),
+									}}
+									fullWidth
+									variant='outlined'
+									onChange={showChange}
+									required
+								/>
+								<TransitionsModal open={open} handleClose={handleClose} />
+							</form>
+						</div>
 					</Paper>
 				</Grow>
 			)}
@@ -124,7 +134,13 @@ export default function SalePayment() {
 				<Grow in>
 					<Paper elevation={5}>
 						<DataHouseAndUser />
-						<Button onClick={() => setView(0)}>Volver</Button>
+						<Button
+							onClick={() => setView(0)}
+							variant="contained"
+							color="secondary"
+							style={{ marginBottom: "1rem", marginLeft: "1rem" }}>
+							Volver
+						</Button>
 					</Paper>
 				</Grow>
 			)}
