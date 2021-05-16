@@ -5,7 +5,7 @@ import {
 	MuiPickersUtilsProvider,
 	KeyboardDatePicker,
 } from "@material-ui/pickers";
-import { Typography } from "@material-ui/core";
+import { Typography, Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
@@ -14,13 +14,13 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-export default function CalendarOfReports() {
+export default function CalendarRange({ setList }) {
 	const [originDate, handleDateChange] = React.useState(new Date());
 	const [destinyDate, handleDestiny] = React.useState(new Date());
 	const classes = useStyles();
 	return (
 		<>
-			<Typography variant='h5' style={{ marginTop: "1rem" }}>
+			<Typography variant='h6' style={{ marginTop: "1rem" }}>
 				Seleccione un rango de fechas
 			</Typography>
 			<div
@@ -56,6 +56,13 @@ export default function CalendarOfReports() {
 						helperText='Ingrese una fecha '
 					/>
 				</MuiPickersUtilsProvider>
+				<Button
+					variant='contained'
+					color='primary'
+					style={{ marginLeft: "2rem" }}
+          onClick={() => setList(1)}>
+					Mostrar
+				</Button>
 			</div>
 		</>
 	);

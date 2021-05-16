@@ -25,6 +25,7 @@ import {
 import { useStyles } from "./stylesCashier";
 import { Settings, Refresh, Report, MenuBook } from "@material-ui/icons";
 import Payments from "./MainContent/Payments/Payments";
+import Movements from "./MainContent/Movements/Movements";
 
 const toolsPage = [
 	{
@@ -85,7 +86,7 @@ function ToolsMovements({ hanList, inx }) {
 			icon: <SyncAlt />,
 		},
 		{
-			text: "Transacciones",
+			text: "Movimientos de caja",
 			icon: <i className='far fa-handshake' style={{ fontSize: "1.5rem" }}></i>,
 		},
 	];
@@ -186,6 +187,7 @@ export default function Cashier({ fnExit }) {
 				<Toolbar />
 				<Toolbar />
 				{value === 0 && <Payments selectedIndex={selectedIndex} />}
+				{value === 1 && <Movements selectedIndex={selectedIndex} />}
 			</main>
 		</div>
 	);

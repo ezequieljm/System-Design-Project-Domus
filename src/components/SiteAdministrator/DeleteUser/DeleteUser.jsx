@@ -1,5 +1,5 @@
 import React from "react";
-import { Typography, Paper, Grow, Button } from "@material-ui/core";
+import { Typography, Paper, Grow } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import ListUsersJobs from './ListUsersJobs';
 

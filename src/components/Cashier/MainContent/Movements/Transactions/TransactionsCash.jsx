@@ -1,4 +1,3 @@
-import { Button, Typography } from "@material-ui/core";
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import {
@@ -12,12 +11,11 @@ import {
 	IconButton,
 	Collapse,
 	Box,
-	Modal,
-	Fade,
-	Backdrop,
+	Typography,
 	Grow,
 } from "@material-ui/core";
 import { KeyboardArrowDown, KeyboardArrowUp } from "@material-ui/icons";
+import CalendarRange from "./CalendarRange";
 
 const useRowStyles = makeStyles((theme) => ({
 	root: {
@@ -35,7 +33,6 @@ const useRowStyles = makeStyles((theme) => ({
 		border: "2px solid #000",
 		boxShadow: theme.shadows[5],
 		padding: theme.spacing(2, 4, 3),
-		textAlign: "center",
 	},
 }));
 
@@ -162,6 +159,8 @@ function CollapsibleTable() {
 							<TableCell>Subtotal</TableCell>
 							<TableCell />
 						</TableRow>
+						<br />
+						<br />
 						<TableRow>
 							<TableCell style={{ background: "#90caf9" }}>
 								Caja de Ventas
@@ -180,6 +179,7 @@ function CollapsibleTable() {
 							<TableCell>Subtotal</TableCell>
 							<TableCell />
 						</TableRow>
+						<br />
 						<TableRow>
 							<TableCell colSpan={4} />
 							<TableCell>Total Ingresos</TableCell>
@@ -208,6 +208,8 @@ function CollapsibleTable() {
 							<TableCell>Subtotal</TableCell>
 							<TableCell />
 						</TableRow>
+						<br />
+						<br />
 						<TableRow>
 							<TableCell style={{ background: "#90caf9" }}>
 								Caja de Ventas
@@ -226,11 +228,14 @@ function CollapsibleTable() {
 							<TableCell>Subtotal</TableCell>
 							<TableCell />
 						</TableRow>
+						<br />
 						<TableRow>
 							<TableCell colSpan={4} />
 							<TableCell>Total Egresos</TableCell>
 							<TableCell />
 						</TableRow>
+						<br />
+						<br />
 						<TableRow>
 							<TableCell colSpan={4} />
 							<TableCell>Total General</TableCell>
@@ -243,67 +248,26 @@ function CollapsibleTable() {
 	);
 }
 
-function TransitionsModal({ open, handleClose, handleOpen, text }) {
-	const classes = useRowStyles();
-	return (
-		<div>
-			<Button
-				type='submit'
-				variant='contained'
-				color='primary'
-				onClick={handleOpen}
-				className={classes.btn}>
-				{text}
-			</Button>
-			<Modal
-				className={classes.modal}
-				open={open}
-				onClose={handleClose}
-				closeAfterTransition
-				BackdropComponent={Backdrop}
-				BackdropProps={{
-					timeout: 500,
-				}}>
-				<Fade in={open}>
-					<div className={classes.paper}>
-						<h2>Documento lista para impresión</h2>
-					</div>
-				</Fade>
-			</Modal>
-		</div>
-	);
-}
-
 export default function CashDeskClosing() {
-	const [open, setOpen] = React.useState(false);
+	const [showList, setList] = React.useState(0);
 
-	const handleOpen = (e) => {
-		setOpen(true);
-	};
-
-	const handleClose = () => {
-		setOpen(false);
-	};
 	return (
-		<Paper elevation={5} style={{ padding: "1rem" }}>
-			<div
-				style={{ display: "flex", alignItems: "center", marginBottom: "1rem" }}>
-				<Typography variant='h4' style={{ marginRight: "2rem" }}>
-					Último cierre de caja
-				</Typography>
-				<Typography variant='h6'>05/05/2021</Typography>
-			</div>
-			<div>
-				<CollapsibleTable />
-			</div>
-			<Button variant="contained" color="primary">Cerrar Caja</Button>
-			<TransitionsModal
-				open={open}
-				handleClose={handleClose}
-				handleOpen={handleOpen}
-				text='Imprimir Balance'
-				sms={"Documento listo para impresión"}
-			/>
-		</Paper>
+		<Grow in>
+			<Paper elevation={5} style={{ padding: "1rem" }}>
+				<div
+					style={{
+						display: "flex",
+						alignItems: "center",
+						marginBottom: "1rem",
+					}}>
+					<Typography variant='h4' style={{ marginRight: "2rem" }}>
+						Movimientos de caja
+					</Typography>
+					<Typography variant='h6'>05/05/2021</Typography>
+				</div>
+				<CalendarRange setList={setList} />
+				{showList === 1 && <CollapsibleTable />}
+			</Paper>
+		</Grow>
 	);
 }

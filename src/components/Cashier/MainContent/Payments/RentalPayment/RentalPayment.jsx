@@ -11,7 +11,7 @@ import {
 	Fade,
 	Grow,
 } from "@material-ui/core";
-import { Search, StreetviewTwoTone } from "@material-ui/icons";
+import { Search} from "@material-ui/icons";
 import IconButton from "@material-ui/core/IconButton";
 import DataHouse from "./DataHouse";
 
