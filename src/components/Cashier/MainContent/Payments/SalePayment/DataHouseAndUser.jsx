@@ -82,17 +82,41 @@ function TransitionsModal({ open, handleClose }) {
 }
 
 const validDataHouse = {
-	occupant: "Jill Valentine",
-	ower: "Albert Wesker",
-	rentalPrice: "7990.99",
-	date: "21/3/2021",
-	numberOfTransaction: "#AF3452",
+	idHouse: "#FA0000",
+	kindHouse: "Departamento",
+	location: {
+		country: "Argentina",
+		estate: "Chaco",
+		city: "Resistencia",
+		street: "Golf Club Siempre Viva",
+		numberAddress: "123",
+		postal: "3500",
+	},
+	amount: {
+		toilets: "3",
+		bredooms: "2",
+		suits: "0",
+	},
+	acient: "70",
+	spaces: "2",
+	artefacts: "5",
+	services: ["Internet", "Luz", "Agua"],
+	ower: {
+		id: "AC3425",
+		type: "Corporativo",
+		firstname: "Albert",
+		surname: "Wesker",
+		dni: "967234567",
+		phone: "+54-786541223",
+		email: "wesker@umbrella.com",
+		address: "Raccoon City 1234",
+	},
 };
 
 function DataHouseForm() {
 	return (
 		<div>
-			<Typography variant='h5'>Datos del inmueble #FA0000</Typography>
+			<Typography variant='h5'>{`Datos del inmueble ${validDataHouse.idHouse}`}</Typography>
 			<form action=''>
 				<div
 					style={{
@@ -101,17 +125,167 @@ function DataHouseForm() {
 						padding: "1rem",
 					}}>
 					<TextField
-						label='Inquilino'
+						label='Tipo'
 						disabled
-						defaultValue={validDataHouse.occupant}
+						defaultValue={validDataHouse.kindHouse}
 						fullWidth
 						variant='outlined'
 						style={{ marginRight: "2rem" }}
 					/>
 					<TextField
-						label='Propietario'
+						label='Antigüedad'
 						disabled
-						defaultValue={validDataHouse.ower}
+						defaultValue={validDataHouse.acient}
+						fullWidth
+						variant='outlined'
+						style={{ marginRight: "2rem" }}
+					/>
+					<TextField
+						label='Espacios'
+						disabled
+						defaultValue={validDataHouse.spaces}
+						fullWidth
+						helperText='Espacios con los que cuenta'
+						variant='outlined'
+						style={{ marginRight: "2rem" }}
+					/>
+					<TextField
+						label='Artefactos'
+						disabled
+						defaultValue={validDataHouse.artefacts}
+						fullWidth
+						variant='outlined'
+						helperText='Artefactos con los que cuenta'
+					/>
+				</div>
+				<div
+					style={{
+						display: "flex",
+						justifyContent: "space-between",
+						padding: "1rem",
+					}}>
+					<TextField
+						label='Baños'
+						disabled
+						defaultValue={validDataHouse.amount.toilets}
+						fullWidth
+						variant='outlined'
+						style={{ marginRight: "2rem" }}
+					/>
+					<TextField
+						label='Dormitorios'
+						disabled
+						defaultValue={validDataHouse.amount.bredooms}
+						fullWidth
+						variant='outlined'
+						style={{ marginRight: "2rem" }}
+					/>
+					<TextField
+						label='Suites'
+						disabled
+						defaultValue={validDataHouse.amount.suits}
+						fullWidth
+						variant='outlined'
+					/>
+				</div>
+				<Typography variant='subtitle1'>Ubicación</Typography>
+				<div
+					style={{
+						display: "flex",
+						justifyContent: "space-between",
+						padding: "1rem",
+					}}>
+					<TextField
+						label='País'
+						disabled
+						defaultValue={validDataHouse.location.country}
+						fullWidth
+						variant='outlined'
+						style={{ marginRight: "2rem" }}
+					/>
+					<TextField
+						label='Provincia'
+						disabled
+						defaultValue={validDataHouse.location.estate}
+						fullWidth
+						variant='outlined'
+						style={{ marginRight: "2rem" }}
+					/>
+					<TextField
+						label='Ciudad'
+						disabled
+						defaultValue={validDataHouse.location.city}
+						fullWidth
+						variant='outlined'
+						style={{ marginRight: "2rem" }}
+					/>
+					<TextField
+						label='Calle'
+						disabled
+						defaultValue={validDataHouse.location.street}
+						fullWidth
+						variant='outlined'
+					/>
+				</div>
+
+				<div
+					style={{
+						display: "flex",
+						justifyContent: "space-between",
+						padding: "1rem",
+					}}>
+					<TextField
+						label='Número'
+						disabled
+						defaultValue={validDataHouse.location.numberAddress}
+						fullWidth
+						variant='outlined'
+						style={{ marginRight: "2rem" }}
+					/>
+					<TextField
+						label='Código Postal'
+						disabled
+						defaultValue={validDataHouse.location.postal}
+						fullWidth
+						variant='outlined'
+					/>
+				</div>
+				<Typography variant='subtitle1'>Datos de propietario</Typography>
+				<div
+					style={{
+						display: "flex",
+						justifyContent: "space-between",
+						padding: "1rem",
+					}}>
+					<TextField
+						label='Código'
+						disabled
+						defaultValue={validDataHouse.ower.id}
+						fullWidth
+						variant='outlined'
+						style={{ marginRight: "2rem" }}
+					/>
+					<TextField
+						label='Tipo'
+						disabled
+						defaultValue={validDataHouse.ower.type}
+						fullWidth
+						variant='outlined'
+						helperText='Tipo de cliente'
+						style={{ marginRight: "2rem" }}
+					/>
+					<TextField
+						label='Nombre'
+						disabled
+						defaultValue={validDataHouse.ower.firstname}
+						fullWidth
+						variant='outlined'
+						style={{ marginRight: "2rem" }}
+					/>
+					<TextField
+						label='Apellido'
+						disabled
+						defaultValue={validDataHouse.ower.surname}
 						fullWidth
 						variant='outlined'
 					/>
@@ -123,31 +297,33 @@ function DataHouseForm() {
 						padding: "1rem",
 					}}>
 					<TextField
-						label='Precio de Alquiler'
+						label='DNI'
 						disabled
-						defaultValue={validDataHouse.rentalPrice}
+						defaultValue={validDataHouse.ower.dni}
 						fullWidth
 						variant='outlined'
 						style={{ marginRight: "2rem" }}
 					/>
 					<TextField
-						label='Fecha de pago'
+						label='Teléfono'
 						disabled
-						defaultValue={validDataHouse.date}
+						defaultValue={validDataHouse.ower.phone}
 						fullWidth
 						variant='outlined'
+						style={{ marginRight: "2rem" }}
 					/>
-				</div>
-				<div
-					style={{
-						display: "flex",
-						justifyContent: "space-between",
-						padding: "1rem",
-					}}>
 					<TextField
-						label='Número de transacción'
+						label='Corre electrónico'
 						disabled
-						defaultValue={validDataHouse.numberOfTransaction}
+						defaultValue={validDataHouse.ower.email}
+						fullWidth
+						variant='outlined'
+						style={{ marginRight: "2rem" }}
+					/>
+					<TextField
+						label='Dirección'
+						disabled
+						defaultValue={validDataHouse.ower.address}
 						fullWidth
 						variant='outlined'
 					/>
@@ -183,8 +359,7 @@ function FormToFillOut() {
 						variant='filled'
 						className={classes.formControl}
 						fullWidth
-						style={{marginRight: '2rem'}}
-						>
+						style={{ marginRight: "2rem" }}>
 						<InputLabel id='demo-simple-select-filled-label'>
 							Tipo de Venta
 						</InputLabel>
