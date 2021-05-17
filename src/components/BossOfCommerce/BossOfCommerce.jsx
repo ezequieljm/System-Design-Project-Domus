@@ -31,6 +31,7 @@ import {
 	BusinessCenter,
 } from "@material-ui/icons";
 import { useStyles } from "./stylesCommerce";
+import MainContent from "./MainContent/MainContent";
 
 const toolsPage = [
 	{
@@ -50,6 +51,68 @@ const toolsPage = [
 		icon: <MenuBook />,
 	},
 ];
+
+function HerramientasPropiedades({ hanList, inx }) {
+	const tools = [
+		{
+			text: "Catálogo",
+			icon: <Home />,
+		},
+		{
+			text: "Lista de Propiedades",
+			icon: <FormatListBulleted />,
+		},
+		{
+			text: "Nueva Propiedad",
+			icon: <Add />,
+		},
+	];
+	return (
+		<List>
+			{tools.map((tool, index) => (
+				<ListItem
+					button
+					key={tool.text}
+					selected={inx === index}
+					onClick={(e) => hanList(e, index)}>
+					<ListItemIcon>{tool.icon}</ListItemIcon>
+					<ListItemText primary={tool.text} />
+				</ListItem>
+			))}
+		</List>
+	);
+}
+
+function HerramientasReportes({ hanList, inx }) {
+	const tools = [
+		{
+			text: "Ventas",
+		},
+		{
+			text: "Alquileres"
+		},
+		{
+			text: "Clientes",
+		},
+		{
+			text: "Propiedades",
+		},
+	];
+	return (
+		<List>
+			{tools.map((tool, index) => (
+				<ListItem
+					button
+					key={tool.text}
+					selected={inx === index}
+					onClick={(e) => hanList(e, index)}>
+					<ListItemIcon>{tool.icon}</ListItemIcon>
+					<ListItemText primary={tool.text} />
+				</ListItem>
+			))}
+		</List>
+	);
+}
 
 export default function BossOfCommerce({ fnExit }) {
 	const [value, setValue] = React.useState(0);
@@ -71,7 +134,10 @@ export default function BossOfCommerce({ fnExit }) {
 						onChange={handleNavbarTab}
 						indicatorColor='primary'
 						style={{ paddingLeft: "2rem" }}>
-						<Tab label='Comercialización' />
+						<Tab label='Agenda' />
+						<Tab label='Reportes' />
+						<Tab label='Clientes' />
+						<Tab label='Propiedades' />
 					</Tabs>
 					<Typography style={{ paddingRight: "2rem" }}>
 						Viernes 14 de Mayo 2021
@@ -107,6 +173,18 @@ export default function BossOfCommerce({ fnExit }) {
 				<Toolbar />
 				<Toolbar />
 				<div className={classes.drawerContainer}>
+				{value === 3 && (
+						<HerramientasPropiedades
+							hanList={handleListItemClick}
+							inx={selectedIndex}
+						/>
+					)}
+				{value === 1 && (
+						<HerramientasReportes
+							hanList={handleListItemClick}
+							inx={selectedIndex}
+						/>
+					)}
 					<List>
 						{toolsPage.map((tool, index) => (
 							<ListItem
@@ -124,7 +202,7 @@ export default function BossOfCommerce({ fnExit }) {
 			<main className={classes.content}>
 				<Toolbar />
 				<Toolbar />
-				<Typography variant='h1'>Comercialización</Typography>
+				<MainContent val={value} inxTool={selectedIndex} />
 			</main>
 		</div>
 	);
