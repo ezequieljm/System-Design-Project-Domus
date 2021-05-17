@@ -31,7 +31,7 @@ import {
 	BusinessCenter,
 } from "@material-ui/icons";
 import { useStyles } from "./stylesCommerce";
-import MainContent from ".MainContent/MainContent";
+import MainContent from "./MainContent/MainContent";
 
 const toolsPage = [
 	{
@@ -51,6 +51,68 @@ const toolsPage = [
 		icon: <MenuBook />,
 	},
 ];
+
+function HerramientasPropiedades({ hanList, inx }) {
+	const tools = [
+		{
+			text: "Catálogo",
+			icon: <Home />,
+		},
+		{
+			text: "Lista de Propiedades",
+			icon: <FormatListBulleted />,
+		},
+		{
+			text: "Nueva Propiedad",
+			icon: <Add />,
+		},
+	];
+	return (
+		<List>
+			{tools.map((tool, index) => (
+				<ListItem
+					button
+					key={tool.text}
+					selected={inx === index}
+					onClick={(e) => hanList(e, index)}>
+					<ListItemIcon>{tool.icon}</ListItemIcon>
+					<ListItemText primary={tool.text} />
+				</ListItem>
+			))}
+		</List>
+	);
+}
+
+function HerramientasReportes({ hanList, inx }) {
+	const tools = [
+		{
+			text: "Ventas",
+		},
+		{
+			text: "Alquileres"
+		},
+		{
+			text: "Clientes",
+		},
+		{
+			text: "Propiedades",
+		},
+	];
+	return (
+		<List>
+			{tools.map((tool, index) => (
+				<ListItem
+					button
+					key={tool.text}
+					selected={inx === index}
+					onClick={(e) => hanList(e, index)}>
+					<ListItemIcon>{tool.icon}</ListItemIcon>
+					<ListItemText primary={tool.text} />
+				</ListItem>
+			))}
+		</List>
+	);
+}
 
 export default function BossOfCommerce({ fnExit }) {
 	const [value, setValue] = React.useState(0);
@@ -111,6 +173,18 @@ export default function BossOfCommerce({ fnExit }) {
 				<Toolbar />
 				<Toolbar />
 				<div className={classes.drawerContainer}>
+				{value === 3 && (
+						<HerramientasPropiedades
+							hanList={handleListItemClick}
+							inx={selectedIndex}
+						/>
+					)}
+				{value === 1 && (
+						<HerramientasReportes
+							hanList={handleListItemClick}
+							inx={selectedIndex}
+						/>
+					)}
 					<List>
 						{toolsPage.map((tool, index) => (
 							<ListItem

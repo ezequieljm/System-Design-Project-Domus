@@ -1,22 +1,20 @@
 import React from "react";
-import Schedule from "./Schedule/Schedule";
-import Clients from "./Clients/Clients";
-import Properties from "./Properties/Properties";
+import EditAnAppointment from "./Schedule/EditAnAppointment/Edit";
+import UpdateClient from "./Clients/UpdateClient/UpdateClient";
+import RealEstate from "./RealEstate/RealEstate";
 import Reports from "./Reports/Reports";
 
 const MainContent = ({ val, inxTool }) => {
 	return (
 		<>
-      {val === 3 ? (
-        <Properties />
-      ) : val === 2 ? (
-				<Clients />
-			) : val === 1 ? (
-				<Reports />
-			) : (
-        <Schedule />
-				// <Clients inxTool={inxTool} />
-			)}
+      {val === 3 
+      ? ( <RealEstate selectedIndex={inxTool} /> )
+      : val === 2
+      ? ( <UpdateClient /> )
+      : val === 1
+      ? ( <Reports selectedIndex={inxTool} /> )
+      : ( <EditAnAppointment /> )
+      }
 		</>
 	);
 };

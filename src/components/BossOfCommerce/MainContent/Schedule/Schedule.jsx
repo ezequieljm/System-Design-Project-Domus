@@ -1,4 +1,5 @@
 import React from "react";
+import MakeAnAppointment from "./MakeAnAppointment/MakeAnAppointment";
 import EditAnAppointmentOrDelete from "./EditAnAppointment/Edit";
 
 export default function Schedule({ valueListTools }) {
