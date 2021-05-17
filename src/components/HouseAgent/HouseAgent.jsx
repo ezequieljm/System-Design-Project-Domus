@@ -89,13 +89,13 @@ function HerramientasAgenda({ hanList, inx }) {
 		<List>
 			<ListItem
 				button
-				key={"Mostrar Agenda"}
+				key={"Agenda"}
 				selected={inx === 0}
 				onClick={(e) => hanList(e, 0)}>
 				<ListItemIcon>
 					<Schedule />
 				</ListItemIcon>
-				<ListItemText primary={"Mostrar Agenda"} />
+				<ListItemText primary={"Agenda"} />
 			</ListItem>
 		</List>
 	);
