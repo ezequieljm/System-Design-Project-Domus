@@ -34,10 +34,6 @@ const useStyles = makeStyles({
 	container: {
 		maxHeight: "250px",
 	},
-	headerList: {
-		background: "linear-gradient(to bottom, #396afc, #2948ff)",
-		color: "white",
-	},
 	iconStyles: {
 		color: "red",
 	},

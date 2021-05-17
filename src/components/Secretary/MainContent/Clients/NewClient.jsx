@@ -45,7 +45,7 @@ function MediaCard({ textContent, fnDeploy, icon }) {
 				<CardMedia
 					className={classes.media}
 					title='Contemplative Reptile'
-					onClick={fnDeploy}>
+					onClick={() => fnDeploy(icon)}>
 					{icon === 1 ? (
 						<AccountBox className={classes.styleIconMedia} />
 					) : (
@@ -74,8 +74,6 @@ function MediaCard({ textContent, fnDeploy, icon }) {
 }
 
 function ButtonsDep({ fnDep }) {
-	const deployChangeView = (e) =>
-		e.target.innerHTML === "Cliente Corporativo" ? fnDep(1) : fnDep(2);
 	return (
 		<Grow in>
 			<div>
@@ -89,13 +87,13 @@ function ButtonsDep({ fnDep }) {
 					}}>
 					<MediaCard
 						textContent={cardText[0]}
-						fnDeploy={deployChangeView}
-						icon={0}
+						fnDeploy={fnDep}
+						icon={1}
 					/>
 					<MediaCard
 						textContent={cardText[1]}
-						fnDeploy={deployChangeView}
-						icon={1}
+						fnDeploy={fnDep}
+						icon={2}
 					/>
 				</div>
 			</div>

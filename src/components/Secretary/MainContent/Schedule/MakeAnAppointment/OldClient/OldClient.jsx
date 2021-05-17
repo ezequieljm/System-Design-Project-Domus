@@ -12,6 +12,7 @@ import {
 import QueryClient from "./QueryClient";
 import { TextField } from "@material-ui/core";
 import DatePickerCustom from "../../DatePicker/DatePicker";
+import { CheckCircleOutline } from "@material-ui/icons";
 
 const dbUsers = [
 	{
@@ -47,11 +48,10 @@ const useStyle = makeStyles((theme) => ({
 		justifyContent: "center",
 	},
 	paper: {
-		background: "linear-gradient(to right, #396afc, #2948ff)",
+		background: "white",
 		boxShadow: theme.shadows[5],
 		padding: theme.spacing(2, 4, 3),
 		textAlign: "center",
-		color: "white",
 	},
 }));
 
@@ -87,11 +87,16 @@ function SearchFieldAndWindowModal({
 				}}>
 				<Fade in={open}>
 					<div className={classes.paper}>
-						<Typography variant='h5' id='transition-modal-title'>
-							Cliente no encontrado
-						</Typography>
-						<Typography variant='h6' id='transition-modal-description'>
-							{`El cliente ${entryUser} no se encuentra registrado`}
+						<i
+							class='fas fa-user-times'
+							style={{
+								marginBottom: "1rem",
+								fontSize: "9rem",
+								color: "#ef5350",
+							}}></i>
+						<Typography variant='h5'>Cliente no encontrado</Typography>
+						<Typography variant='subtitle1'>
+							{`El cliente "${entryUser}" no se encuentra registrado`}
 						</Typography>
 					</div>
 				</Fade>
@@ -213,7 +218,7 @@ function SelectHouseAgent({ dayAvailable }) {
 	);
 }
 
-function ReservAppointment() {
+function ReservAppointment({ closeModal }) {
 	const [day, setDay] = React.useState(new Date().toLocaleDateString());
 	const [house, setHouse] = React.useState("");
 	const houseReserved = ["0000", "2352", "9698", "8751"];
@@ -249,13 +254,7 @@ function ReservAppointment() {
 					variant='outlined'
 					onChange={(e) => setHouse(e.target.value)}></TextField>
 			</div>
-			<Button
-				variant='contained'
-				color='primary'
-				onClick={() => alert("Cita Agendada")}
-				style={{ marginLeft: "1rem" }}>
-				Agendar Cita
-			</Button>
+			<ModalView closeModal={closeModal} />
 		</>
 	);
 }
@@ -292,10 +291,63 @@ export default function OldClient() {
 			) : (
 				<Paper elevation={5} style={{ width: "98%", padding: "1rem" }}>
 					<ClientFound clientData={dbUsers[0]} />
-					<ReservAppointment />
-					<Button onClick={() => setFinedUser(false)}>Volver</Button>
+					<ReservAppointment closeModal={setFinedUser} />
+					<Button
+						onClick={() => setFinedUser(false)}
+						variant='contained'
+						color='secondary'
+						style={{ marginTop: "1rem" }}>
+						Volver
+					</Button>
 				</Paper>
 			)}
 		</>
+	);
+}
+
+function ModalView({ closeModal }) {
+	const classes = useStyle();
+	const [openModalView, setOpenModal] = React.useState(false);
+	const handleOpenModal = () => {
+		setOpenModal(true);
+	};
+
+	const handleCloseModal = () => {
+		setOpenModal(false);
+		closeModal(false);
+	};
+
+	return (
+		<div>
+			<Button
+				variant='contained'
+				color='primary'
+				style={{ marginTop: "1rem" }}
+				onClick={handleOpenModal}>
+				Agendar Cita
+			</Button>
+			<Modal
+				className={classes.modal}
+				open={openModalView}
+				onClose={handleCloseModal}
+				closeAfterTransition
+				BackdropComponent={Backdrop}
+				BackdropProps={{
+					timeout: 500,
+				}}>
+				<Fade in={openModalView}>
+					<div className={classes.paper}>
+						<CheckCircleOutline
+							style={{
+								color: "green",
+								fontSize: "9rem",
+								margintBottom: "2rem",
+							}}
+						/>
+						<h1>Cita Agendada</h1>
+					</div>
+				</Fade>
+			</Modal>
+		</div>
 	);
 }

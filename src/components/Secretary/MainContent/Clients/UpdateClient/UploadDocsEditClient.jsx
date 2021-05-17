@@ -55,36 +55,41 @@ export default function UploadDocs() {
 	return (
 		<div className={classes.contentUpload}>
 			<Grow in={true}>
-				<div className={classes.root}>
-					<div className={classes.contentDropBox}>
-						<div id='dropzone-files' className={classes.dropBox}>
-							<Publish className={classes.icons} />
-							<Typography variant='h5' style={{ color: "grey" }}>
-								Arrastra el archivo aquí
-							</Typography>
+				<div>
+					<Typography variant='h6' style={{ marginBottom: "1rem" }}>
+						Subir documentos
+					</Typography>
+					<div className={classes.root}>
+						<div className={classes.contentDropBox}>
+							<div id='dropzone-files' className={classes.dropBox}>
+								<Publish className={classes.icons} />
+								<Typography variant='h5' style={{ color: "grey" }}>
+									Arrastra el archivo aquí
+								</Typography>
+							</div>
+							<Button variant='contained' color='primary'>
+								Abrir
+							</Button>
 						</div>
-						<Button variant='contained' color='primary'>
-							Abrir
-						</Button>
-					</div>
-					<div className={classes.nameDescrip}>
-						<TextField
-							label='Nombre'
-							multiline
-							variant='outlined'
-							fullWidth
-							placeholder='file.txt'
-						/>
-						<TextField
-							label='Descriptción'
-							multiline
-							rows={4}
-							variant='outlined'
-							fullWidth
-						/>
-						<Button variant='contained' color='primary'>
-							Agregar
-						</Button>
+						<div className={classes.nameDescrip}>
+							<TextField
+								label='Nombre'
+								multiline
+								variant='outlined'
+								fullWidth
+								placeholder='file.txt'
+							/>
+							<TextField
+								label='Descriptción'
+								multiline
+								rows={4}
+								variant='outlined'
+								fullWidth
+							/>
+							<Button variant='contained' color='primary'>
+								Agregar
+							</Button>
+						</div>
 					</div>
 				</div>
 			</Grow>
