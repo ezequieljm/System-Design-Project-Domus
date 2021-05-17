@@ -8,7 +8,8 @@ export default function ListReport({ setRepList, typeOfReport }) {
 		<Grow in>
 			<div>
 				<Typography variant='h5'>{typeOfReport.toUpperCase()}</Typography>
-				<SaleList />
+				{typeOfReport === 'ventas' && <SaleList />}
+				{typeOfReport !== 'ventas' && <Typography variant="h5">No hay reporte</Typography>}
 				<Button
 					variant='contained'
 					color='primary'

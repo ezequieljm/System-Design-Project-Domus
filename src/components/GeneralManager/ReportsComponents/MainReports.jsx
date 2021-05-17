@@ -1,5 +1,5 @@
 import React from "react";
-import { Typography, Paper} from "@material-ui/core";
+import { Typography, Paper } from "@material-ui/core";
 import {
 	ReportsSale,
 	ReportsRental,
@@ -47,7 +47,9 @@ export default function MainReports() {
 						)}
 					</div>
 				)}
-				{showReportOrList === 2 && <ListReport setRepList={setRepList} typeOfReport={typeOfReport}/>}
+				{showReportOrList === 2 && (
+					<ListReport setRepList={setRepList} typeOfReport={typeOfReport} />
+				)}
 			</Paper>
 		</>
 	);

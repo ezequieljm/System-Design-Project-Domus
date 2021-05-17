@@ -17,7 +17,9 @@ import {
 	Backdrop,
 	Grow,
 } from "@material-ui/core";
-import { KeyboardArrowDown, KeyboardArrowUp } from "@material-ui/icons";
+import { KeyboardArrowDown, KeyboardArrowUp, Print } from "@material-ui/icons";
+import ListBuy from "../../Movements/Transactions/ListBuy";
+import ListRental from "../../Movements/Transactions/ListRental";
 
 const useRowStyles = makeStyles((theme) => ({
 	root: {
@@ -36,6 +38,10 @@ const useRowStyles = makeStyles((theme) => ({
 		boxShadow: theme.shadows[5],
 		padding: theme.spacing(2, 4, 3),
 		textAlign: "center",
+		display: "flex",
+		flexDirection: "column",
+		justifyContent: "center",
+		alignItems: "center",
 	},
 }));
 
@@ -266,6 +272,9 @@ function TransitionsModal({ open, handleClose, handleOpen, text }) {
 				}}>
 				<Fade in={open}>
 					<div className={classes.paper}>
+						<Print
+							style={{ fontSize: "9rem", marginBottom: "2rem", color: "green" }}
+						/>
 						<h2>Documento lista para impresión</h2>
 					</div>
 				</Fade>
@@ -291,19 +300,35 @@ export default function CashDeskClosing() {
 				<Typography variant='h4' style={{ marginRight: "2rem" }}>
 					Último cierre de caja
 				</Typography>
-				<Typography variant='h6'>05/05/2021</Typography>
+				<Typography variant='h5'>05/05/2021</Typography>
 			</div>
 			<div>
-				<CollapsibleTable />
+				<Typography variant='h4' style={{ marginBottom: "1rem" }}>
+					Alquileres
+				</Typography>
+				<ListRental />
 			</div>
-			<Button variant="contained" color="primary">Cerrar Caja</Button>
-			<TransitionsModal
-				open={open}
-				handleClose={handleClose}
-				handleOpen={handleOpen}
-				text='Imprimir Balance'
-				sms={"Documento listo para impresión"}
-			/>
+			<div style={{ marginTop: "2rem" }}>
+				<Typography variant='h4' style={{ marginBottom: "1rem" }}>
+					Ventas
+				</Typography>
+				<ListBuy />
+			</div>
+			<div style={{ padding: "1rem", display: "flex" }}>
+				<Button
+					variant='contained'
+					color='primary'
+					style={{ marginRight: "2rem" }}>
+					Cerrar Caja
+				</Button>
+				<TransitionsModal
+					open={open}
+					handleClose={handleClose}
+					handleOpen={handleOpen}
+					text='Imprimir Balance'
+					sms={"Documento listo para impresión"}
+				/>
+			</div>
 		</Paper>
 	);
 }

@@ -33,8 +33,10 @@ export default function ListRental() {
 
 	return (
 		<Grow in>
-			<Paper elevation={5} style={{ maxHeight: "600px",}}>
-				<TableContainer component={Paper} style={{ maxHeight: "600px", overflow: 'auto' }}>
+			<Paper elevation={5} style={{ maxHeight: "600px" }}>
+				<TableContainer
+					component={Paper}
+					style={{ maxHeight: "600px", overflow: "auto" }}>
 					<Table className={classes.table} stickyHeader>
 						<TableHead>
 							<TableRow>
@@ -46,10 +48,7 @@ export default function ListRental() {
 							</TableRow>
 						</TableHead>
 						<TableBody>
-							<TableRow>
-								<TableCell style={{ fontSize: "1.5rem" }}>Alquileres</TableCell>
-							</TableRow>
-							<TableRow style={{ background: "green" }}>
+							<TableRow style={{ background: "#90caf9" }}>
 								<TableCell style={{ fontSize: "1rem" }}>Entradas</TableCell>
 								<TableCell />
 								<TableCell />
@@ -78,7 +77,7 @@ export default function ListRental() {
 									{rowsEntry.reduce((acc, curr) => acc + curr.amount, 0)}
 								</TableCell>
 							</TableRow>
-							<TableRow style={{ background: "green" }}>
+							<TableRow style={{ background: "#90caf9" }}>
 								<TableCell style={{ fontSize: "1rem" }}>Salidas</TableCell>
 								<TableCell />
 								<TableCell />

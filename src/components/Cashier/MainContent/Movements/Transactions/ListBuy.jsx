@@ -60,9 +60,11 @@ export default function ListBuy() {
 	const classes = useStyles();
 	return (
 		<Grow in>
-			<Paper elevation={5} style={{maxHeight: '600px'}}>
-				<TableContainer component={Paper} style={{maxHeight: '600px', overflow: 'auto'}}>
-					<Table className={classes.table} stickyHeader >
+			<Paper elevation={5} style={{ maxHeight: "600px" }}>
+				<TableContainer
+					component={Paper}
+					style={{ maxHeight: "600px", overflow: "auto" }}>
+					<Table className={classes.table} stickyHeader>
 						<TableHead>
 							<TableRow>
 								<TableCell>Número</TableCell>
@@ -74,10 +76,7 @@ export default function ListBuy() {
 							</TableRow>
 						</TableHead>
 						<TableBody>
-							<TableRow>
-								<TableCell style={{ fontSize: "1.5rem" }}>Ventas</TableCell>
-							</TableRow>
-							<TableRow style={{ background: "green" }}>
+							<TableRow style={{ background: "#90caf9" }}>
 								<TableCell style={{ fontSize: "1rem" }}>Entradas</TableCell>
 								<TableCell />
 								<TableCell />
@@ -109,7 +108,7 @@ export default function ListBuy() {
 									{rowsEntry.reduce((acc, curr) => acc + curr.amount, 0)}
 								</TableCell>
 							</TableRow>
-							<TableRow style={{ background: "green" }}>
+							<TableRow style={{ background: "#90caf9" }}>
 								<TableCell style={{ fontSize: "1rem" }}>Salidas</TableCell>
 								<TableCell />
 								<TableCell />
