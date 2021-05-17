@@ -1,7 +1,7 @@
 import { Button, Typography } from "@material-ui/core";
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { Paper, Modal, Fade, Backdrop, Grow } from "@material-ui/core";
+import { Paper, Modal, Fade, Backdrop } from "@material-ui/core";
 import { CheckCircleOutline, Print } from "@material-ui/icons";
 import ListBuy from "../../Movements/Transactions/ListBuy";
 import ListRental from "../../Movements/Transactions/ListRental";

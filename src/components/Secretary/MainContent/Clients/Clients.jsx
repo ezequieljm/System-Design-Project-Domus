@@ -16,7 +16,7 @@ function Clients({ inxTool }) {
 			) : inxTool === 3 ? (
 				<PrivateClient />
 			) : (
-				<h1>Tool Page</h1>
+				<h1>Herramientas de página</h1>
 			)}
 		</>
 	);

@@ -9,8 +9,7 @@ import {
 import CalendarOfReports from "./CalendarOfReports";
 import CustomizedRadios from "./RadioGroup";
 import ListReport from "./ListReport";
-import { makeStyles } from "@material-ui/core/styles";
-import {Grow} from '@material-ui/core';
+import { Grow } from "@material-ui/core";
 
 export default function MainReports() {
 	const [typeOfReport, setReport] = React.useState("");
@@ -20,7 +19,7 @@ export default function MainReports() {
 		<Grow in>
 			<Paper elevation={5} style={{ padding: "1rem" }}>
 				<Typography variant='h4'>Reportes</Typography>
-				<div >
+				<div>
 					<CalendarOfReports />
 					<CustomizedRadios setReport={setReport} setRepList={setRepList} />
 				</div>
