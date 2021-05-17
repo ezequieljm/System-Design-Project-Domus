@@ -23,6 +23,10 @@ import {
 	Refresh,
 	Report,
 	MenuBook,
+	PeopleAlt,
+	HomeWork,
+	AttachMoney,
+	Domain,
 } from "@material-ui/icons";
 import {
 	ArrowForwardIos,
@@ -62,9 +66,28 @@ function HerramientasPropiedades({ hanList, inx }) {
 			text: "Lista de Propiedades",
 			icon: <FormatListBulleted />,
 		},
+	];
+	return (
+		<List>
+			{tools.map((tool, index) => (
+				<ListItem
+					button
+					key={tool.text}
+					selected={inx === index}
+					onClick={(e) => hanList(e, index)}>
+					<ListItemIcon>{tool.icon}</ListItemIcon>
+					<ListItemText primary={tool.text} />
+				</ListItem>
+			))}
+		</List>
+	);
+}
+
+function HerramientasClientes({ hanList, inx }) {
+	const tools = [
 		{
-			text: "Nueva Propiedad",
-			icon: <Add />,
+			text: "Clientes",
+			icon: <PeopleAlt />,
 		},
 	];
 	return (
@@ -87,15 +110,42 @@ function HerramientasReportes({ hanList, inx }) {
 	const tools = [
 		{
 			text: "Ventas",
+			icon: <AttachMoney />
 		},
 		{
-			text: "Alquileres"
+			text: "Alquileres",
+			icon: <Domain />
 		},
 		{
 			text: "Clientes",
+			icon: <PeopleAlt />
 		},
 		{
 			text: "Propiedades",
+			icon: <HomeWork />
+		},
+	];
+	return (
+		<List>
+			{tools.map((tool, index) => (
+				<ListItem
+					button
+					key={tool.text}
+					selected={inx === index}
+					onClick={(e) => hanList(e, index)}>
+					<ListItemIcon>{tool.icon}</ListItemIcon>
+					<ListItemText primary={tool.text} />
+				</ListItem>
+			))}
+		</List>
+	);
+}
+
+function HerramientasAgenda({ hanList, inx }) {
+	const tools = [
+		{
+			text: "Agenda",
+			icon: <Schedule />,
 		},
 	];
 	return (
@@ -179,8 +229,20 @@ export default function BossOfCommerce({ fnExit }) {
 							inx={selectedIndex}
 						/>
 					)}
+				{value === 2 && (
+						<HerramientasClientes
+							hanList={handleListItemClick}
+							inx={selectedIndex}
+						/>
+					)}
 				{value === 1 && (
 						<HerramientasReportes
+							hanList={handleListItemClick}
+							inx={selectedIndex}
+						/>
+					)}
+				{value === 0 && (
+						<HerramientasAgenda
 							hanList={handleListItemClick}
 							inx={selectedIndex}
 						/>
@@ -190,7 +252,7 @@ export default function BossOfCommerce({ fnExit }) {
 							<ListItem
 								button
 								key={tool.text}
-								selected={selectedIndex === index + 3}
+								selected={selectedIndex === index + 4}
 								onClick={(event) => handleListItemClick(event, index + 3)}>
 								<ListItemIcon>{tool.icon}</ListItemIcon>
 								<ListItemText primary={tool.text} />
