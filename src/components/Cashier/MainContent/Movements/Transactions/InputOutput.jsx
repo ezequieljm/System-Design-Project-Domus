@@ -1,6 +1,6 @@
 import React from "react";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
-import AddIcon from "@material-ui/icons/Add";
+import {Add, CheckCircleOutline} from "@material-ui/icons";
 import { green } from "@material-ui/core/colors";
 import {
 	Fade,
@@ -13,7 +13,16 @@ import {
 	Tab,
 	AppBar,
 	Typography,
+	TextField,
+	Button,
+	FormLabel,
+	FormControl,
+	FormControlLabel,
+	RadioGroup,
+	Radio,
 } from "@material-ui/core";
+import ListRental from "./ListRental";
+import ListBuy from "./ListBuy";
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -24,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 	fab: {
 		position: "absolute",
-		bottom: theme.spacing(2),
+		bottom: theme.spacing(-5),
 		right: theme.spacing(2),
 	},
 	fabGreen: {
@@ -45,7 +54,35 @@ const useStyles = makeStyles((theme) => ({
 		boxShadow: theme.shadows[5],
 		padding: theme.spacing(2, 4, 3),
 	},
+	paperTwo: {
+		backgroundColor: theme.palette.background.paper,
+		border: "2px solid #000",
+		boxShadow: theme.shadows[5],
+		padding: theme.spacing(2, 4, 3),
+		display: "flex",
+		flexDirection: "column",
+		justifyContent: "center",
+		alignItems: "center",
+	},
 }));
+
+function RadioButtonsGroup() {
+	const [value, setValue] = React.useState("female");
+
+	const handleChange = (event) => {
+		setValue(event.target.value);
+	};
+
+	return (
+		<FormControl row component='fieldset'>
+			<FormLabel component='legend'>Movimiento</FormLabel>
+			<RadioGroup row name='gender1' value={value} onChange={handleChange}>
+				<FormControlLabel value='female' control={<Radio />} label='Entrada' />
+				<FormControlLabel value='male' control={<Radio />} label='Salida' />
+			</RadioGroup>
+		</FormControl>
+	);
+}
 
 function TabPanel(props) {
 	const { children, value, index, ...other } = props;
@@ -99,11 +136,62 @@ function TransitionsModal({ open, handleClose }) {
 				}}>
 				<Fade in={open}>
 					<div className={classes.paper}>
-						<h2 id='transition-modal-title'>Transition modal</h2>
-						<p id='transition-modal-description'>
-							react-transition-group animates me.
-						</p>
-						<button onClick={addTrans}>Agregar</button>
+						<Typography style={{ marginBottom: "1rem" }} variant='h5'>
+							Registro de movimiento
+						</Typography>
+						<Typography style={{ marginBottom: "1rem" }} variant='subtitle1'>
+							Complete los siguientes campos.
+						</Typography>
+						<form action=''>
+							<div
+								style={{
+									padding: ".5rem",
+									width: "600px",
+									display: "flex",
+									justifyContent: "space-between",
+								}}>
+								<TextField
+									fullWidth
+									label='Fecha'
+									defaultValue='07/05/2021'
+									variant='outlined'
+									style={{ marginRight: "2rem" }}
+								/>
+								<TextField
+									fullWidth
+									label='Hora'
+									defaultValue='15:45:00'
+									variant='outlined'
+								/>
+							</div>
+							<div
+								style={{
+									padding: ".5rem",
+									width: "600px",
+									display: "flex",
+									justifyContent: "space-between",
+								}}>
+								<TextField
+									fullWidth
+									label='Concepto'
+									helperText='Concepto del movimiento'
+									variant='outlined'
+									style={{ marginRight: "2rem" }}
+								/>
+								<TextField
+									fullWidth
+									label='Monto'
+									helperText='Monto en pesos'
+									variant='outlined'
+								/>
+							</div>
+							<RadioButtonsGroup />
+							<div>
+								<Button onClick={addTrans} variant='contained' color='primary'>
+									Agregar
+								</Button>
+							</div>
+						</form>
 					</div>
 				</Fade>
 			</Modal>
@@ -117,11 +205,17 @@ function TransitionsModal({ open, handleClose }) {
 					timeout: 500,
 				}}>
 				<Fade in={openTwo}>
-					<div className={classes.paper}>
-						<h2 id='transition-modal-title'>Transition modal</h2>
-						<p id='transition-modal-description'>
-							react-transition-group animates me.
-						</p>
+					<div className={classes.paperTwo}>
+						<CheckCircleOutline
+							style={{
+								color: "green",
+								fontSize: "9rem",
+								margintBottom: "2rem",
+							}}
+						/>
+						<h1 >
+							Transacción registrada exitosamente
+						</h1>
 					</div>
 				</Fade>
 			</Modal>
@@ -161,13 +255,13 @@ export default function InputOutput() {
 		{
 			color: "primary",
 			className: classes.fab,
-			icon: <AddIcon />,
+			icon: <Add />,
 			label: "Add",
 		},
 		{
 			color: "secondary",
 			className: classes.fab,
-			icon: <AddIcon />,
+			icon: <Add />,
 			label: "Edit",
 		},
 	];
@@ -187,10 +281,10 @@ export default function InputOutput() {
 			</AppBar>
 			<div>
 				<TabPanel value={value} index={0} dir={theme.direction}>
-					Listado de entradas
+					<ListRental />
 				</TabPanel>
 				<TabPanel value={value} index={1} dir={theme.direction}>
-					Listado de Salidas
+					<ListBuy />
 				</TabPanel>
 			</div>
 			{fabs.map((fab, index) => (
@@ -213,286 +307,3 @@ export default function InputOutput() {
 		</div>
 	);
 }
-
-
-
-
-
-/* 
-
-import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import {
-  Paper,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow
-} from "@material-ui/core";
-
-const useStyles = makeStyles({
-  table: {
-    minWidth: 650
-  }
-});
-
-function createData(number, occupant, ower, date, amount) {
-  return { number, occupant, ower, date, amount };
-}
-
-const rowsEntry = [
-  createData("#AE8765", "Johnny Bravo", "#FA9876", "06/04/2021", 7654.99),
-  createData("#AE7653", "Leonel Messi", "#FA9323", "06/04/2021", 7532.99),
-  createData("#AE9862", "Cristiano Ronaldo", "#FA9235", "06/04/2021", 8769.99),
-  createData("#A64533", "Tom Cruise", "#FA9673", "06/04/2021", 6534.99)
-];
-
-export default function BasicTable() {
-  const classes = useStyles();
-
-  return (
-    <TableContainer component={Paper}>
-      <Table className={classes.table}>
-        <TableHead>
-          <TableRow>
-            <TableCell>Número</TableCell>
-            <TableCell align="right">Inquilino</TableCell>
-            <TableCell align="right">Inmueble</TableCell>
-            <TableCell align="right">Fecha</TableCell>
-            <TableCell align="right">Monto</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          <TableRow>
-            <TableCell style={{ fontSize: "1.5rem" }}>Alquileres</TableCell>
-          </TableRow>
-          <TableRow style={{ background: "green" }}>
-            <TableCell style={{ fontSize: "1rem" }}>Entradas</TableCell>
-            <TableCell />
-            <TableCell />
-            <TableCell />
-            <TableCell />
-          </TableRow>
-          {rowsEntry.map((row) => (
-            <TableRow key={row.number}>
-              <TableCell component="th" scope="row">
-                {row.number}
-              </TableCell>
-              <TableCell align="right">{row.occupant}</TableCell>
-              <TableCell align="right">{row.ower}</TableCell>
-              <TableCell align="right">{row.date}</TableCell>
-              <TableCell align="right">{row.amount}</TableCell>
-            </TableRow>
-          ))}
-          <TableRow>
-            <TableCell />
-            <TableCell />
-            <TableCell style={{ fontSize: "1rem" }} align="right">Subtotal</TableCell>
-            <TableCell />
-            <TableCell style={{ fontSize: "1rem" }} align="right">
-              {rowsEntry.reduce((acc, curr) => acc + curr.amount, 0)}
-            </TableCell>
-          </TableRow>
-          <TableRow style={{ background: "green" }}>
-            <TableCell style={{ fontSize: "1rem" }}>Salidas</TableCell>
-            <TableCell />
-            <TableCell />
-            <TableCell />
-            <TableCell />
-          </TableRow>
-          {rowsEntry.map((row) => (
-            <TableRow key={row.number}>
-              <TableCell component="th" scope="row">
-                {row.number}
-              </TableCell>
-              <TableCell align="right">{row.occupant}</TableCell>
-              <TableCell align="right">{row.ower}</TableCell>
-              <TableCell align="right">{row.date}</TableCell>
-              <TableCell align="right">{row.amount}</TableCell>
-            </TableRow>
-          ))}
-          <TableRow>
-            <TableCell />
-            <TableCell />
-            <TableCell style={{ fontSize: "1rem" }} align="right">Subtotal</TableCell>
-            <TableCell />
-            <TableCell style={{ fontSize: "1rem" }} align="right">
-              {rowsEntry.reduce((acc, curr) => acc + curr.amount, 0)}
-            </TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell />
-            <TableCell />
-            <TableCell style={{ fontSize: "1rem" }} align="right">Total Neto</TableCell>
-            <TableCell />
-            <TableCell style={{ fontSize: "1rem" }} align="right">
-              {rowsEntry.reduce((acc, curr) => acc + curr.amount, 0) * 2}
-            </TableCell>
-          </TableRow>
-        </TableBody>
-      </Table>
-    </TableContainer>
-  );
-}
-
-import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import {
-  Paper,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow
-} from "@material-ui/core";
-
-const useStyles = makeStyles({
-  table: {
-    minWidth: 650
-  }
-});
-
-function createData(number, buyer, ower, house, date, amount) {
-  return { number, buyer, ower, house, date, amount };
-}
-
-const rowsEntry = [
-  createData(
-    "#AD8765",
-    "Johnny Bravo",
-    "Donald Trump",
-    "#FA0000",
-    "07/05/2021",
-    765432.99
-  ),
-  createData(
-    "#AD8765",
-    "Johnny Bravo",
-    "Donald Trump",
-    "#FA0000",
-    "07/05/2021",
-    792345.99
-  ),
-  createData(
-    "#AD8765",
-    "Johnny Bravo",
-    "Donald Trump",
-    "#FA0000",
-    "07/05/2021",
-    234433.99
-  ),
-  createData(
-    "#AD8765",
-    "Johnny Bravo",
-    "Donald Trump",
-    "#FA0000",
-    "07/05/2021",
-    100000.99
-  )
-];
-
-export default function BasicTable() {
-  const classes = useStyles();
-
-  return (
-    <TableContainer component={Paper}>
-      <Table className={classes.table}>
-        <TableHead>
-          <TableRow>
-            <TableCell>Número</TableCell>
-            <TableCell align="right">Comprador</TableCell>
-            <TableCell align="right">Propietario</TableCell>
-            <TableCell align="right">Inmueble</TableCell>
-            <TableCell align="right">Fecha</TableCell>
-            <TableCell align="right">Monto</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          <TableRow>
-            <TableCell style={{ fontSize: "1.5rem" }}>Ventas</TableCell>
-          </TableRow>
-          <TableRow style={{ background: "green" }}>
-            <TableCell style={{ fontSize: "1rem" }}>Entradas</TableCell>
-            <TableCell />
-            <TableCell />
-            <TableCell />
-            <TableCell />
-            <TableCell />
-          </TableRow>
-          {rowsEntry.map((row) => (
-            <TableRow key={row.number}>
-              <TableCell component="th" scope="row">
-                {row.number}
-              </TableCell>
-              <TableCell align="right">{row.buyer}</TableCell>
-              <TableCell align="right">{row.ower}</TableCell>
-              <TableCell align="right">{row.house}</TableCell>
-              <TableCell align="right">{row.date}</TableCell>
-              <TableCell align="right">{row.amount}</TableCell>
-            </TableRow>
-          ))}
-          <TableRow>
-            <TableCell />
-            <TableCell />
-            <TableCell />
-            <TableCell style={{ fontSize: "1rem" }} align="right">
-              Subtotal
-            </TableCell>
-            <TableCell />
-            <TableCell style={{ fontSize: "1rem" }} align="right">
-              {rowsEntry.reduce((acc, curr) => acc + curr.amount, 0)}
-            </TableCell>
-          </TableRow>
-          <TableRow style={{ background: "green" }}>
-            <TableCell style={{ fontSize: "1rem" }}>Salidas</TableCell>
-            <TableCell />
-            <TableCell />
-            <TableCell />
-            <TableCell />
-            <TableCell />
-          </TableRow>
-          {rowsEntry.map((row) => (
-            <TableRow key={row.number}>
-              <TableCell component="th" scope="row">
-                {row.number}
-              </TableCell>
-              <TableCell align="right">{row.buyer}</TableCell>
-              <TableCell align="right">{row.ower}</TableCell>
-              <TableCell align="right">{row.house}</TableCell>
-              <TableCell align="right">{row.date}</TableCell>
-              <TableCell align="right">{row.amount}</TableCell>
-            </TableRow>
-          ))}
-          <TableRow>
-            <TableCell />
-            <TableCell />
-            <TableCell />
-            <TableCell style={{ fontSize: "1rem" }} align="right">
-              Subtotal
-            </TableCell>
-            <TableCell />
-            <TableCell style={{ fontSize: "1rem" }} align="right">
-              {rowsEntry.reduce((acc, curr) => acc + curr.amount, 0)}
-            </TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell />
-            <TableCell />
-            <TableCell />
-            <TableCell style={{ fontSize: "1rem" }} align="right">
-              Total Neto
-            </TableCell>
-            <TableCell />
-            <TableCell style={{ fontSize: "1rem" }} align="right">
-            {rowsEntry.reduce((acc, curr) => acc + curr.amount, 0) * 2}
-            </TableCell>
-          </TableRow>
-        </TableBody>
-      </Table>
-    </TableContainer>
-  );
-}
-*/
