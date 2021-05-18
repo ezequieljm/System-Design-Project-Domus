@@ -16,7 +16,6 @@ import {
 } from "@material-ui/core";
 import {
 	FormatListBulleted,
-	Add,
 	Home,
 	Schedule,
 	Settings,

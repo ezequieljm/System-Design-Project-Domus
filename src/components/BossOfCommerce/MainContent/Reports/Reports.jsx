@@ -1,8 +1,8 @@
 import React from "react";
-import ClientsReports from "./ClientsReports/ClientsReports";
-import PropertiesReports from "./PropertiesReports/PropertiesReports";
-import SaleReports from "./SaleReports/SaleReports";
-import RentalReports from "./RentalReports/RentalReports";
+import ClientsReports from "./ClientsReports";
+import PropertiesReports from "./PropertiesReports";
+import SaleReports from "./SaleReports";
+import RentalReports from "./RentalReports";
 
 export default function RealEstate({ selectedIndex }) {
 	return (
