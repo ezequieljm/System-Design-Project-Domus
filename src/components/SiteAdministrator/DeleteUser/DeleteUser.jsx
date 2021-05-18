@@ -15,7 +15,7 @@ export default function DeleteUser() {
 	return (
 		<Grow in>
 			<Paper elevation={5} className={classes.paperRoot}>
-				<Typography variant='h4' style={{marginBottom: '1rem'}}>Deshabilitar Usuario</Typography>
+				<Typography variant='h4' style={{marginBottom: '1rem'}}>Deshabilitar usuario</Typography>
 				<ListUsersJobs />
 			</Paper>
 		</Grow>

@@ -146,14 +146,14 @@ export default function NewHouse() {
 					alignItems: "center",
 				}}>
 				<Paper elevation={5} style={{ padding: "1rem", width: 900 }}>
-					<Typography variant='h4'>Nueva Propiedad</Typography>
+					<Typography variant='h4'>Nueva propiedad</Typography>
 					<Typography variant='h6' style={{ marginBottom: "2rem" }}>
 						Complete los campos con los datos de la propiedad. No deben quedar
 						campos sin completar.
 					</Typography>
 					<form action='' onSubmit={handleOpen}>
 						<div id='kind'>
-							<Typography variant='h6'>Tipo de Propiedad</Typography>
+							<Typography variant='h6'>Tipo de propiedad</Typography>
 							<RadioGroup
 								name='kindHouse'
 								value={kindHouse}
@@ -376,7 +376,6 @@ export default function NewHouse() {
 									/>
 								</RadioGroup>
 							</div>
-
 							<div style={{ width: "50%" }}>
 								<FormControl autofocus fullWidth>
 									<TextField
@@ -388,7 +387,6 @@ export default function NewHouse() {
 								</FormControl>
 							</div>
 						</div>
-
 						<div style={{ marginBottom: "1rem" }}>
 							<div style={{ marginBottom: "1rem" }}>
 								<FormControl autofocus fullWidth>
@@ -412,7 +410,6 @@ export default function NewHouse() {
 								/>
 							</div>
 						</div>
-
 						<div id='propietario' style={{ marginBottom: "1rem" }}>
 							<Typography variant='h6'>Datos del propietario</Typography>
 							<div
@@ -432,7 +429,6 @@ export default function NewHouse() {
 										type='number'
 									/>
 								</FormControl>
-
 								<FormControl
 									autofocus
 									fullWidth
@@ -444,7 +440,6 @@ export default function NewHouse() {
 										type='text'
 									/>
 								</FormControl>
-
 								<FormControl autofocus fullWidth>
 									<TextField
 										required
@@ -454,7 +449,6 @@ export default function NewHouse() {
 									/>
 								</FormControl>
 							</div>
-
 							<div style={{ display: "flex", alignItems: "center" }}>
 								<InputLabel style={{ marginRight: "2rem" }}>
 									Tipo de cliente
@@ -476,7 +470,6 @@ export default function NewHouse() {
 									/>
 								</RadioGroup>
 							</div>
-
 							<div
 								style={{
 									marginBottom: "1rem",
@@ -494,7 +487,6 @@ export default function NewHouse() {
 										type='number'
 									/>
 								</FormControl>
-
 								<FormControl
 									autofocus
 									fullWidth
@@ -506,7 +498,6 @@ export default function NewHouse() {
 										type='number'
 									/>
 								</FormControl>
-
 								<FormControl autofocus fullWidth>
 									<TextField
 										required
@@ -517,7 +508,6 @@ export default function NewHouse() {
 								</FormControl>
 							</div>
 						</div>
-
 						<div style={{ marginBottom: "1rem" }}>
 							<FormControl autofocus fullWidth>
 								<TextField
@@ -528,7 +518,6 @@ export default function NewHouse() {
 								/>
 							</FormControl>
 						</div>
-
 						<Button type='submit' variant='contained' color='primary'>
 							Guardar Cambios
 						</Button>

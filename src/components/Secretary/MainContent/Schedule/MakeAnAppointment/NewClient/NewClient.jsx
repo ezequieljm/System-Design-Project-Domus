@@ -35,11 +35,9 @@ function FormNewClient() {
 			<FormControl style={{ marginRight: "2rem" }}>
 				<TextField label='Nombre' helperText='Nombre y Apellido del cliente' />
 			</FormControl>
-
 			<FormControl style={{ marginRight: "2rem" }}>
 				<TextField label='Teléfono' helperText='Número de Teléfono' />
 			</FormControl>
-
 			<FormControl>
 				<TextField label='Email' helperText='Correo electrónico' />
 			</FormControl>
@@ -99,7 +97,7 @@ export default function NewClient({ setView }) {
 	return (
 		<Grow in>
 			<Paper elevation={5} style={{ padding: "1rem", width: "98%" }}>
-				<Typography variant='h4'>Cita Nuevo Cliente</Typography>
+				<Typography variant='h4'>Cita nuevo cliente</Typography>
 				<div style={{ marginBottom: ".5rem", padding: "1rem" }}>
 					<Typography variant='h6'>
 						1. Complete los campos con los datos del cliente
@@ -166,7 +164,7 @@ function ModalView({closeModal}) {
 				color='primary'
 				style={{ marginTop: "1rem" }}
 				onClick={handleOpenModal}>
-				Agendar Cita
+				Agendar cita
 			</Button>
 			<Modal
 				className={classes.modal}
@@ -186,7 +184,7 @@ function ModalView({closeModal}) {
 								margintBottom: "2rem",
 							}}
 						/>
-						<h1>Cita Agendada</h1>
+						<h1>Cita agendada</h1>
 					</div>
 				</Fade>
 			</Modal>

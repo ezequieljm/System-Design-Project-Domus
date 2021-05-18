@@ -163,7 +163,7 @@ export default function Catalogue({ setView, setDataClick }) {
 		<Grow in>
 			<Paper elevation={5} style={{ padding: "1rem" }}>
 				<Typography variant='h4' style={{ marginBottom: "1rem" }}>
-					Catálogo de Propiedades
+					Catálogo de propiedades
 				</Typography>
 				<div style={{ display: "flex", justifyContent: "center" }}>
 					<div style={{ marginRight: ".5rem" }}>

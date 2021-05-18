@@ -72,7 +72,7 @@ function MediaCard({ client, setView }) {
 function MenuOptions({ setView }) {
 	const clients = [
 		{
-			kind: "Cliente Nuevo",
+			kind: "Cliente nuevo",
 			description:
 				"Crea una cita para un cliente que no esta registrado en la empresa.",
 			value: 0,
@@ -108,7 +108,7 @@ export default function MakeAnAppointment() {
 		<>
 			{viewRender === 2 && (
 				<>
-					<Typography variant='h4'>Nueva Cita</Typography>
+					<Typography variant='h4'>Nueva cita</Typography>
 					<MenuOptions setView={setView} />
 				</>
 			)}

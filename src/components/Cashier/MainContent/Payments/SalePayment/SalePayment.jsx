@@ -36,6 +36,7 @@ const useStyles = makeStyles((theme) => ({
 		border: "2px solid #000",
 		boxShadow: theme.shadows[5],
 		padding: theme.spacing(2, 4, 3),
+		textAlign: 'center',
 	},
 	paperContent: {
 		padding: "1rem",
@@ -71,9 +72,9 @@ function TransitionsModal({ open, handleClose }) {
 				}}>
 				<Fade in={open}>
 					<div className={classes.paper}>
-						<h1 id='transition-modal-title'>Propiedad no encontrado</h1>
-						<p id='transition-modal-description'>
-							Asegurese de que el código de la propiedad sea el correcto
+						<h1 >Propiedad no encontrada</h1>
+						<p >
+							Asegúrese de que el código de la propiedad sea correcto
 						</p>
 					</div>
 				</Fade>

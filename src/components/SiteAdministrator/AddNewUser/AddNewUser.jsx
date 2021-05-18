@@ -21,13 +21,13 @@ const useStyles = makeStyles((theme) => ({
 }));
 const jobs = [
 	{
-		value: "Gerente",
+		value: "Gerente/a",
 	},
 	{
-		value: "Secretaria",
+		value: "Secretaria/o",
 	},
 	{
-		value: "Administrador del Sitio",
+		value: "Administrador/a del Sitio",
 	},
 	{
 		value: "Agente inmobiliario",
@@ -36,13 +36,13 @@ const jobs = [
 		value: "Marketing",
 	},
 	{
-		value: "Jefe Comercialización",
+		value: "Jefe/a Comercialización",
 	},
 	{
-		value: "Jefe Administración",
+		value: "Jefe/a Administración",
 	},
 	{
-		value: "Cajero",
+		value: "Cajero/a",
 	},
 ];
 

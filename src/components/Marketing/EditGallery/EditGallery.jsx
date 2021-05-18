@@ -65,7 +65,7 @@ function SaveChanges({ setViewGallery }) {
 							style={{ fontSize: "9rem", color: "green", marginBottom: "1rem" }}
 						/>
 						<Typography variant='h4'>
-							Cambios Guardados Correctamente
+							Cambios guardados correctamente
 						</Typography>
 					</div>
 				</Fade>
@@ -79,7 +79,7 @@ export default function EditGallery({ setViewGallery }) {
 		<Grow in>
 			<Paper elevaton={5} style={{ padding: "1rem" }}>
 				<Typography variant='h4' style={{ marginBottom: "1rem" }}>
-					Editar Galeria
+					Galería
 				</Typography>
 				<div style={{ display: "flex" }}>
 					<TitlebarGridList />

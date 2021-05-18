@@ -62,11 +62,8 @@ function MediaCard({ textContent, fnDeploy, icon }) {
 				</CardContent>
 			</CardActionArea>
 			<CardActions>
-				<Button size='small' color='primary' onClick={fnDeploy}>
+				<Button size='small' color='primary' onClick={() => fnDeploy(icon)}>
 					{textContent.btnOne}
-				</Button>
-				<Button size='small' color='primary'>
-					{textContent.btnTwo}
 				</Button>
 			</CardActions>
 		</Card>
@@ -77,7 +74,7 @@ function ButtonsDep({ fnDep }) {
 	return (
 		<Grow in>
 			<div>
-				<Typography variant='h4'>Nuevo Cliente</Typography>
+				<Typography variant='h4'>Nuevo cliente</Typography>
 				<div
 					elevation={5}
 					style={{
@@ -85,16 +82,8 @@ function ButtonsDep({ fnDep }) {
 						justifyContent: "center",
 						alignItems: "center",
 					}}>
-					<MediaCard
-						textContent={cardText[0]}
-						fnDeploy={fnDep}
-						icon={1}
-					/>
-					<MediaCard
-						textContent={cardText[1]}
-						fnDeploy={fnDep}
-						icon={2}
-					/>
+					<MediaCard textContent={cardText[0]} fnDeploy={fnDep} icon={1} />
+					<MediaCard textContent={cardText[1]} fnDeploy={fnDep} icon={2} />
 				</div>
 			</div>
 		</Grow>

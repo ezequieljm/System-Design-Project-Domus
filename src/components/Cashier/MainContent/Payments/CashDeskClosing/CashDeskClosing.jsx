@@ -56,7 +56,7 @@ function TransitionsModal({ open, handleClose, handleOpen, text }) {
 						<Print
 							style={{ fontSize: "9rem", marginBottom: "2rem", color: "green" }}
 						/>
-						<h2>Documento lista para impresión</h2>
+						<h2>Documento listo para impresión</h2>
 					</div>
 				</Fade>
 			</Modal>
@@ -101,7 +101,7 @@ function TransitionsModalCloseCash() {
 						<CheckCircleOutline
 							style={{ fontSize: "9rem", marginBottom: "2rem", color: "green" }}
 						/>
-						<h2>Caja Cerrada</h2>
+						<h2>Caja cerrada</h2>
 						<p>Último cierre actualizado - 06/05/2021</p>
 					</div>
 				</Fade>

@@ -51,7 +51,7 @@ function TransitionsModal({ open, handleClose }) {
 	return (
 		<div className={classes.modal}>
 			<Button type='submit' variant='contained' color='primary'>
-				Asentar el Pago
+				Asentar el pago
 			</Button>
 			<Modal
 				className={classes.modal}
@@ -82,7 +82,7 @@ function TransitionsModal({ open, handleClose }) {
 }
 
 const validDataHouse = {
-	idHouse: "#FA0000",
+	idHouse: "#0000",
 	kindHouse: "Departamento",
 	location: {
 		country: "Argentina",
