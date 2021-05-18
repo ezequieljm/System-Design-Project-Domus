@@ -12,6 +12,7 @@ import {
 } from "@material-ui/core";
 import FormFill from "./FormOfUpdateClient";
 import UploadDocs from "./UploadDocsEditClient";
+import {CheckCircleOutline} from '@material-ui/icons';
 
 const dbUsers = [
 	{
@@ -48,11 +49,10 @@ const useStyle = makeStyles((theme) => ({
 		justifyContent: "center",
 	},
 	paper: {
-		background: "linear-gradient(to right, #396afc, #2948ff)",
+		background: "white",
 		boxShadow: theme.shadows[5],
 		padding: theme.spacing(2, 4, 3),
 		textAlign: "center",
-		color: "white",
 	},
 }));
 
@@ -61,6 +61,7 @@ export default function UpdateClient() {
 	const [open, setOpen] = React.useState(false);
 	const [entryUser, setEntryUser] = React.useState("");
 	const [renderViewFinedUser, setFinedUser] = React.useState(false);
+	const [openConfirm, setOpenConfirm] = React.useState(false);
 
 	const getFullName = (db, inx) => db[inx].firtsname + " " + db[inx].surname;
 	const handleOpen = (e) => {
@@ -72,6 +73,14 @@ export default function UpdateClient() {
 	React.useEffect(() => {
 		setEntryUser("");
 	}, [renderViewFinedUser]);
+
+	const handleOpenConfirm = () => {
+		setOpenConfirm(true);
+	};
+	const handleCloseConfirm = () => {
+		setOpenConfirm(false);
+		setFinedUser(!renderViewFinedUser);
+	};
 
 	return (
 		<>
@@ -86,8 +95,6 @@ export default function UpdateClient() {
 							/>
 						</Paper>
 						<Modal
-							aria-labelledby='transition-modal-title'
-							aria-describedby='transition-modal-description'
 							className={classes.modal}
 							open={open}
 							onClose={handleClose}
@@ -98,11 +105,16 @@ export default function UpdateClient() {
 							}}>
 							<Fade in={open}>
 								<div className={classes.paper}>
-									<Typography variant='h5' id='transition-modal-title'>
-										Cliente no encontrado
-									</Typography>
-									<Typography variant='h6' id='transition-modal-description'>
-										{`El cliente ${entryUser} no se encuentra registrado`}
+									<i
+										class='fas fa-user-times'
+										style={{
+											marginBottom: "1rem",
+											fontSize: "9rem",
+											color: "#ef5350",
+										}}></i>
+									<Typography variant='h5'>Cliente no encontrado</Typography>
+									<Typography variant='subtitle1'>
+										{`El cliente "${entryUser}" no se encuentra registrado`}
 									</Typography>
 								</div>
 							</Fade>
@@ -122,13 +134,39 @@ export default function UpdateClient() {
 							{dbUsers[0].firtsname + " " + dbUsers[0].surname}
 						</Typography>
 						<FormFill />
-						<Button
-							variant='contained'
-							color='primary'
-							style={{ marginTop: "1rem" }}
-							onClick={() => setFinedUser(!renderViewFinedUser)}>
-							Confirmar
-						</Button>
+						<div>
+							<Button
+								variant='contained'
+								color='primary'
+								style={{ marginTop: "1rem" }}
+								onClick={handleOpenConfirm}>
+								Confirmar
+							</Button>
+							<Modal
+								className={classes.modal}
+								open={openConfirm}
+								onClose={handleCloseConfirm}
+								closeAfterTransition
+								BackdropComponent={Backdrop}
+								BackdropProps={{
+									timeout: 500,
+								}}>
+								<Fade in={openConfirm}>
+									<div className={classes.paper}>
+										<CheckCircleOutline
+											style={{
+												color: "green",
+												fontSize: "9rem",
+												margintBottom: "2rem",
+											}}
+										/>
+										<h1 id='transition-modal-title'>
+											Cliente actualizado exitosamente
+										</h1>
+									</div>
+								</Fade>
+							</Modal>
+						</div>
 					</div>
 					<UploadDocs />
 				</Paper>

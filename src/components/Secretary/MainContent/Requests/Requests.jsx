@@ -214,7 +214,6 @@ function StickyHeadTable() {
 }
 
 const Request = () => {
-	// const classes = useRowStyles();
 	return (
 		<Grow in>
 			<Paper
@@ -224,7 +223,7 @@ const Request = () => {
 					boxShadow:
 						"0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
 				}}>
-				<Typography variant='h3'>Solicitudes</Typography>
+				<Typography variant='h4'>Solicitudes</Typography>
 				<ContentCards />
 				<StickyHeadTable />
 			</Paper>

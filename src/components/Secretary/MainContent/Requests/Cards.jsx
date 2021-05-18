@@ -11,20 +11,17 @@ const useStylesTow = makeStyles({
 		boxShadow:
 			"0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
 	},
-	colorFont: {
-		color: "orange",
-	},
 });
 
-function SimpleCard({ title, value }) {
+function SimpleCard({ title, value, colorBackground, colorTxt }) {
 	const classes = useStylesTow();
 	return (
-		<Card className={classes.root}>
+		<Card className={classes.root} style={{background: colorBackground}}>
 			<CardContent>
 				<Typography variant='h6' component='h2'>
 					{title}
 				</Typography>
-				<Typography variant='h1' className={classes.colorFont}>
+				<Typography variant='h1' className={classes.colorFont} style={{color: colorTxt}}>
 					{value}
 				</Typography>
 			</CardContent>
@@ -54,18 +51,22 @@ export default function ContentCards() {
 			<SimpleCard
 				title={valuesOfCards.titles[0]}
 				value={valuesOfCards.values[0]}
+				colorTxt="#039be5"
 			/>
 			<SimpleCard
 				title={valuesOfCards.titles[1]}
 				value={valuesOfCards.values[1]}
+				colorTxt="#ec407a"
 			/>
 			<SimpleCard
 				title={valuesOfCards.titles[2]}
 				value={valuesOfCards.values[2]}
+				colorTxt="#00897b"
 			/>
 			<SimpleCard
 				title={valuesOfCards.titles[3]}
 				value={valuesOfCards.values[3]}
+				colorTxt="#ff5722"
 			/>
 		</div>
 	);

@@ -6,8 +6,27 @@ import {
 	FormControl,
 	TextField,
 	Grow,
+	Modal,
+	Fade,
+	Backdrop,
 } from "@material-ui/core";
 import DatePickerCustom from "../../DatePicker/DatePicker";
+import { CheckCircleOutline } from "@material-ui/icons";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles((theme) => ({
+	modal: {
+		display: "flex",
+		alignItems: "center",
+		justifyContent: "center",
+	},
+	paper: {
+		background: "white",
+		boxShadow: theme.shadows[5],
+		padding: theme.spacing(2, 4, 3),
+		textAlign: "center",
+	},
+}));
 
 /* Component of new client form */
 function FormNewClient() {
@@ -116,15 +135,61 @@ export default function NewClient({ setView }) {
 						variant='outlined'
 						onChange={(e) => setHouse(e.target.value)}></TextField>
 				</div>
+				<ModalView closeModal={setView}/>
 				<Button
+					onClick={() => setView(2)}
+					style={{ marginTop: "1rem" }}
 					variant='contained'
-					color='primary'
-					onClick={() => alert("Cita Agendada")}
-					style={{ marginLeft: "1rem" }}>
-					Agendar Cita
+					color='secondary'>
+					Volver
 				</Button>
-				<Button onClick={() => setView(2)}>Volver</Button>
 			</Paper>
 		</Grow>
+	);
+}
+
+function ModalView({closeModal}) {
+	const classes = useStyles();
+	const [openModalView, setOpenModal] = React.useState(false);
+	const handleOpenModal = () => {
+		setOpenModal(true);
+	};
+
+	const handleCloseModal = () => {
+		setOpenModal(false);
+		closeModal(2);
+	};
+	return (
+		<div>
+			<Button
+				variant='contained'
+				color='primary'
+				style={{ marginTop: "1rem" }}
+				onClick={handleOpenModal}>
+				Agendar Cita
+			</Button>
+			<Modal
+				className={classes.modal}
+				open={openModalView}
+				onClose={handleCloseModal}
+				closeAfterTransition
+				BackdropComponent={Backdrop}
+				BackdropProps={{
+					timeout: 500,
+				}}>
+				<Fade in={openModalView}>
+					<div className={classes.paper}>
+						<CheckCircleOutline
+							style={{
+								color: "green",
+								fontSize: "9rem",
+								margintBottom: "2rem",
+							}}
+						/>
+						<h1>Cita Agendada</h1>
+					</div>
+				</Fade>
+			</Modal>
+		</div>
 	);
 }

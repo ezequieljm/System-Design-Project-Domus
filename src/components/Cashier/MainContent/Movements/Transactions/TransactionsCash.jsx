@@ -19,9 +19,9 @@ import CalendarRange from "./CalendarRange";
 
 const useRowStyles = makeStyles((theme) => ({
 	root: {
-		"& > *": {
+		/* 		"& > *": {
 			borderBottom: "unset",
-		},
+		}, */
 	},
 	modal: {
 		display: "flex",
@@ -36,72 +36,83 @@ const useRowStyles = makeStyles((theme) => ({
 	},
 }));
 
-function createData(name, calories, fat, carbs, protein, price) {
+function createDataBuy(number, buyer, ower, house, date, amount) {
 	return {
-		name,
-		calories,
-		fat,
-		carbs,
-		protein,
-		price,
+		number,
+		buyer,
+		ower,
+		house,
+		date,
+		amount,
 		history: [
-			{ date: "2020-01-05", customerId: "11091700", amount: 3 },
-			{ date: "2020-01-02", customerId: "Anonymous", amount: 1 },
+			{
+				kindOfBuy: "Financiada",
+				commission: "34.09%",
+				priceHouse: "1000322",
+				coin: "$ USD",
+				wayPay: "Caja de ahorro",
+			},
 		],
 	};
 }
 
-function Row(props) {
+const rowsBuy = [
+	createDataBuy("#AC345", "Bombom", "Dexter", "#FA234", "05/09/2021", 3.99),
+	createDataBuy("#AC345", "Bombom", "Dexter", "#FA234", "05/09/2021", 3.99),
+	createDataBuy("#AC345", "Bombom", "Dexter", "#FA234", "05/09/2021", 3.99),
+	createDataBuy("#AC345", "Bombom", "Dexter", "#FA234", "05/09/2021", 3.99),
+];
+
+function RowBuy(props) {
 	const { row } = props;
 	const [open, setOpen] = React.useState(false);
 	const classes = useRowStyles();
-
 	return (
 		<React.Fragment>
 			<TableRow className={classes.root}>
 				<TableCell>
-					<IconButton
-						aria-label='expand row'
-						size='small'
-						onClick={() => setOpen(!open)}>
+					<IconButton size='small' onClick={() => setOpen(!open)}>
 						{open ? <KeyboardArrowUp /> : <KeyboardArrowDown />}
 					</IconButton>
 				</TableCell>
 				<TableCell component='th' scope='row'>
-					{row.name}
+					{row.number}
 				</TableCell>
-				<TableCell align='right'>{row.calories}</TableCell>
-				<TableCell align='right'>{row.fat}</TableCell>
-				<TableCell align='right'>{row.carbs}</TableCell>
-				<TableCell align='right'>{row.protein}</TableCell>
+				<TableCell align='right'>{row.buyer}</TableCell>
+				<TableCell align='right'>{row.ower}</TableCell>
+				<TableCell align='right'>{row.house}</TableCell>
+				<TableCell align='right'>{row.date}</TableCell>
+				<TableCell align='right'>{row.amount}</TableCell>
 			</TableRow>
 			<TableRow>
 				<TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
 					<Collapse in={open} timeout='auto' unmountOnExit>
 						<Box margin={1}>
 							<Typography variant='h6' gutterBottom component='div'>
-								History
+								{`Transacción ${row.number}`}
 							</Typography>
-							<Table size='small' aria-label='purchases'>
+							<Table size='small'>
 								<TableHead>
 									<TableRow>
-										<TableCell>Date</TableCell>
-										<TableCell>Customer</TableCell>
-										<TableCell align='right'>Amount</TableCell>
-										<TableCell align='right'>Total price ($)</TableCell>
+										<TableCell>Tipo de venta</TableCell>
+										<TableCell>Comisión</TableCell>
+										<TableCell align='right'>Precio Real</TableCell>
+										<TableCell align='right'>Moneda</TableCell>
+										<TableCell align='right'>Forma de pago</TableCell>
 									</TableRow>
 								</TableHead>
 								<TableBody>
 									{row.history.map((historyRow) => (
-										<TableRow key={historyRow.date}>
+										<TableRow key={historyRow.kindOfBuy}>
 											<TableCell component='th' scope='row'>
-												{historyRow.date}
+												{historyRow.kindOfBuy}
 											</TableCell>
-											<TableCell>{historyRow.customerId}</TableCell>
-											<TableCell align='right'>{historyRow.amount}</TableCell>
+											<TableCell>{historyRow.commission}</TableCell>
 											<TableCell align='right'>
-												{Math.round(historyRow.amount * row.price * 100) / 100}
+												{historyRow.priceHouse}
 											</TableCell>
+											<TableCell align='right'>{historyRow.coin}</TableCell>
+											<TableCell align='right'>{historyRow.wayPay}</TableCell>
 										</TableRow>
 									))}
 								</TableBody>
@@ -114,36 +125,189 @@ function Row(props) {
 	);
 }
 
-const rows = [
-	createData("Frozen yoghurt", 159, 6.0, 24, 4.0, 3.99),
-	createData("Ice cream sandwich", 237, 9.0, 37, 4.3, 4.99),
-	createData("Eclair", 262, 16.0, 24, 6.0, 3.79),
-	createData("Cupcake", 305, 3.7, 67, 4.3, 2.5),
-	createData("Gingerbread", 356, 16.0, 49, 3.9, 1.5),
-];
-
-function CollapsibleTable() {
+function ListBuy() {
 	return (
 		<Grow in>
 			<TableContainer component={Paper}>
 				<Table>
-					<TableHead style={{ background: "#4db6ac" }}>
+					<TableHead style={{ background: "#80cbc4" }}>
 						<TableRow>
 							<TableCell />
-							<TableCell>Dessert (100g serving)</TableCell>
-							<TableCell align='right'>Calories</TableCell>
-							<TableCell align='right'>Fat&nbsp;(g)</TableCell>
-							<TableCell align='right'>Carbs&nbsp;(g)</TableCell>
-							<TableCell align='right'>Protein&nbsp;(g)</TableCell>
+							<TableCell>Número</TableCell>
+							<TableCell align='right'>Comprador</TableCell>
+							<TableCell align='right'>Propietario</TableCell>
+							<TableCell align='right'>Inmueble</TableCell>
+							<TableCell align='right'>Fecha</TableCell>
+							<TableCell align='right'>Monto</TableCell>
 						</TableRow>
 					</TableHead>
 					<TableBody>
 						<TableRow>
-							<TableCell style={{ fontSize: "2rem" }}>Entradas</TableCell>
+							<TableCell style={{ background: "#90caf9", fontSize: "1rem" }}>
+								Entradas
+							</TableCell>
+							<TableCell />
+							<TableCell />
+							<TableCell />
+							<TableCell />
+							<TableCell />
+							<TableCell />
+						</TableRow>
+						{rowsBuy.map((row) => (
+							<RowBuy key={row.name} row={row} />
+						))}
+						<TableRow>
+							<TableCell colSpan={5}></TableCell>
+							<TableCell colSpan={1}>Subtotal</TableCell>
+							<TableCell align='right'>
+								{rowsBuy.reduce((acc, curr) => acc + curr.amount, 0)}
+							</TableCell>
 						</TableRow>
 						<TableRow>
-							<TableCell style={{ background: "#90caf9", fontSize: '1rem' }}>
-								Caja de alquieres
+							<TableCell />
+						</TableRow>
+						<TableRow>
+							<TableCell style={{ background: "#90caf9", fontSize: "1rem" }}>
+								Salidas
+							</TableCell>
+							<TableCell />
+							<TableCell />
+							<TableCell />
+							<TableCell />
+							<TableCell />
+							<TableCell />
+						</TableRow>
+						{rowsBuy.map((row) => (
+							<RowBuy key={row.name} row={row} />
+						))}
+						<TableRow>
+							<TableCell colSpan={5}></TableCell>
+							<TableCell colSpan={1}>Subtotal</TableCell>
+							<TableCell align='right'>
+								{rowsBuy.reduce((acc, curr) => acc + curr.amount, 0)}
+							</TableCell>
+						</TableRow>
+						<TableRow>
+							<TableCell colSpan={5}></TableCell>
+							<TableCell colSpan={1}>Total general</TableCell>
+							<TableCell align='right'>
+								{rowsBuy.reduce((acc, curr) => acc + curr.amount, 0) * 2}
+							</TableCell>
+						</TableRow>
+					</TableBody>
+				</Table>
+			</TableContainer>
+		</Grow>
+	);
+}
+
+function createDataRental(number, occupant, house, date, amount) {
+	return {
+		number,
+		occupant,
+		house,
+		date,
+		amount,
+		history: [
+			{
+				mounth: "Mayo",
+				year: "2021",
+				mora: "4.322%",
+				wayPay: "Cuenta Corriente",
+				id: "1109821",
+			},
+		],
+	};
+}
+
+const rowsRental = [
+	createDataRental("#AC345", "Mojo jojo", "#FA987", "05/09/2021", 3.99),
+	createDataRental("#AC345", "Mojo jojo", "#FA987", "05/09/2021", 3.99),
+	createDataRental("#AC345", "Mojo jojo", "#FA987", "05/09/2021", 3.99),
+	createDataRental("#AC345", "Mojo jojo", "#FA987", "05/09/2021", 3.99),
+];
+
+function RowRental(props) {
+	const { row } = props;
+	const [open, setOpen] = React.useState(false);
+	const classes = useRowStyles();
+	return (
+		<React.Fragment>
+			<TableRow className={classes.root}>
+				<TableCell>
+					<IconButton
+						aria-label='expand row'
+						size='small'
+						onClick={() => setOpen(!open)}>
+						{open ? <KeyboardArrowUp /> : <KeyboardArrowDown />}
+					</IconButton>
+				</TableCell>
+				<TableCell component='th' scope='row'>
+					{row.number}
+				</TableCell>
+				<TableCell align='right'>{row.occupant}</TableCell>
+				<TableCell align='right'>{row.house}</TableCell>
+				<TableCell align='right'>{row.date}</TableCell>
+				<TableCell align='right'>{row.amount}</TableCell>
+			</TableRow>
+			<TableRow>
+				<TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
+					<Collapse in={open} timeout='auto' unmountOnExit>
+						<Box margin={1}>
+							<Typography variant='h6' gutterBottom component='div'>
+								{`Transacción ${row.number}`}
+							</Typography>
+							<Table size='small'>
+								<TableHead>
+									<TableRow>
+										<TableCell>Mes</TableCell>
+										<TableCell>Año</TableCell>
+										<TableCell align='right'>Interes por mora</TableCell>
+										<TableCell align='right'>Forma de pago</TableCell>
+										<TableCell align='right'>Cuenta</TableCell>
+									</TableRow>
+								</TableHead>
+								<TableBody>
+									{row.history.map((historyRow) => (
+										<TableRow key={historyRow.mounth}>
+											<TableCell component='th' scope='row'>
+												{historyRow.mounth}
+											</TableCell>
+											<TableCell>{historyRow.year}</TableCell>
+											<TableCell align='right'>{historyRow.mora}</TableCell>
+											<TableCell align='right'>{historyRow.wayPay}</TableCell>
+											<TableCell align='right'>{historyRow.id}</TableCell>
+										</TableRow>
+									))}
+								</TableBody>
+							</Table>
+						</Box>
+					</Collapse>
+				</TableCell>
+			</TableRow>
+		</React.Fragment>
+	);
+}
+
+function ListRental() {
+	return (
+		<Grow in>
+			<TableContainer component={Paper}>
+				<Table>
+					<TableHead style={{ background: "#80cbc4" }}>
+						<TableRow>
+							<TableCell />
+							<TableCell>Número</TableCell>
+							<TableCell align='right'>Inquilino</TableCell>
+							<TableCell align='right'>Inmueble</TableCell>
+							<TableCell align='right'>Fecha</TableCell>
+							<TableCell align='right'>Monto</TableCell>
+						</TableRow>
+					</TableHead>
+					<TableBody>
+						<TableRow>
+							<TableCell style={{ background: "#90caf9", fontSize: "1rem" }}>
+								Entradas
 							</TableCell>
 							<TableCell />
 							<TableCell />
@@ -151,17 +315,19 @@ function CollapsibleTable() {
 							<TableCell />
 							<TableCell />
 						</TableRow>
-						{rows.map((row) => (
-							<Row key={row.name} row={row} />
+						{rowsRental.map((row) => (
+							<RowRental key={row.number} row={row} />
 						))}
 						<TableRow>
 							<TableCell colSpan={4} />
 							<TableCell>Subtotal</TableCell>
-							<TableCell />
+							<TableCell>
+								{rowsRental.reduce((acc, curr) => acc + curr.amount, 0)}
+							</TableCell>
 						</TableRow>
 						<TableRow>
-							<TableCell style={{ background: "#90caf9", fontSize:'1rem' }}>
-								Caja de Ventas
+							<TableCell style={{ background: "#90caf9", fontSize: "1rem" }}>
+								Salidas
 							</TableCell>
 							<TableCell />
 							<TableCell />
@@ -169,67 +335,22 @@ function CollapsibleTable() {
 							<TableCell />
 							<TableCell />
 						</TableRow>
-						{rows.map((row) => (
-							<Row key={row.name} row={row} />
+						{rowsRental.map((row) => (
+							<RowRental key={row.number} row={row} />
 						))}
 						<TableRow>
 							<TableCell colSpan={4} />
 							<TableCell>Subtotal</TableCell>
-							<TableCell />
+							<TableCell>
+								{rowsRental.reduce((acc, curr) => acc + curr.amount, 0)}
+							</TableCell>
 						</TableRow>
 						<TableRow>
 							<TableCell colSpan={4} />
 							<TableCell>Total Ingresos</TableCell>
-							<TableCell />
-						</TableRow>
-						<TableRow>
-							<TableCell style={{ fontSize: "2rem" }}>Salidas</TableCell>
-						</TableRow>
-						<TableRow>
-							<TableCell style={{ background: "#90caf9", fontSize:'1rem' }}>
-								Caja de alquieres
+							<TableCell>
+								{rowsRental.reduce((acc, curr) => acc + curr.amount, 0) * 2}
 							</TableCell>
-							<TableCell />
-							<TableCell />
-							<TableCell />
-							<TableCell />
-							<TableCell />
-						</TableRow>
-						{rows.map((row) => (
-							<Row key={row.name} row={row} />
-						))}
-						<TableRow>
-							<TableCell colSpan={4} />
-							<TableCell>Subtotal</TableCell>
-							<TableCell />
-						</TableRow>
-						<TableRow>
-							<TableCell style={{ background: "#90caf9", fontSize: '1rem' }}>
-								Caja de Ventas
-							</TableCell>
-							<TableCell />
-							<TableCell />
-							<TableCell />
-							<TableCell />
-							<TableCell />
-						</TableRow>
-						{rows.map((row) => (
-							<Row key={row.name} row={row} />
-						))}
-						<TableRow>
-							<TableCell colSpan={4} />
-							<TableCell>Subtotal</TableCell>
-							<TableCell />
-						</TableRow>
-						<TableRow>
-							<TableCell colSpan={4} />
-							<TableCell>Total Egresos</TableCell>
-							<TableCell />
-						</TableRow>
-						<TableRow>
-							<TableCell colSpan={4} />
-							<TableCell>Total General</TableCell>
-							<TableCell />
 						</TableRow>
 					</TableBody>
 				</Table>
@@ -256,7 +377,20 @@ export default function CashDeskClosing() {
 					<Typography variant='h6'>05/05/2021</Typography>
 				</div>
 				<CalendarRange setList={setList} />
-				{showList === 1 && <CollapsibleTable />}
+				{showList === 1 && (
+					<>
+						<Typography variant='h5' style={{ marginBottom: "1rem" }}>
+							Caja de Alquileres
+						</Typography>
+						<ListRental />
+						<Typography
+							variant='h5'
+							style={{ marginTop: "1rem", marginBottom: "1rem" }}>
+							Caja de Ventas
+						</Typography>
+						<ListBuy />
+					</>
+				)}
 			</Paper>
 		</Grow>
 	);

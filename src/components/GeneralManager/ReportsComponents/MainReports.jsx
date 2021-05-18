@@ -9,27 +9,17 @@ import {
 import CalendarOfReports from "./CalendarOfReports";
 import CustomizedRadios from "./RadioGroup";
 import ListReport from "./ListReport";
-import { makeStyles } from "@material-ui/core/styles";
-
-const useStyles = makeStyles((theme) => ({
-	root: {
-		// border: "1px solid black",
-	},
-	calendarReports: {
-		// border: "1px solid black",
-	},
-}));
+import { Grow } from "@material-ui/core";
 
 export default function MainReports() {
-	const classes = useStyles();
 	const [typeOfReport, setReport] = React.useState("");
 	const [showReportOrList, setRepList] = React.useState(0);
 
 	return (
-		<>
+		<Grow in>
 			<Paper elevation={5} style={{ padding: "1rem" }}>
 				<Typography variant='h4'>Reportes</Typography>
-				<div className={`${classes.root} ${classes.calendarReports}`}>
+				<div>
 					<CalendarOfReports />
 					<CustomizedRadios setReport={setReport} setRepList={setRepList} />
 				</div>
@@ -51,6 +41,6 @@ export default function MainReports() {
 					<ListReport setRepList={setRepList} typeOfReport={typeOfReport} />
 				)}
 			</Paper>
-		</>
+		</Grow>
 	);
 }

@@ -113,8 +113,8 @@ function Row(props) {
 
 export function ListActivity() {
 	return (
-		<TableContainer>
-			<Table>
+		<TableContainer style={{maxHeight: '450px', overflow: 'auto'}}>
+			<Table stickyHeader >
 				<TableHead>
 					<TableRow>
 						<TableCell />

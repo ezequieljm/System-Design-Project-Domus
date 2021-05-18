@@ -72,8 +72,8 @@ function TransitionsModal({ open, handleClose }) {
 				}}>
 				<Fade in={open}>
 					<div className={classes.paper}>
-						<h1 id='transition-modal-title'>Locatario no encontrado</h1>
-						<p id='transition-modal-description'>
+						<h1 >Locatario no encontrado</h1>
+						<p >
 							Asegurese de que el código de cliente sea el correcto
 						</p>
 					</div>
