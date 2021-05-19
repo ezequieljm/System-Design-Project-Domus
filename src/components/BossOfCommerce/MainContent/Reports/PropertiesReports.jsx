@@ -1,7 +1,7 @@
 import React from "react";
 import { Typography, Paper, Button } from "@material-ui/core";
 import CalendarOfReports from "./ReportsComponents/CalendarOfReports";
-import SaleList from "./ReportsComponents/ListReports/SaleList";
+import HouseReports from "./ReportsComponents/ListReports/HouseReports";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
@@ -28,7 +28,7 @@ export default function MainReports() {
 					</div>
 					{ showReport === 1 && (
 						<div>
-							<SaleList />
+							<HouseReports />
 							<div style={{ display: "flex" }}>
 								<div style={{ padding: "1rem" }}>
 									<Button type='submit' variant='contained' color='primary'>Imprimir</Button>
