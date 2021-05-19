@@ -48,11 +48,11 @@ const useStyle = makeStyles((theme) => ({
 		justifyContent: "center",
 	},
 	paper: {
-		background: "linear-gradient(to right, #396afc, #2948ff)",
+		background: "white",
 		boxShadow: theme.shadows[5],
 		padding: theme.spacing(2, 4, 3),
 		textAlign: "center",
-		color: "white",
+		// color: "white",
 	},
 }));
 
