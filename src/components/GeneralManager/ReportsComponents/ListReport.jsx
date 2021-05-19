@@ -9,7 +9,15 @@ export default function ListReport({ setRepList, typeOfReport }) {
 	return (
 		<Grow in>
 			<div>
-				<Typography variant='h5'>{typeOfReport.toUpperCase()}</Typography>
+				<div style={{margin: '1rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
+					<Typography variant='h5'>{typeOfReport.toUpperCase()}</Typography>
+					<Button
+						variant='contained'
+						color='primary'
+						>
+						Imprimir
+					</Button>
+				</div>
 				{typeOfReport === "ventas" && <SaleList />}
 				{typeOfReport === "alquileres" && <RentalReports />}
 				{typeOfReport === "clientes" && <ClientReports />}
@@ -24,4 +32,4 @@ export default function ListReport({ setRepList, typeOfReport }) {
 			</div>
 		</Grow>
 	);
-}
+};

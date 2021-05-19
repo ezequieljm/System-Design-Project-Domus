@@ -94,7 +94,7 @@ export default function SaleList() {
 						<TableCell align='right'>Comprador</TableCell>
 						<TableCell align='right'>Propietario</TableCell>
 						<TableCell align='right'>Forma de pago</TableCell>
-						<TableCell align='right'>Monto</TableCell>
+						<TableCell align='right'>Monto ($ UDS)</TableCell>
 					</TableRow>
 				</TableHead>
 				<TableBody>
@@ -121,14 +121,14 @@ export default function SaleList() {
 							<TableCell align='right'>{row.buyer}</TableCell>
 							<TableCell align='right'>{row.ower}</TableCell>
 							<TableCell align='right'>{row.wayToPay}</TableCell>
-							<TableCell align='right'>{row.amount}</TableCell>
+							<TableCell align='right'>{`$ ${row.amount}`}</TableCell>
 						</TableRow>
 					))}
 					<br />
 					<TableRow>
 						<TableCell colSpan={7}></TableCell>
 						<TableCell colSpan={1}>Subtotal</TableCell>
-						<TableCell align='right'>{total}</TableCell>
+						<TableCell align='right'>{`$ ${total}`}</TableCell>
 					</TableRow>
 					<br />
 					<br />
@@ -155,14 +155,14 @@ export default function SaleList() {
 							<TableCell align='right'>{row.buyer}</TableCell>
 							<TableCell align='right'>{row.ower}</TableCell>
 							<TableCell align='right'>{row.wayToPay}</TableCell>
-							<TableCell align='right'>{row.amount}</TableCell>
+							<TableCell align='right'>{`$ ${row.amount}`}</TableCell>
 						</TableRow>
 					))}
 					<br />
 					<TableRow>
 						<TableCell colSpan={7}></TableCell>
 						<TableCell colSpan={1}>Subtotal</TableCell>
-						<TableCell align='right'>{total}</TableCell>
+						<TableCell align='right'>{`$ ${total}`}</TableCell>
 					</TableRow>
 					<br />
 					<br />
@@ -189,14 +189,14 @@ export default function SaleList() {
 							<TableCell align='right'>{row.buyer}</TableCell>
 							<TableCell align='right'>{row.ower}</TableCell>
 							<TableCell align='right'>{row.wayToPay}</TableCell>
-							<TableCell align='right'>{row.amount}</TableCell>
+							<TableCell align='right'>{`$ ${row.amount}`}</TableCell>
 						</TableRow>
 					))}
 					<br />
 					<TableRow>
 						<TableCell colSpan={7}></TableCell>
 						<TableCell colSpan={1}>Subtotal</TableCell>
-						<TableCell align='right'>{total}</TableCell>
+						<TableCell align='right'>{`$ ${total}`}</TableCell>
 					</TableRow>
 					<br />
 					<br />
@@ -223,14 +223,14 @@ export default function SaleList() {
 							<TableCell align='right'>{row.buyer}</TableCell>
 							<TableCell align='right'>{row.ower}</TableCell>
 							<TableCell align='right'>{row.wayToPay}</TableCell>
-							<TableCell align='right'>{row.amount}</TableCell>
+							<TableCell align='right'>{`$ ${row.amount}`}</TableCell>
 						</TableRow>
 					))}
 					<br />
 					<TableRow>
 						<TableCell colSpan={7}></TableCell>
 						<TableCell colSpan={1}>Subtotal</TableCell>
-						<TableCell align='right'>{total}</TableCell>
+						<TableCell align='right'>{`$ ${total}`}</TableCell>
 					</TableRow>
 					<br />
 					<br />
@@ -257,21 +257,21 @@ export default function SaleList() {
 							<TableCell align='right'>{row.buyer}</TableCell>
 							<TableCell align='right'>{row.ower}</TableCell>
 							<TableCell align='right'>{row.wayToPay}</TableCell>
-							<TableCell align='right'>{row.amount}</TableCell>
+							<TableCell align='right'>{`$ ${row.amount}`}</TableCell>
 						</TableRow>
 					))}
 					<br />
 					<TableRow>
 						<TableCell colSpan={7}></TableCell>
 						<TableCell colSpan={1}>Subtotal</TableCell>
-						<TableCell align='right'>{total}</TableCell>
+						<TableCell align='right'>{`$ ${total}`}</TableCell>
 					</TableRow>
 					<br />
 					<br />
 					<TableRow>
 						<TableCell colSpan={1}>Total General</TableCell>
 						<TableCell align='right'>
-							{total + total + total + total + total}
+							{`$ ${total + total + total + total + total} USD`}
 						</TableCell>
 					</TableRow>
 					<br />

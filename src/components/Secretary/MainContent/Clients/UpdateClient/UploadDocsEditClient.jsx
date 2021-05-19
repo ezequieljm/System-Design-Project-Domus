@@ -87,7 +87,7 @@ export default function UploadDocs() {
 								fullWidth
 							/>
 							<Button variant='contained' color='primary'>
-								Agregar
+								Guardar Cambios
 							</Button>
 						</div>
 					</div>

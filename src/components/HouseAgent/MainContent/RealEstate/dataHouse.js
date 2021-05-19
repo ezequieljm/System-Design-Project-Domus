@@ -99,7 +99,7 @@ export const tileData = [
 		title: "Mansión Spencer. Montañas Arklay",
 		description:
 			"Construida en 1950. Forma parte de los suburbios del sector Norte de Raccoon City",
-		available: "No Disponible",
+		available: "Disponible",
 		id: "3523",
 		kindHouse: "Departamento",
 		location: "País",
