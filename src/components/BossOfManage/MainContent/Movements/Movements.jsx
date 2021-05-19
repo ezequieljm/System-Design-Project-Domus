@@ -7,6 +7,7 @@ export default function Movements({ selectedIndex }) {
 		<>
       {selectedIndex === 0 && <InputOutput /> }
       {selectedIndex === 1 && <TransactionsCash /> }
+      {selectedIndex > 1 &&  <h1>Herramientas de página</h1>}
 		</>
 	);
 }

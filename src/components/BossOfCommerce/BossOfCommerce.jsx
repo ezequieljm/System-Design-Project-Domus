@@ -164,13 +164,15 @@ function HerramientasAgenda({ hanList, inx }) {
 }
 
 export default function BossOfCommerce({ fnExit }) {
+	const classes = useStyles();
 	const [value, setValue] = React.useState(0);
 	const [selectedIndex, setSelectedIndex] = React.useState(0);
-
-	const classes = useStyles();
-
 	const handleNavbarTab = (event, newValue) => setValue(newValue);
 	const handleListItemClick = (event, index) => setSelectedIndex(index);
+
+	React.useEffect(() => {
+		setSelectedIndex(0);
+	}, [value]);
 
 	return (
 		<div className={classes.root}>

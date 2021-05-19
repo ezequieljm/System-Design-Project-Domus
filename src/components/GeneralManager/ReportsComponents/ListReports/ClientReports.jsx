@@ -1,14 +1,3 @@
-/* import React from "react";
-import { Typography, } from "@material-ui/core";
-
-export default function ClientReports() {
-	return (
-		<>
-			<Typography variant='h1'>Reportes de Clientes</Typography>
-		</>
-	);
-} */
-
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import {
@@ -19,7 +8,6 @@ import {
 	TableCell,
 	TableBody,
 	Table,
-	Typography,
 } from "@material-ui/core";
 
 const useStyles = makeStyles({

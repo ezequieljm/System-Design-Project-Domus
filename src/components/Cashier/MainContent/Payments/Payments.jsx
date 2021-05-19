@@ -9,6 +9,7 @@ export default function Payments({ selectedIndex }) {
 			{selectedIndex === 0 && <RentalPayment />}
 			{selectedIndex === 1 && <SalePayment />}
 			{selectedIndex === 2 && <CashDeskClosing />}
+			{selectedIndex > 2 && <h1>Herramientas de página</h1>}
 		</>
 	);
 }

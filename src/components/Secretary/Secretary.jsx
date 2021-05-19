@@ -219,6 +219,10 @@ export default function Secretary({ exit }) {
 	const handleChange = (event, newValue) => setValue(newValue);
 	const handleListItemClick = (event, index) => setSelectedIndex(index);
 
+	React.useEffect(() => {
+		setSelectedIndex(0);
+	}, [value]);
+
 	return (
 		<div className={classes.root}>
 			<CssBaseline />
