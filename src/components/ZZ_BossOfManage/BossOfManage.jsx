@@ -15,13 +15,14 @@ import {
 	Tabs,
 } from "@material-ui/core";
 import {
+	FormatListBulleted,
+	Add,
+	Home,
+	Schedule,
 	Settings,
 	Refresh,
 	Report,
 	MenuBook,
-	PeopleAlt,
-	AttachMoney,
-	ListAlt,
 } from "@material-ui/icons";
 import {
 	ArrowForwardIos,
@@ -29,8 +30,7 @@ import {
 	Today,
 	BusinessCenter,
 } from "@material-ui/icons";
-import { useStyles } from "./stylesManage";
-import MainContent from "./MainContent/MainContent";
+import { useStyles } from "./stylesManager";
 
 const toolsPage = [
 	{
@@ -50,56 +50,6 @@ const toolsPage = [
 		icon: <MenuBook />,
 	},
 ];
-
-function HerramientasClientes({ hanList, inx }) {
-	const tools = [
-		{
-			text: "Clientes",
-			icon: <PeopleAlt />,
-		},
-	];
-	return (
-		<List>
-			{tools.map((tool, index) => (
-				<ListItem
-					button
-					key={tool.text}
-					selected={inx === index}
-					onClick={(e) => hanList(e, index)}>
-					<ListItemIcon>{tool.icon}</ListItemIcon>
-					<ListItemText primary={tool.text} />
-				</ListItem>
-			))}
-		</List>
-	);
-}
-
-function HerramientasTransacciones({ hanList, inx }) {
-	const tools = [
-		{
-			text: "Transacciones",
-			icon: <AttachMoney />
-		},
-		{
-			text: "Reportes",
-			icon: <ListAlt />
-		},
-	];
-	return (
-		<List>
-			{tools.map((tool, index) => (
-				<ListItem
-					button
-					key={tool.text}
-					selected={inx === index}
-					onClick={(e) => hanList(e, index)}>
-					<ListItemIcon>{tool.icon}</ListItemIcon>
-					<ListItemText primary={tool.text} />
-				</ListItem>
-			))}
-		</List>
-	);
-}
 
 export default function BossOfManage({ fnExit }) {
 	const [value, setValue] = React.useState(0);
@@ -121,8 +71,7 @@ export default function BossOfManage({ fnExit }) {
 						onChange={handleNavbarTab}
 						indicatorColor='primary'
 						style={{ paddingLeft: "2rem" }}>
-						<Tab label='Clientes' />
-						<Tab label='Transacciones' />
+						<Tab label='Administración' />
 					</Tabs>
 					<Typography style={{ paddingRight: "2rem" }}>
 						Viernes 14 de Mayo 2021
@@ -138,7 +87,7 @@ export default function BossOfManage({ fnExit }) {
 						</Typography>
 						<ArrowForwardIos />
 						<Typography variant='subtitle1' noWrap>
-							Administración
+							Administrador
 						</Typography>
 					</div>
 					<div className={classes.appBarMainIconsUs}>
@@ -158,24 +107,12 @@ export default function BossOfManage({ fnExit }) {
 				<Toolbar />
 				<Toolbar />
 				<div className={classes.drawerContainer}>
-				{value === 1 && (
-						<HerramientasTransacciones
-							hanList={handleListItemClick}
-							inx={selectedIndex}
-						/>
-					)}
-				{value === 0 && (
-						<HerramientasClientes
-							hanList={handleListItemClick}
-							inx={selectedIndex}
-						/>
-					)}
 					<List>
 						{toolsPage.map((tool, index) => (
 							<ListItem
 								button
 								key={tool.text}
-								selected={selectedIndex === index + 2}
+								selected={selectedIndex === index + 3}
 								onClick={(event) => handleListItemClick(event, index + 3)}>
 								<ListItemIcon>{tool.icon}</ListItemIcon>
 								<ListItemText primary={tool.text} />
@@ -187,7 +124,7 @@ export default function BossOfManage({ fnExit }) {
 			<main className={classes.content}>
 				<Toolbar />
 				<Toolbar />
-				<MainContent val={value} inxTool={selectedIndex} />
+				<Typography variant='h1'>Administrador</Typography>
 			</main>
 		</div>
 	);
