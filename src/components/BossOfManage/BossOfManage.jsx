@@ -31,6 +31,7 @@ import {
 } from "@material-ui/icons";
 import { useStyles } from "./stylesManage";
 import MainContent from "./MainContent/MainContent";
+import { useHistory } from "react-router-dom"
 
 const toolsPage = [
 	{
@@ -101,8 +102,9 @@ function HerramientasTransacciones({ hanList, inx }) {
 	);
 }
 
-export default function BossOfManage({ fnExit }) {
+const BossOfManage = () => {
 	const classes = useStyles();
+	const history = useHistory();
 	const [value, setValue] = React.useState(0);
 	const [selectedIndex, setSelectedIndex] = React.useState(0);
 	const handleNavbarTab = (event, newValue) => setValue(newValue);
@@ -147,7 +149,7 @@ export default function BossOfManage({ fnExit }) {
 						<Today />
 						<NotificationsNone />
 						<Avatar>J</Avatar>
-						<Button variant='contained' color='secondary' onClick={fnExit}>
+						<Button variant='contained' color='secondary' onClick={() => history.push("/")}>
 							Salir
 						</Button>
 					</div>
@@ -160,13 +162,13 @@ export default function BossOfManage({ fnExit }) {
 				<Toolbar />
 				<Toolbar />
 				<div className={classes.drawerContainer}>
-				{value === 1 && (
+					{value === 1 && (
 						<HerramientasTransacciones
 							hanList={handleListItemClick}
 							inx={selectedIndex}
 						/>
 					)}
-				{value === 0 && (
+					{value === 0 && (
 						<HerramientasClientes
 							hanList={handleListItemClick}
 							inx={selectedIndex}
@@ -194,3 +196,5 @@ export default function BossOfManage({ fnExit }) {
 		</div>
 	);
 }
+
+export default BossOfManage;

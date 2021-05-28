@@ -30,6 +30,7 @@ import {
 	NotificationsNone,
 	ArrowForwardIos,
 } from "@material-ui/icons";
+import {useHistory} from "react-router-dom";
 
 const configs = [
 	"Configuración",
@@ -211,8 +212,9 @@ function PageTools({ hand, inx }) {
 	);
 }
 
-export default function Secretary({ exit }) {
+const Secretary = () => {
 	const classes = useStyles();
+	const history = useHistory();
 	const [value, setValue] = React.useState(0);
 	const [selectedIndex, setSelectedIndex] = React.useState(0);
 
@@ -259,7 +261,7 @@ export default function Secretary({ exit }) {
 						<Today />
 						<NotificationsNone />
 						<Avatar className={classes.green}>J</Avatar>
-						<Button onClick={exit} color='secondary' variant='contained'>
+						<Button onClick={() => history.push("/")} color='secondary' variant='contained'>
 							Salir
 						</Button>
 					</div>
@@ -290,3 +292,5 @@ export default function Secretary({ exit }) {
 		</div>
 	);
 }
+
+export default Secretary;

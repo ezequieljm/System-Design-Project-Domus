@@ -29,6 +29,7 @@ import {
 } from "@material-ui/icons";
 import { useStyles } from "./stylesGeneralManager";
 import MainReports from "./ReportsComponents/MainReports";
+import { useHistory } from "react-router";
 
 const toolsPage = [
 	{
@@ -56,7 +57,8 @@ const toolManage = [
 	},
 ];
 
-export default function GeneralManager({ fnExit }) {
+const GeneralManager = () => {
+	const history = useHistory();
 	const [value, setValue] = React.useState(0);
 	const [selectedIndex, setSelectedIndex] = React.useState(0);
 
@@ -99,7 +101,7 @@ export default function GeneralManager({ fnExit }) {
 						<Today />
 						<NotificationsNone />
 						<Avatar>F</Avatar>
-						<Button variant='contained' color='secondary' onClick={fnExit}>
+						<Button variant='contained' color='secondary' onClick={() => history.push("/")}>
 							Salir
 						</Button>
 					</div>
@@ -146,3 +148,5 @@ export default function GeneralManager({ fnExit }) {
 		</div>
 	);
 }
+
+export default GeneralManager;

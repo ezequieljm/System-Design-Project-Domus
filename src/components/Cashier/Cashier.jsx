@@ -26,6 +26,7 @@ import { useStyles } from "./stylesCashier";
 import { Settings, Refresh, Report, MenuBook } from "@material-ui/icons";
 import Payments from "./MainContent/Payments/Payments";
 import Movements from "./MainContent/Movements/Movements";
+import { useHistory } from "react-router";
 
 const toolsPage = [
 	{
@@ -106,8 +107,9 @@ function ToolsMovements({ hanList, inx }) {
 	);
 }
 
-export default function Cashier({ fnExit }) {
+const Cashier = () => {
 	const classes = useStyles();
+	const history = useHistory();
 	const [value, setValue] = React.useState(0);
 	const [selectedIndex, setSelectedIndex] = React.useState(0);
 	const handleNavbarTab = (event, newValue) => setValue(newValue);
@@ -152,7 +154,7 @@ export default function Cashier({ fnExit }) {
 						<Today />
 						<NotificationsNone />
 						<Avatar>L</Avatar>
-						<Button variant='contained' color='secondary' onClick={fnExit}>
+						<Button variant='contained' color='secondary' onClick={() => history.push("/")}>
 							Salir
 						</Button>
 					</div>
@@ -194,3 +196,5 @@ export default function Cashier({ fnExit }) {
 		</div>
 	);
 }
+
+export default Cashier;

@@ -31,6 +31,7 @@ import {
 import { useStyles } from "./stylesAdministrator";
 import AddNewUser from "./AddNewUser/AddNewUser";
 import DeleteUser from "./DeleteUser/DeleteUser";
+import {useHistory} from "react-router-dom";
 
 const toolsPage = [
 	{
@@ -62,7 +63,8 @@ const toolsSiteAdmin = [
 	},
 ];
 
-export default function SiteAdministrator({ fnExit }) {
+const SiteAdministrator = () => {
+	const history = useHistory();
 	const [value, setValue] = React.useState(0);
 	const [selectedIndex, setSelectedIndex] = React.useState(0);
 
@@ -105,7 +107,7 @@ export default function SiteAdministrator({ fnExit }) {
 						<Today />
 						<NotificationsNone />
 						<Avatar>F</Avatar>
-						<Button variant='contained' color='secondary' onClick={fnExit}>
+						<Button variant='contained' color='secondary' onClick={() => history.push("/")}>
 							Salir
 						</Button>
 					</div>
@@ -156,3 +158,5 @@ export default function SiteAdministrator({ fnExit }) {
 		</div>
 	);
 }
+
+export default SiteAdministrator;

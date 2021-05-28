@@ -18,6 +18,7 @@ import {
   Grow,
 } from "@material-ui/core";
 import { Visibility, VisibilityOff } from "@material-ui/icons";
+import { useHistory } from "react-router";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -51,7 +52,7 @@ const PasswordField = ({
     setValues({ ...values, [prop]: e.target.value });
     setDatosUser({ ...dataUserInput, pass: e.currentTarget.value });
   };
-const handleClickShowPassword = () => {
+  const handleClickShowPassword = () => {
     setValues({ ...values, showPassword: !values.showPassword });
   };
 
@@ -101,8 +102,9 @@ const handleClickShowPassword = () => {
   );
 };
 
-const LoginUser = ({ setupVirtualOffice }) => {
+const LoginUser = () => {
   const classes = useStyles();
+  const history = useHistory();
 
   const [dataUserInput, setDatosUser] = React.useState({ user: "", pass: "" });
   const [attribError, setAttErr] = React.useState(att);
@@ -113,25 +115,52 @@ const LoginUser = ({ setupVirtualOffice }) => {
   const controlUserAndPassword = () => {
     db.usuarios.some((user) => user.usuario === dataUserInput.user)
       ? setAttErr({
-          ...attribError,
-          pass: true,
-          hepPass: "Contraseña Incorrecta",
-        })
+        ...attribError,
+        pass: true,
+        hepPass: "Contraseña Incorrecta",
+      })
       : setAttErr({ ...attribError, user: true, hepUs: "Usuario Incorrecto" });
   };
 
-  const checkeDatas = (e) => {
+  const check = (e) => {
     e.preventDefault();
-    db.usuarios.findIndex(queryUserDB) !== -1
-      ? setupVirtualOffice(dataUserInput.user)
-      : controlUserAndPassword();
-  };
+    if (db.usuarios.some(queryUserDB) === true) {
+      switch (dataUserInput.user) {
+        case "jennifer":
+          history.push("/secretaria");
+          break;
+        case "felipeRuiz":
+          history.push("/gerencia")
+          break;
+        case "cookie":
+          history.push("/marketing")
+          break;
+        case "micaela":
+          history.push("/administracion")
+          break;
+        case "liliana":
+          history.push("/caja")
+          break;
+        case "foxMulder":
+          history.push("/sitio")
+          break;
+        case "jorgelina":
+          history.push("/comercio")
+          break;
+        case "nedBigby":
+          history.push("/asesoria")
+          break;
+      }
+    } else {
+      controlUserAndPassword()
+    }
+  }
 
   return (
     <Grow in >
       <div className="login">
         <Typography variant="h4">Oficina Virtual</Typography>
-        <form action="" className="form-control" onSubmit={checkeDatas}>
+        <form action="" className="form-control" onSubmit={check}>
           <div className={classes.root}>
             <TextField
               label="Usuario"

@@ -23,6 +23,7 @@ import {
 } from "@material-ui/icons";
 import { useStyles } from "./stylesMarketing";
 import MainContent from "./MainContent";
+import { useHistory } from "react-router-dom";
 
 const toolsPage = [
 	{
@@ -50,7 +51,8 @@ const toolsView = [
 	},
 ];
 
-export default function Marketing({ fnExit }) {
+const Marketing = () => {
+	const history = useHistory();
 	const [value, setValue] = React.useState(0);
 	const [selectedIndex, setSelectedIndex] = React.useState(0);
 
@@ -93,7 +95,7 @@ export default function Marketing({ fnExit }) {
 						<Today />
 						<NotificationsNone />
 						<Avatar>C</Avatar>
-						<Button variant='contained' color='secondary' onClick={fnExit}>
+						<Button variant='contained' color='secondary' onClick={() => history.push("/")}>
 							Salir
 						</Button>
 					</div>
@@ -140,3 +142,5 @@ export default function Marketing({ fnExit }) {
 		</div>
 	);
 }
+
+export default Marketing;

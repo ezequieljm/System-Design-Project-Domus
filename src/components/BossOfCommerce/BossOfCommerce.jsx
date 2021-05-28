@@ -35,6 +35,7 @@ import {
 } from "@material-ui/icons";
 import { useStyles } from "./stylesCommerce";
 import MainContent from "./MainContent/MainContent";
+import {useHistory} from "react-router-dom";
 
 const toolsPage = [
 	{
@@ -163,7 +164,8 @@ function HerramientasAgenda({ hanList, inx }) {
 	);
 }
 
-export default function BossOfCommerce({ fnExit }) {
+const BossOfCommerce = () => {
+	const history = useHistory();
 	const classes = useStyles();
 	const [value, setValue] = React.useState(0);
 	const [selectedIndex, setSelectedIndex] = React.useState(0);
@@ -211,7 +213,7 @@ export default function BossOfCommerce({ fnExit }) {
 						<Today />
 						<NotificationsNone />
 						<Avatar>J</Avatar>
-						<Button variant='contained' color='secondary' onClick={fnExit}>
+						<Button variant='contained' color='secondary' onClick={() => history.push("/")}>
 							Salir
 						</Button>
 					</div>
@@ -270,3 +272,5 @@ export default function BossOfCommerce({ fnExit }) {
 		</div>
 	);
 }
+
+export default BossOfCommerce;

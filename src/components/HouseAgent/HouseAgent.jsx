@@ -33,6 +33,7 @@ import {
 } from "@material-ui/icons";
 import Appointment from "./MainContent/Appointment/Appointment";
 import RealEstate from "./MainContent/RealEstate/RealEstate";
+import { useHistory } from "react-router-dom";
 
 const toolsPage = [
 	{
@@ -101,7 +102,8 @@ function HerramientasAgenda({ hanList, inx }) {
 	);
 }
 
-export default function HouseAgent({ fnExit }) {
+const HouseAgent = () => {
+	const history = useHistory();
 	const classes = useStyles();
 	const [value, setValue] = React.useState(0);
 	const [selectedIndex, setSelectedIndex] = React.useState(0);
@@ -148,7 +150,7 @@ export default function HouseAgent({ fnExit }) {
 						<Today />
 						<NotificationsNone />
 						<Avatar>N</Avatar>
-						<Button variant='contained' color='secondary' onClick={fnExit}>
+						<Button variant='contained' color='secondary' onClick={() => history.push("/")}>
 							Salir
 						</Button>
 					</div>
@@ -196,3 +198,5 @@ export default function HouseAgent({ fnExit }) {
 		</div>
 	);
 }
+
+export default HouseAgent;
