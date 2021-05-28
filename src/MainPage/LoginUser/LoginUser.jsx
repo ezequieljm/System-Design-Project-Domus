@@ -142,13 +142,15 @@ const LoginUser = () => {
           history.push("/caja")
           break;
         case "foxMulder":
-          history.push("/sitio")
+          history.push("/administracion-del-sitio")
           break;
         case "jorgelina":
           history.push("/comercio")
           break;
         case "nedBigby":
           history.push("/asesoria")
+          break;
+        default:
           break;
       }
     } else {
@@ -190,8 +192,7 @@ const LoginUser = () => {
             setAttErr={setAttErr}
           />
           <div className={classes.root}>
-            <FormControlLabel
-              control={<Checkbox name="checkedB" color="primary" />}
+            <FormControlLabel control={<Checkbox name="checkedB" color="primary" />}
               label="Recordar sesión"
             />
           </div>

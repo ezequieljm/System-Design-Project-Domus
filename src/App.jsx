@@ -21,7 +21,7 @@ const App = () => {
 					<Route exact path="/caja" children={<Cashier />} />
 					<Route exact path="/asesoria" children={<HouseAgent />} />
 					<Route exact path="/marketing" children={<Marketing />} />
-					<Route exact path="/sitio" children={<SiteAdministrator />} />
+					<Route exact path="/administracion-del-sitio" children={<SiteAdministrator />} />
 					<Route exact path="/comercio" children={<BossOfCommerce />} />
 					<Route exact path="/" children={<MainPage />} />
 					<Route path="*" children={<h1>Error 404</h1>} />
