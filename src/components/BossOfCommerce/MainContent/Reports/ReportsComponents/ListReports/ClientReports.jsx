@@ -1,14 +1,3 @@
-/* import React from "react";
-import { Typography, } from "@material-ui/core";
-
-export default function ClientReports() {
-	return (
-		<>
-			<Typography variant='h1'>Reportes de Clientes</Typography>
-		</>
-	);
-} */
-
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import {
@@ -88,22 +77,18 @@ const rows = [
 	),
 ];
 
-
-
-// const total = rows.reduce((acc, curr) => acc + Number(curr.price), 0);
-
-export default function ClientReports() {
+const ClientReports = () => { 
 	const classes = useStyles();
 	return (
 		<TableContainer component={Paper} className={classes.table}>
 			<Table className={classes.table} stickyHeader>
 				<TableHead style={{ background: "#9fa8da" }}>
 					<TableRow>
-						<TableCell>Propiedad</TableCell>
-						<TableCell align='right'>Tipo de Inmueble</TableCell>
-						<TableCell align='right'>Dirección</TableCell>
+						<TableCell>Nombre y Apellido</TableCell>
+						<TableCell align='right'>DNI</TableCell>
 						<TableCell align='right'>Localidad</TableCell>
-						<TableCell align='right'>Propietario</TableCell>
+						<TableCell align='right'>Inmueble</TableCell>
+						<TableCell align='right'>Contrato</TableCell>
 						<TableCell align='right'>Fecha</TableCell>
 					</TableRow>
 				</TableHead>
@@ -212,3 +197,4 @@ export default function ClientReports() {
 	);
 }
 
+export default ClientReports;
