@@ -72,6 +72,7 @@ function TransitionsModal({ open, handleClose }) {
 				}}>
 				<Fade in={open}>
 					<div className={classes.paper}>
+						<i className="fas fa-user-slash" style={{fontSize: '8rem', color: 'red'}}></i>
 						<h1 >Locatario no encontrado</h1>
 						<p >
 							Asegurese de que el código de cliente sea el correcto

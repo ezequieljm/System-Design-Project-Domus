@@ -92,7 +92,7 @@ const validDataHouse = {
 function DataHouseForm() {
 	return (
 		<div>
-			<Typography variant='h5'>Datos del inmueble #FA1234</Typography>
+			<Typography variant='h5'>Locatario #FA1234</Typography>
 			<form action=''>
 				<div
 					style={{
@@ -166,8 +166,7 @@ function FormToFillOut() {
 	const classes = useStyles();
 	return (
 		<div>
-			<Typography variant='h5'>Registro de alquiler</Typography>
-			<Typography variant='subtitle1'>Complete los siguiente campos</Typography>
+			<Typography variant='h5'>Registrar alquiler</Typography>
 			<form action=''>
 				<div
 					style={{

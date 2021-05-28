@@ -82,7 +82,7 @@ function TransitionsModal({ open, handleClose }) {
 }
 
 const validDataHouse = {
-	idHouse: "#0000",
+	idHouse: "#AC0000",
 	kindHouse: "Departamento",
 	location: {
 		country: "Argentina",
@@ -116,7 +116,7 @@ const validDataHouse = {
 function DataHouseForm() {
 	return (
 		<div>
-			<Typography variant='h5'>{`Datos del inmueble ${validDataHouse.idHouse}`}</Typography>
+			<Typography variant='h5'>{`Inmueble ${validDataHouse.idHouse}`}</Typography>
 			<form action=''>
 				<div
 					style={{

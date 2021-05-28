@@ -11,8 +11,8 @@
 }
 
 .login .form-control {
-  width: 400px;
-  height: 250px;
+  width: 600px;
+  height: 350px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;

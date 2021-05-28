@@ -242,10 +242,6 @@ export default function InputOutput() {
 		setValue(newValue);
 	};
 
-	/* 	const handleChangeIndex = (index) => {
-		setValue(index);
-	}; */
-
 	const transitionDuration = {
 		enter: theme.transitions.duration.enteringScreen,
 		exit: theme.transitions.duration.leavingScreen,
