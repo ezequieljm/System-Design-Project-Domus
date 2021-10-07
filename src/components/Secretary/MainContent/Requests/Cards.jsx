@@ -13,22 +13,6 @@ const useStylesTow = makeStyles({
 	},
 });
 
-function SimpleCard({ title, value, colorBackground, colorTxt }) {
-	const classes = useStylesTow();
-	return (
-		<Card className={classes.root} style={{background: colorBackground}}>
-			<CardContent>
-				<Typography variant='h6' component='h2'>
-					{title}
-				</Typography>
-				<Typography variant='h1' className={classes.colorFont} style={{color: colorTxt}}>
-					{value}
-				</Typography>
-			</CardContent>
-		</Card>
-	);
-}
-
 const valuesOfCards = {
 	titles: [
 		"Total",
@@ -39,35 +23,47 @@ const valuesOfCards = {
 	values: [23, 2, 2, 4],
 };
 
-export default function ContentCards() {
-	return (
-		<div
-			style={{
-				display: "flex",
-				justifyContent: "space-between",
-				marginBottom: 20,
-				marginTop: 20,
-			}}>
-			<SimpleCard
-				title={valuesOfCards.titles[0]}
-				value={valuesOfCards.values[0]}
-				colorTxt="#039be5"
-			/>
-			<SimpleCard
-				title={valuesOfCards.titles[1]}
-				value={valuesOfCards.values[1]}
-				colorTxt="#ec407a"
-			/>
-			<SimpleCard
-				title={valuesOfCards.titles[2]}
-				value={valuesOfCards.values[2]}
-				colorTxt="#00897b"
-			/>
-			<SimpleCard
-				title={valuesOfCards.titles[3]}
-				value={valuesOfCards.values[3]}
-				colorTxt="#ff5722"
-			/>
-		</div>
-	);
+const stylesOfContentCards = {
+      display: "flex"
+    , justifyContent: "space-between"
+    , marginBottom: 20
+    , marginTop: 20
 }
+
+const SimpleCard = ({ title, value, colorBackground, colorTxt }) =>
+    <Card className={useStylesTow().root} style={{background: colorBackground}}>
+        <CardContent>
+            <Typography variant='h6' component='h2'>
+                {title}
+            </Typography>
+            <Typography variant='h1' className={useStylesTow().colorFont} style={{color: colorTxt}}>
+                {value}
+            </Typography>
+        </CardContent>
+    </Card>
+
+const ContentCards = () =>
+    <div style={stylesOfContentCards}>
+        <SimpleCard
+            title={valuesOfCards.titles[0]}
+            value={valuesOfCards.values[0]}
+            colorTxt="#039be5"
+        />
+        <SimpleCard
+            title={valuesOfCards.titles[1]}
+            value={valuesOfCards.values[1]}
+            colorTxt="#ec407a"
+        />
+        <SimpleCard
+            title={valuesOfCards.titles[2]}
+            value={valuesOfCards.values[2]}
+            colorTxt="#00897b"
+        />
+        <SimpleCard
+            title={valuesOfCards.titles[3]}
+            value={valuesOfCards.values[3]}
+            colorTxt="#ff5722"
+        />
+    </div>
+
+export default ContentCards;
