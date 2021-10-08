@@ -1,11 +1,11 @@
 import { makeStyles } from "@material-ui/core/styles";
 export const drawerWidth = 240;
 
-export const useStyles = makeStyles((theme) => ({
+export const useMyStyles = makeStyles(theme => ({
 	root: {
 		display: "flex",
 	},
-	appBar: {
+	appBarMain: {
 		zIndex: theme.zIndex.drawer + 1,
 	},
 	appbarNav: {
@@ -16,6 +16,7 @@ export const useStyles = makeStyles((theme) => ({
 	toolBar: {
 		display: "flex",
 		justifyContent: "space-between",
+		alignItems: "center",
 		height: "50px",
 	},
 	drawer: {
@@ -54,9 +55,14 @@ export const useStyles = makeStyles((theme) => ({
 		background: "linear-gradient(to bottom, #cb2d3e, #ef473a)",
 		border: 0,
 		borderRadius: 3,
-		// boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
 		color: "white",
 		height: 38,
 		padding: "0 20px",
+	},
+	divsAppbar: {
+		width: "300px",
+		display: "flex",
+		justifyContent: "space-between",
+		alignItems: "center",
 	},
 }));

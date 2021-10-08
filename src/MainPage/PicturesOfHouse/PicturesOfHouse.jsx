@@ -2,14 +2,11 @@
 import "./pictures.css";
 import {Grow} from "@material-ui/core";
 
-const PicturesOfHouse = () => {
-  return (
+const PicturesOfHouse = () =>
     <Grow in>
       <section className="content-img">
         {/* <img src={House} alt="No content"/> */}
       </section>
     </Grow>
-  );
-};
 
 export default PicturesOfHouse;

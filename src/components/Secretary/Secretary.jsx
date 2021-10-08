@@ -1,36 +1,20 @@
+// React Libs
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
+
+// Material UI Components
 import MainContent from "./MainContent/MainContent";
 import ExpandLess from "@material-ui/icons/ExpandLess";
 import ExpandMore from "@material-ui/icons/ExpandMore";
-import {
-	CssBaseline,
-	Avatar,
-	Drawer,
-	List,
-	Typography,
-	ListItem,
-	ListItemIcon,
-	ListItemText,
-	Toolbar,
-	AppBar,
-	Tabs,
-	Tab,
-	Button,
-	Collapse,
-} from "@material-ui/core";
-import {
-	arrIconsList,
-	arrIconsSchedule,
-	arrIconsClient,
-} from "./Icons/ExportIcons";
-import {
-	BusinessCenter,
-	Today,
-	NotificationsNone,
-	ArrowForwardIos,
-} from "@material-ui/icons";
-import {useHistory} from "react-router-dom";
+import { CssBaseline, Avatar, Drawer, List, Typography, ListItem } from "@material-ui/core";
+import { AppBar, Tabs, Tab, Button, Collapse, ListItemIcon, ListItemText, Toolbar } from "@material-ui/core";
+import { arrIconsList, arrIconsSchedule, arrIconsClient } from "./Icons/ExportIcons";
+import { BusinessCenter, Today, NotificationsNone, ArrowForwardIos } from "@material-ui/icons";
+
+// React Router
+import { useHistory } from "react-router-dom";
+
+// Styles
+import { useMyStyles } from "./stylesSec";
 
 const configs = [
 	"Configuración",
@@ -38,113 +22,55 @@ const configs = [
 	"Reportar problema",
 	"Consultar manual",
 ];
+
 const requestsTool = [
 	"Listar Solicitudes",
 	"Actualizar Lista",
 	"Imprimir",
 	"Herramientas",
 ];
-const drawerWidth = 240;
-const useStyles = makeStyles((theme) => ({
-	root: {
-		display: "flex",
-	},
-	appBarMain: {
-		zIndex: theme.zIndex.drawer + 1,
-	},
-	appbarNav: {
-		background: "white",
-		zIndex: theme.zIndex.drawer + 1,
-		color: "black",
-	},
-	toolBar: {
-		display: "flex",
-		justifyContent: "space-between",
-		alignItems: "center",
-		height: "50px",
-	},
-	drawer: {
-		width: drawerWidth,
-		flexShrink: 0,
-	},
-	drawerPaper: {
-		width: drawerWidth,
-	},
-	drawerContainer: {
-		overflow: "auto",
-		height: "100%",
-		display: "flex",
-		flexDirection: "column",
-		justifyContent: "space-between",
-	},
-	content: {
-		flexGrow: 1,
-		padding: theme.spacing(2),
-	},
-	tabsStyles: {
-		color: "black",
-		backgroundColor: "white",
-	},
-	divTabDate: {
-		display: "flex",
-		justifyContent: "space-around",
-		alignItems: "center",
-		backgroundColor: "white",
-		color: "black",
-	},
-	fontListText: {
-		fontSize: ".9rem",
-	},
-	buttonExit: {
-		background: "linear-gradient(to bottom, #cb2d3e, #ef473a)",
-		border: 0,
-		borderRadius: 3,
-		color: "white",
-		height: 38,
-		padding: "0 20px",
-	},
-	divsAppbar: {
-		width: "300px",
-		display: "flex",
-		justifyContent: "space-between",
-		alignItems: "center",
-	},
-}));
 
-function RequestListTools({ hand, inx }) {
-	return (
-		<List>
-			{requestsTool.map((text, index) => (
-				<ListItem
-					button
-					key={text}
-					selected={inx === index}
-					onClick={(e) => hand(e, index)}>
-					<ListItemIcon>{arrIconsList[index]}</ListItemIcon>
-					<ListItemText primary={text} />
-				</ListItem>
-			))}
-		</List>
-	);
-}
+const RequestListTools = ({ hand, inx }) =>
+    <List>
+        {requestsTool.map((text, index) => (
+            <ListItem
+                button
+                key={text}
+                selected={inx === index}
+                onClick={e => hand(e, index)}>
+                <ListItemIcon>{arrIconsList[index]}</ListItemIcon>
+                <ListItemText primary={text} />
+            </ListItem>
+        ))}
+    </List>
 
-function ScheduleListTools({ hand, inx }) {
-	const scheduleTool = ["Agendar Cita", "Mostrar Agenda"];
-	return (
-		<List>
-			{scheduleTool.map((text, index) => (
-				<ListItem
-					button
-					key={text}
-					selected={inx === index}
-					onClick={(e) => hand(e, index)}>
-					<ListItemIcon>{arrIconsSchedule[index]}</ListItemIcon>
-					<ListItemText primary={text} />
-				</ListItem>
-			))}
-		</List>
-	);
-}
+const PageTools = ({ hand, inx }) => 
+    <List>
+        {configs.map((text, index) =>
+            <ListItem
+                button
+                key={text}
+                selected={inx === index + 4}
+                onClick={e => hand(e, index + 4)}>
+                <ListItemIcon>{arrIconsList[index + 4]}</ListItemIcon>
+                <ListItemText primary={text} />
+            </ListItem>
+        )}
+    </List>
+
+const ScheduleListTools = ({ hand, inx }) => 
+    <List>
+        {["Agendar Cita", "Mostrar Agenda"].map((text, index) => (
+            <ListItem
+                button
+                key={text}
+                selected={inx === index}
+                onClick={e => hand(e, index)}>
+                <ListItemIcon>{arrIconsSchedule[index]}</ListItemIcon>
+                <ListItemText primary={text} />
+            </ListItem>
+        ))}
+    </List>
 
 function ClientListTools({ hand }) {
 	const arrTool = ["Actualizar Datos", "Nuevo Cliente"];
@@ -195,25 +121,8 @@ function ClientListTools({ hand }) {
 	);
 }
 
-function PageTools({ hand, inx }) {
-	return (
-		<List>
-			{configs.map((text, index) => (
-				<ListItem
-					button
-					key={text}
-					selected={inx === index + 4}
-					onClick={(e) => hand(e, index + 4)}>
-					<ListItemIcon>{arrIconsList[index + 4]}</ListItemIcon>
-					<ListItemText primary={text} />
-				</ListItem>
-			))}
-		</List>
-	);
-}
-
 const Secretary = () => {
-	const classes = useStyles();
+	const classes = useMyStyles();
 	const history = useHistory();
 	const [value, setValue] = React.useState(0);
 	const [selectedIndex, setSelectedIndex] = React.useState(0);
