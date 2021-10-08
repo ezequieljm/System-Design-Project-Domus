@@ -1,17 +1,7 @@
 import React from "react";
 import CorporateClient from "./CorporateClient/CorporateClient";
 import PrivateClient from "./PrivateClient/PrivateClient";
-import {
-	Button,
-	Card,
-	CardActionArea,
-	CardActions,
-	CardMedia,
-	Typography,
-	makeStyles,
-	CardContent,
-	Grow,
-} from "@material-ui/core";
+import { Button, Card, CardActionArea, CardActions, CardMedia, Typography, makeStyles, CardContent, Grow } from "@material-ui/core";
 import { AccountBox, Business } from "@material-ui/icons";
 import dbClients from "./dbClients.json";
 
@@ -36,7 +26,7 @@ const useStyles = makeStyles({
 	},
 });
 
-function MediaCard({ textContent, fnDeploy, icon }) {
+const MediaCard = ({ textContent, deploy, icon }) => {
 	const classes = useStyles();
 
 	return (
@@ -45,12 +35,11 @@ function MediaCard({ textContent, fnDeploy, icon }) {
 				<CardMedia
 					className={classes.media}
 					title='Contemplative Reptile'
-					onClick={() => fnDeploy(icon)}>
-					{icon === 1 ? (
-						<AccountBox className={classes.styleIconMedia} />
-					) : (
-						<Business className={classes.styleIconMedia} />
-					)}
+					onClick={() => deploy(icon)}>
+					{icon === 1 
+                        ? <AccountBox className={classes.styleIconMedia} />
+                        : <Business className={classes.styleIconMedia} />
+					}
 				</CardMedia>
 				<CardContent>
 					<Typography gutterBottom variant='h5' component='h2'>
@@ -62,7 +51,7 @@ function MediaCard({ textContent, fnDeploy, icon }) {
 				</CardContent>
 			</CardActionArea>
 			<CardActions>
-				<Button size='small' color='primary' onClick={() => fnDeploy(icon)}>
+				<Button size='small' color='primary' onClick={() => deploy(icon)}>
 					{textContent.btnOne}
 				</Button>
 			</CardActions>
@@ -70,38 +59,40 @@ function MediaCard({ textContent, fnDeploy, icon }) {
 	);
 }
 
-function ButtonsDep({ fnDep }) {
-	return (
-		<Grow in>
-			<div>
-				<Typography variant='h4'>Nuevo cliente</Typography>
-				<div
-					elevation={5}
-					style={{
-						display: "flex",
-						justifyContent: "center",
-						alignItems: "center",
-					}}>
-					<MediaCard textContent={cardText[0]} fnDeploy={fnDep} icon={1} />
-					<MediaCard textContent={cardText[1]} fnDeploy={fnDep} icon={2} />
-				</div>
-			</div>
-		</Grow>
-	);
-}
+const ButtonDep = ({ handleDeploy }) =>
+    <Grow in>
+        <div>
+            <Typography variant='h4'>Nuevo cliente</Typography>
+            <div
+                elevation={5}
+                style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                }}>
+                <MediaCard textContent={cardText[0]} deploy={handleDeploy} icon={1} />
+                <MediaCard textContent={cardText[1]} deploy={handleDeploy} icon={2} />
+            </div>
+        </div>
+    </Grow>
 
-export default function NewClient() {
-	const [deploy, setDeploy] = React.useState(0);
 
+/**
+ * Main Component: NewClient
+ */
+const NewClient = () => {
+    const [deploy, setDeploy] = React.useState(0);
 	return (
 		<>
-			{deploy === 0 ? (
-				<ButtonsDep fnDep={setDeploy} />
-			) : deploy === 1 ? (
-				<CorporateClient />
-			) : (
-				<PrivateClient />
-			)}
+			{
+                deploy === 0 
+                    ? <ButtonDep handleDeploy={setDeploy} /> 
+                    : deploy === 1 
+                        ? <CorporateClient />
+                        : <PrivateClient />
+            }
 		</>
 	);
 }
+
+export default NewClient;
