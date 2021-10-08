@@ -1,18 +1,5 @@
-import {
-	FormatListBulleted,
-	Update,
-	Print,
-	Build,
-	Settings,
-	Refresh,
-	Report,
-	MenuBook,
-	AddBox,
-	Schedule,
-	PersonAdd,
-	Person,
-	Business,
-} from "@material-ui/icons";
+import { FormatListBulleted, Update, Print, Build, Settings } from "@material-ui/icons";
+import { Refresh, Report, MenuBook, AddBox, Schedule, PersonAdd, Person, Business } from "@material-ui/icons";
 
 export const arrIconsList = [
 	<FormatListBulleted />,
