@@ -1,21 +1,31 @@
-// React Libs
+/**
+ * React Libs
+ */
 import React from "react";
 
-// Material UI Components
+/**
+ * MaterialUI Components
+ */
 import MainContent from "./MainContent/MainContent";
 import { CssBaseline, Avatar, Drawer, Typography } from "@material-ui/core";
 import { AppBar, Tabs, Tab, Button, Toolbar } from "@material-ui/core";
 import { BusinessCenter, Today, NotificationsNone, ArrowForwardIos } from "@material-ui/icons";
 
-// React Router
+/**
+ * React Router
+ */
 import { useHistory } from "react-router-dom";
 
-// Application Components
+/**
+ * Application Components
+ */
 import SideBarTools from "./SideBarTools";
 import { iconsAndOptions } from "./Icons/iconsAndOptions";
 import ClientListTools from "./ClientListTool";
 
-// Styles
+/**
+ * Styles
+ */
 import { useMyStyles } from "./stylesSec";
 
 /**

@@ -6,6 +6,9 @@ import ExpandLess from "@material-ui/icons/ExpandLess";
 import ExpandMore from "@material-ui/icons/ExpandMore";
 import { List, ListItem, Collapse, ListItemIcon, ListItemText } from "@material-ui/core";
 
+/**
+ * Main Component: ClientListTools
+ */
 const ClientListTools = ({ handler, iconsAndOptions }) => {
 	const [stateTool, setStateTool] = React.useState({ open: false, index: 0 });
     const arrTool = ["Actualizar Datos", "Nuevo Cliente"];

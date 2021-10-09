@@ -9,7 +9,7 @@ import React from "react";
 import CorporateClient from "./CorporateClient/CorporateClient";
 import PrivateClient from "./PrivateClient/PrivateClient";
 import UpdateClient from "./UpdateClient/UpdateClient";
-import NewClient from "./NewClient";
+import NewClient from "./NewClients/NewClient";
 
 /**
  * Main Component: Client (pure)

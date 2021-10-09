@@ -9,7 +9,10 @@ const useStyle = makeStyles((theme) => ({
 	},
 }));
 
-export default function DeleteUser() {
+/**
+ * Main component: DeleteUser
+ */
+const DeleteUser = () => {
 	const classes = useStyle();
 
 	return (
@@ -21,3 +24,5 @@ export default function DeleteUser() {
 		</Grow>
 	);
 }
+
+export default DeleteUser;

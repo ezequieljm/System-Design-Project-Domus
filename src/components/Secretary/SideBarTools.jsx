@@ -4,6 +4,9 @@ import React from "react";
 // MaterialUI Components
 import { List, ListItem, ListItemIcon, ListItemText } from "@material-ui/core";
 
+/**
+ * Main Component: SideBarTools (pure)
+ */
 const SideBarTools = ({ handler, currentIndex, iconsAndOptions }) => 
     <List>
         {iconsAndOptions.options.map((text, index) =>

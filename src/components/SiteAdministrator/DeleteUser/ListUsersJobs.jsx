@@ -47,13 +47,14 @@ const StyledTableRow = withStyles((theme) => ({
 		},
 	},
 }))(TableRow);
-function createData(firstname, surname, username, id, job, deleted) {
-	return { username, firstname, surname, id, job, deleted };
-}
+
+const createData = (firstname, surname, username, id, job, deleted) => 
+    ({ username, firstname, surname, id, job, deleted })
 
 const rowsManage = [
 	createData("Felipe", "Ruiz", "felipeRuiz", "DF345", "Gerente", "NO"),
 ];
+
 const rowsAdministrator = [
 	createData(
 		"Fox",
@@ -90,7 +91,7 @@ const rowsCommerce = [
 	),
 ];
 
-function TransitionsModal({ titleDesc }) {
+const TransitionsModal = ({ titleDesc }) => {
 	const classes = useStyles();
 	const [open, setOpen] = React.useState(false);
 
@@ -132,7 +133,10 @@ function TransitionsModal({ titleDesc }) {
 	);
 }
 
-export default function ListUsersJobs() {
+/**
+ * Main Component: ListUsersJobs
+ */
+const ListUsersJobs = () => {
 	const classes = useStyles();
 
 	return (
@@ -230,3 +234,5 @@ export default function ListUsersJobs() {
 		</TableContainer>
 	);
 }
+
+export default ListUsersJobs;

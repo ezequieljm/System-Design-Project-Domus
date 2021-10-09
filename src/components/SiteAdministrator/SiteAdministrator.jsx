@@ -1,33 +1,8 @@
 import React from "react";
-import {
-	Avatar,
-	Drawer,
-	AppBar,
-	CssBaseline,
-	Toolbar,
-	List,
-	Typography,
-	ListItem,
-	ListItemIcon,
-	ListItemText,
-	Button,
-	Tab,
-	Tabs,
-} from "@material-ui/core";
-import {
-	PersonAdd,
-	PersonAddDisabled,
-	Settings,
-	Refresh,
-	Report,
-	MenuBook,
-} from "@material-ui/icons";
-import {
-	ArrowForwardIos,
-	NotificationsNone,
-	Today,
-	BusinessCenter,
-} from "@material-ui/icons";
+import { Avatar, Drawer, AppBar, CssBaseline, Toolbar, List } from "@material-ui/core"
+import {Typography, ListItem, ListItemIcon, ListItemText, Button, Tab, Tabs } from "@material-ui/core";
+import { PersonAdd, PersonAddDisabled, Settings, Refresh, Report, MenuBook, } from "@material-ui/icons";
+import { ArrowForwardIos, NotificationsNone, Today, BusinessCenter } from "@material-ui/icons";
 import { useStyles } from "./stylesAdministrator";
 import AddNewUser from "./AddNewUser/AddNewUser";
 import DeleteUser from "./DeleteUser/DeleteUser";
@@ -63,6 +38,9 @@ const toolsSiteAdmin = [
 	},
 ];
 
+/**
+ * Main Component: SiteAdministrator
+ */
 const SiteAdministrator = () => {
 	const history = useHistory();
 	const [value, setValue] = React.useState(0);
